@@ -1,0 +1,186 @@
+'use client'
+
+import { useAuth } from '@/hooks/useAuth'
+import { useUser } from '@/lib/queries'
+import { BannerAd } from './BannerAd'
+import { SidebarAd } from './SidebarAd'
+import { GoogleAd, GoogleAutoAds, ResponsiveAd } from './GoogleAd'
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Crown } from 'lucide-react'
+
+interface AdManagerProps {
+  placement: 'header' | 'sidebar' | 'footer' | 'inline' | 'modal'
+  adSlot?: string
+  onUpgradeClick?: () => void
+  className?: string
+}
+
+export function AdManager({ 
+  placement, 
+  adSlot,
+  onUpgradeClick,
+  className = '' 
+}: AdManagerProps) {
+  const { user } = useAuth()
+  const { data: userData } = useUser(user?.id)
+  
+  // Don't show ads to Pro users
+  const isProUser = userData?.is_pro || false
+  
+  if (isProUser) return null
+
+  // Show different ads based on placement
+  switch (placement) {
+    case 'header':
+      return (
+        <div className={`w-full ${className}`}>
+          {adSlot ? (
+            <ResponsiveAd slot={adSlot} className="mb-4" />
+          ) : (
+            <BannerAd 
+              slot="header-banner" 
+              onUpgradeClick={onUpgradeClick}
+              className="mb-4"
+            />
+          )}
+        </div>
+      )
+
+    case 'sidebar':
+      return (
+        <div className={`w-full ${className}`}>
+          {adSlot ? (
+            <GoogleAd 
+              slot={adSlot} 
+              format="vertical"
+              style={{ minHeight: '250px', minWidth: '200px' }}
+            />
+          ) : (
+            <SidebarAd onUpgradeClick={onUpgradeClick} />
+          )}
+        </div>
+      )
+
+    case 'footer':
+      return (
+        <div className={`w-full ${className}`}>
+          {adSlot ? (
+            <ResponsiveAd slot={adSlot} />
+          ) : (
+            <Card className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-blue-800">
+                    Enjoying WorkStreak? Support us by upgrading to Pro!
+                  </p>
+                  <p className="text-xs text-blue-600">
+                    Remove ads and unlock premium features
+                  </p>
+                </div>
+                <Button 
+                  onClick={onUpgradeClick}
+                  size="sm"
+                  className="bg-blue-600 hover:bg-blue-700"
+                >
+                  <Crown className="h-3 w-3 mr-1" />
+                  Upgrade
+                </Button>
+              </div>
+            </Card>
+          )}
+        </div>
+      )
+
+    case 'inline':
+      return (
+        <div className={`w-full my-4 ${className}`}>
+          {adSlot ? (
+            <GoogleAd 
+              slot={adSlot} 
+              format="rectangle"
+              style={{ 
+                minHeight: '250px', 
+                minWidth: '300px',
+                margin: '0 auto' 
+              }}
+            />
+          ) : (
+            <Card className="p-6 bg-gradient-to-br from-green-50 to-blue-50 border-green-200">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Crown className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold text-green-800 mb-2">
+                  Unlock Premium Focus
+                </h3>
+                <p className="text-sm text-green-600 mb-4">
+                  Get ad-free sessions, advanced themes, and productivity insights
+                </p>
+                <Button 
+                  onClick={onUpgradeClick}
+                  className="bg-green-600 hover:bg-green-700"
+                >
+                  Start Pro Trial
+                </Button>
+              </div>
+            </Card>
+          )}
+        </div>
+      )
+
+    case 'modal':
+      return (
+        <div className={`w-full ${className}`}>
+          {adSlot ? (
+            <GoogleAd 
+              slot={adSlot} 
+              format="rectangle"
+              style={{ minHeight: '200px', minWidth: '300px' }}
+            />
+          ) : (
+            <Card className="p-4 bg-yellow-50 border-yellow-200">
+              <div className="text-center">
+                <Crown className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
+                <p className="text-sm font-medium text-yellow-800 mb-2">
+                  Remove interruptions
+                </p>
+                <p className="text-xs text-yellow-600 mb-3">
+                  Upgrade to Pro for uninterrupted focus sessions
+                </p>
+                <Button 
+                  onClick={onUpgradeClick}
+                  size="sm"
+                  className="bg-yellow-600 hover:bg-yellow-700"
+                >
+                  Upgrade Now
+                </Button>
+              </div>
+            </Card>
+          )}
+        </div>
+      )
+
+    default:
+      return null
+  }
+}
+
+// Auto Ads for the entire app
+export function AppAutoAds() {
+  return <GoogleAutoAds />
+}
+
+// Smart Ad Placement Hook
+export function useAdPlacement() {
+  const { user } = useAuth()
+  const { data: userData } = useUser(user?.id)
+  
+  const isProUser = userData?.is_pro || false
+  
+  return {
+    shouldShowAds: !isProUser && process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID,
+    isProUser,
+    AdManager
+  }
+}
