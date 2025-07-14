@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import { cookies } from 'next/headers'
 
 export type Database = {
   public: {
@@ -155,10 +156,17 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey)
 
 // Server-side Supabase client for App Router
 export function createServerClient() {
+  const cookieStore = cookies()
+  
   return createClient<Database>(supabaseUrl, supabaseAnonKey, {
     auth: {
       autoRefreshToken: false,
       persistSession: false
-    }
+    },
+    global: {
+      headers: {
+        'Authorization': `Bearer ${cookieStore.get('sb-access-token')?.value || ''}`,
+      },
+    },
   })
 }
