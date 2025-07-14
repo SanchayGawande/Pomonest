@@ -25,31 +25,30 @@ export function AuthHandler() {
           if (accessToken && refreshToken) {
             console.log('🔑 Setting session with tokens from hash')
             
-            // Manually set the session using the tokens from the hash
-            const { data, error } = await supabase.auth.setSession({
-              access_token: accessToken,
-              refresh_token: refreshToken
-            })
-            
-            if (data.session && !error) {
-              console.log('✅ Session established from hash tokens', data.session.user.email)
+            try {
+              // Manually set the session using the tokens from the hash
+              const { data, error } = await supabase.auth.setSession({
+                access_token: accessToken,
+                refresh_token: refreshToken
+              })
               
-              // Wait a moment for session to propagate
-              await new Promise(resolve => setTimeout(resolve, 100))
-              
-              // Verify the session is working
-              const { data: userData, error: userError } = await supabase.auth.getUser()
-              if (userData.user && !userError) {
-                console.log('✅ Session verified successfully')
-                // Clear the hash from URL
+              if (data.session && !error) {
+                console.log('✅ Session established from hash tokens', data.session.user.email)
+                
+                // Clear the hash from URL immediately
                 window.history.replaceState({}, document.title, window.location.pathname + window.location.search)
-                router.refresh()
+                
+                // Force a page refresh to ensure all components see the new session
+                setTimeout(() => {
+                  window.location.reload()
+                }, 500)
+                
                 return
               } else {
-                console.error('Session verification failed:', userError)
+                console.error('Failed to set session from hash:', error)
               }
-            } else {
-              console.error('Failed to set session from hash:', error)
+            } catch (sessionError) {
+              console.error('Exception setting session:', sessionError)
             }
           } else {
             console.warn('Hash found but missing tokens')

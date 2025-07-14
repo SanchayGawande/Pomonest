@@ -153,11 +153,25 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 // Client-side Supabase client
 export function createClient() {
-  return createBrowserClient<Database>(supabaseUrl, supabaseAnonKey)
+  return createBrowserClient<Database>(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      flowType: 'implicit',
+      autoRefreshToken: true,
+      detectSessionInUrl: false, // Disable automatic URL session detection
+      persistSession: true
+    }
+  })
 }
 
 // Legacy export for backward compatibility
-export const supabase = createBrowserClient<Database>(supabaseUrl, supabaseAnonKey)
+export const supabase = createBrowserClient<Database>(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    flowType: 'implicit',
+    autoRefreshToken: true,
+    detectSessionInUrl: false, // Disable automatic URL session detection
+    persistSession: true
+  }
+})
 
 // Server-side Supabase client for App Router
 export function createServerComponentClient() {
