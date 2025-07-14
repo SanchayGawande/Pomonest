@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+import { createBrowserClient, createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
 export type Database = {
@@ -152,20 +152,40 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 // Client-side Supabase client
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey)
+export function createClient() {
+  return createBrowserClient<Database>(supabaseUrl, supabaseAnonKey)
+}
+
+// Legacy export for backward compatibility
+export const supabase = createBrowserClient<Database>(supabaseUrl, supabaseAnonKey)
 
 // Server-side Supabase client for App Router
-export function createServerClient() {
+export function createServerComponentClient() {
   const cookieStore = cookies()
   
-  return createClient<Database>(supabaseUrl, supabaseAnonKey, {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false
+  return createServerClient<Database>(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      get(name: string) {
+        return cookieStore.get(name)?.value
+      },
     },
-    global: {
-      headers: {
-        'Authorization': `Bearer ${cookieStore.get('sb-access-token')?.value || ''}`,
+  })
+}
+
+// Server-side client for Route Handlers
+export function createRouteHandlerClient() {
+  const cookieStore = cookies()
+  
+  return createServerClient<Database>(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      get(name: string) {
+        return cookieStore.get(name)?.value
+      },
+      set(name: string, value: string, options: any) {
+        cookieStore.set({ name, value, ...options })
+      },
+      remove(name: string, options: any) {
+        cookieStore.set({ name, value: '', ...options })
       },
     },
   })

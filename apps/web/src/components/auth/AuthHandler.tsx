@@ -1,11 +1,12 @@
 'use client'
 
 import { useEffect } from 'react'
-import { supabase } from '@/lib/supabase'
+import { createClient } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
 
 export function AuthHandler() {
   const router = useRouter()
+  const supabase = createClient()
 
   useEffect(() => {
     // Handle auth tokens from various sources
@@ -27,33 +28,11 @@ export function AuthHandler() {
           }
         }
 
-        // Check for cookie-based session
-        const accessToken = document.cookie
-          .split('; ')
-          .find(row => row.startsWith('sb-access-token='))
-          ?.split('=')[1]
-
-        if (accessToken) {
-          console.log('🔄 Processing cookie-based auth tokens')
-          // Set the session using the cookie tokens
-          const refreshToken = document.cookie
-            .split('; ')
-            .find(row => row.startsWith('sb-refresh-token='))
-            ?.split('=')[1]
-
-          if (refreshToken) {
-            const { data, error } = await supabase.auth.setSession({
-              access_token: accessToken,
-              refresh_token: refreshToken
-            })
-            
-            if (data.session && !error) {
-              console.log('✅ Session established from cookies')
-              router.refresh()
-            } else if (error) {
-              console.error('Cookie session error:', error)
-            }
-          }
+        // For SSR approach, just get the current session
+        const { data, error } = await supabase.auth.getSession()
+        if (data.session && !error) {
+          console.log('✅ Session found via SSR')
+          router.refresh()
         }
       } catch (error) {
         console.error('Auth handler error:', error)
@@ -61,7 +40,7 @@ export function AuthHandler() {
     }
 
     handleAuthCallback()
-  }, [router])
+  }, [router, supabase])
 
   return null // This component doesn't render anything
 }
