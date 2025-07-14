@@ -108,13 +108,18 @@ export function SimpleAuthProvider({ children }: { children: React.ReactNode }) 
   }, [])
 
   const signInWithGoogle = async () => {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    if (!supabaseUrl) {
+      console.error('Missing NEXT_PUBLIC_SUPABASE_URL')
+      return
+    }
+    
     const redirectUrl = encodeURIComponent(`${window.location.origin}/`)
     
     // Direct OAuth URL to Supabase
     const oauthUrl = `${supabaseUrl}/auth/v1/authorize?provider=google&redirect_to=${redirectUrl}`
     
-    console.log('🔄 Redirecting to Google OAuth...')
+    console.log('🔄 Redirecting to Google OAuth via Supabase...')
     window.location.href = oauthUrl
   }
 
