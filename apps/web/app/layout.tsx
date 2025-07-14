@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { SimpleAuthProvider } from '@/components/auth/SimpleAuthProvider'
+import { CleanAuthProvider } from '@/components/auth/CleanAuthProvider'
 import { QueryProvider } from '@/components/QueryProvider'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { AdProvider } from '@/components/ads/AdProvider'
@@ -102,13 +102,13 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <QueryProvider>
-          <SimpleAuthProvider>
+          <CleanAuthProvider>
             <ThemeProvider>
               <AdProvider>
                 {children}
               </AdProvider>
             </ThemeProvider>
-          </SimpleAuthProvider>
+          </CleanAuthProvider>
         </QueryProvider>
       </body>
     </html>
