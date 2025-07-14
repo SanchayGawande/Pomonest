@@ -152,3 +152,13 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 // Client-side Supabase client
 export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey)
+
+// Server-side Supabase client for App Router
+export function createServerClient() {
+  return createClient<Database>(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  })
+}
