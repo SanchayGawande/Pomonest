@@ -32,11 +32,22 @@ export function AuthHandler() {
             })
             
             if (data.session && !error) {
-              console.log('✅ Session established from hash tokens')
-              // Clear the hash from URL
-              window.history.replaceState({}, document.title, window.location.pathname + window.location.search)
-              router.refresh()
-              return
+              console.log('✅ Session established from hash tokens', data.session.user.email)
+              
+              // Wait a moment for session to propagate
+              await new Promise(resolve => setTimeout(resolve, 100))
+              
+              // Verify the session is working
+              const { data: userData, error: userError } = await supabase.auth.getUser()
+              if (userData.user && !userError) {
+                console.log('✅ Session verified successfully')
+                // Clear the hash from URL
+                window.history.replaceState({}, document.title, window.location.pathname + window.location.search)
+                router.refresh()
+                return
+              } else {
+                console.error('Session verification failed:', userError)
+              }
             } else {
               console.error('Failed to set session from hash:', error)
             }
