@@ -11,6 +11,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+  "include": ["src/index.ts", "src/timer.ts"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "src/test/**/*", "src/__tests__/**/*"]
 }
