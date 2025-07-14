@@ -50,7 +50,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signInWithGoogle = async () => {
     try {
-      const redirectUrl = `${typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3005'}/auth/callback`
+      const redirectUrl = `${typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3005'}/`
       
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
@@ -77,7 +77,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'apple',
         options: {
-          redirectTo: `${typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3005'}/auth/callback`
+          redirectTo: `${typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3005'}/`
         }
       })
       if (error) throw error
