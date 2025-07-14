@@ -2,6 +2,5 @@
   "framework": "nextjs",
   "buildCommand": "cd ../../packages/shared-timer && pnpm install && pnpm build && cd ../../apps/web && SKIP_ENV_VALIDATION=true pnpm build",
   "outputDirectory": ".next",
-  "installCommand": "pnpm install --frozen-lockfile",
-  "nodeVersion": "18.x"
+  "installCommand": "pnpm install --frozen-lockfile"
 }
