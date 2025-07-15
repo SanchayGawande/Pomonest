@@ -61,11 +61,7 @@ export async function POST(request: NextRequest) {
 
     // Check if Stripe is properly configured on server-side
     const serverStripeConfigured = process.env.STRIPE_SECRET_KEY && 
-      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY &&
-      process.env.STRIPE_PRICE_ID_MONTHLY &&
-      process.env.STRIPE_PRICE_ID_YEARLY
-    
-    // Stripe configuration verified
+      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
     
     if (!serverStripeConfigured || !stripe) {
       console.log('❌ Stripe not configured properly on server')
@@ -75,10 +71,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate the price ID using server-side env vars
+    // Validate the price ID using live production price IDs
     const validPriceIds = [
-      process.env.STRIPE_PRICE_ID_MONTHLY || 'price_1RkyxHD3Fz9WQTDWZyh9KfHB',
-      process.env.STRIPE_PRICE_ID_YEARLY || 'price_1RkyyKD3Fz9WQTDWuz33REin'
+      'price_1RkyxHD3Fz9WQTDWZyh9KfHB', // Live monthly price
+      'price_1RkyyKD3Fz9WQTDWuz33REin'  // Live yearly price
     ]
     // Price ID validation
     
@@ -108,7 +104,7 @@ export async function POST(request: NextRequest) {
     let planType: ProPlan = 'monthly'
     let savePasses = 3
 
-    if (priceId === (process.env.STRIPE_PRICE_ID_YEARLY || 'price_1RkyyKD3Fz9WQTDWuz33REin')) {
+    if (priceId === 'price_1RkyyKD3Fz9WQTDWuz33REin') {
       planType = 'yearly'
       savePasses = 12
     }
@@ -141,6 +137,10 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Stripe checkout error:', error)
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : 'No stack trace'
+    })
     return NextResponse.json(
       { error: 'Failed to create checkout session' },
       { status: 500 }

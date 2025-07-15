@@ -33,10 +33,10 @@ export const stripe = hasValidStripeKeys
 // Helper to check if Stripe is configured (client-side safe)
 export const isStripeConfigured = () => hasValidPublishableKey
 
-// Pricing configuration - Live production price IDs
+// Pricing configuration - LIVE PRODUCTION PRICE IDs (hardcoded for reliability)
 export const STRIPE_PRICES = {
-  PRO_MONTHLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_MONTHLY || 'price_1RkyxHD3Fz9WQTDWZyh9KfHB',
-  PRO_YEARLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_YEARLY || 'price_1RkyyKD3Fz9WQTDWuz33REin',
+  PRO_MONTHLY: 'price_1RkyxHD3Fz9WQTDWZyh9KfHB', // Live monthly price
+  PRO_YEARLY: 'price_1RkyyKD3Fz9WQTDWuz33REin',  // Live yearly price
 } as const
 
 export type StripePriceId = typeof STRIPE_PRICES[keyof typeof STRIPE_PRICES]
