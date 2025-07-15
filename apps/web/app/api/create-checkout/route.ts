@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
     
     // Create Stripe instance
     const stripe = new Stripe(secretKey, {
-      apiVersion: '2024-11-20',
+      apiVersion: '2024-10-28.acacia',
     })
 
     // Validate the price ID
