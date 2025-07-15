@@ -170,7 +170,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { 
         error: 'Failed to create checkout session',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
+        debug: {
+          errorName: error instanceof Error ? error.name : 'Unknown',
+          errorStack: error instanceof Error ? error.stack?.split('\n').slice(0, 3) : 'No stack',
+          stripeConfigured: !!stripe,
+          hasSecretKey: !!process.env.STRIPE_SECRET_KEY,
+          hasPublishableKey: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+          appUrl: process.env.NEXT_PUBLIC_APP_URL,
+          priceId,
+          userId
+        }
       },
       { status: 500 }
     )
