@@ -117,6 +117,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Create Stripe checkout session
+    console.log('🛒 Creating checkout session with:', {
+      priceId,
+      userEmail,
+      userId,
+      planType,
+      savePasses
+    })
+    
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription', // Subscription mode for recurring prices
       payment_method_types: ['card'],
@@ -136,6 +144,8 @@ export async function POST(request: NextRequest) {
       cancel_url: `https://pomonest.com/?canceled=true`,
       allow_promotion_codes: true,
     })
+    
+    console.log('✅ Checkout session created successfully:', session.id)
 
     return NextResponse.json({
       sessionId: session.id,
@@ -143,13 +153,29 @@ export async function POST(request: NextRequest) {
     })
 
   } catch (error) {
-    console.error('Stripe checkout error:', error)
-    console.error('Error details:', {
+    console.error('❌ Stripe checkout error:', error)
+    console.error('❌ Error details:', {
       message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : 'No stack trace'
+      stack: error instanceof Error ? error.stack : 'No stack trace',
+      name: error instanceof Error ? error.name : 'Unknown error type',
+      cause: error instanceof Error ? error.cause : 'No cause'
     })
+    
+    // Log specific Stripe error details if it's a Stripe error
+    if (error && typeof error === 'object' && 'type' in error) {
+      console.error('❌ Stripe error details:', {
+        type: error.type,
+        code: error.code,
+        param: error.param,
+        statusCode: error.statusCode
+      })
+    }
+    
     return NextResponse.json(
-      { error: 'Failed to create checkout session' },
+      { 
+        error: 'Failed to create checkout session',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     )
   }
