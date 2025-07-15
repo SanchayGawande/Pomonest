@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { z } from 'zod'
-import { stripe, STRIPE_PRICES, PRO_PLANS, type ProPlan, isStripeConfigured } from '@/lib/stripe'
+import { STRIPE_PRICES, PRO_PLANS, type ProPlan, isStripeConfigured } from '@/lib/stripe'
+import Stripe from 'stripe'
 
 const CreateCheckoutSchema = z.object({
   priceId: z.string().min(1, 'Price ID is required')
@@ -63,20 +64,24 @@ export async function POST(request: NextRequest) {
     console.log('🔍 Stripe configuration check:', {
       hasSecretKey: !!process.env.STRIPE_SECRET_KEY,
       hasPublishableKey: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
-      stripeInstance: !!stripe,
       secretKeyPrefix: process.env.STRIPE_SECRET_KEY?.substring(0, 8)
     })
     
-    const serverStripeConfigured = process.env.STRIPE_SECRET_KEY && 
-      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+    const secretKey = process.env.STRIPE_SECRET_KEY
+    const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
     
-    if (!serverStripeConfigured || !stripe) {
-      console.log('❌ Stripe not configured properly on server')
+    if (!secretKey || !publishableKey) {
+      console.log('❌ Stripe keys missing on server')
       return NextResponse.json(
-        { error: 'Payment processing not available' },
+        { error: 'Payment processing not available - missing keys' },
         { status: 503 }
       )
     }
+    
+    // Create Stripe instance directly to avoid import issues
+    const stripe = new Stripe(secretKey, {
+      apiVersion: '2024-11-20',
+    })
 
     // Validate the price ID using imported constants
     const validPriceIds = Object.values(STRIPE_PRICES)
@@ -174,10 +179,10 @@ export async function POST(request: NextRequest) {
         debug: {
           errorName: error instanceof Error ? error.name : 'Unknown',
           errorStack: error instanceof Error ? error.stack?.split('\n').slice(0, 3) : 'No stack',
-          stripeConfigured: !!stripe,
           hasSecretKey: !!process.env.STRIPE_SECRET_KEY,
           hasPublishableKey: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
           appUrl: process.env.NEXT_PUBLIC_APP_URL,
+          secretKeyPrefix: process.env.STRIPE_SECRET_KEY?.substring(0, 8),
           priceId,
           userId
         }
