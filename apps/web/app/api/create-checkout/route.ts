@@ -60,6 +60,13 @@ export async function POST(request: NextRequest) {
     const userId = user.id // Use authenticated user's ID instead of request body
 
     // Check if Stripe is properly configured on server-side
+    console.log('🔍 Stripe configuration check:', {
+      hasSecretKey: !!process.env.STRIPE_SECRET_KEY,
+      hasPublishableKey: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+      stripeInstance: !!stripe,
+      secretKeyPrefix: process.env.STRIPE_SECRET_KEY?.substring(0, 8)
+    })
+    
     const serverStripeConfigured = process.env.STRIPE_SECRET_KEY && 
       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
     
