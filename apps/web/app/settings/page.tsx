@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
-export const runtime = 'edge'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/useAuth'
 import { useUser } from '@/lib/queries'

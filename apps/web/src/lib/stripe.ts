@@ -34,9 +34,17 @@ export const stripe = hasValidStripeKeys
 export const isStripeConfigured = () => hasValidPublishableKey
 
 // Pricing configuration
+// Force live price IDs for production
+console.log('🔍 Stripe Price IDs Check:', {
+  env_monthly: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_MONTHLY,
+  env_yearly: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_YEARLY,
+  using_monthly: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_MONTHLY || 'price_1RkyxHD3Fz9WQTDWZyh9KfHB',
+  using_yearly: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_YEARLY || 'price_1RkyyKD3Fz9WQTDWuz33REin'
+})
+
 export const STRIPE_PRICES = {
-  PRO_MONTHLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_MONTHLY!,
-  PRO_YEARLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_YEARLY!,
+  PRO_MONTHLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_MONTHLY || 'price_1RkyxHD3Fz9WQTDWZyh9KfHB',
+  PRO_YEARLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_YEARLY || 'price_1RkyyKD3Fz9WQTDWuz33REin',
 } as const
 
 export type StripePriceId = typeof STRIPE_PRICES[keyof typeof STRIPE_PRICES]

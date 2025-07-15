@@ -77,8 +77,8 @@ export async function POST(request: NextRequest) {
 
     // Validate the price ID using server-side env vars
     const validPriceIds = [
-      process.env.STRIPE_PRICE_ID_MONTHLY!,
-      process.env.STRIPE_PRICE_ID_YEARLY!
+      process.env.STRIPE_PRICE_ID_MONTHLY || 'price_1RkyxHD3Fz9WQTDWZyh9KfHB',
+      process.env.STRIPE_PRICE_ID_YEARLY || 'price_1RkyyKD3Fz9WQTDWuz33REin'
     ]
     // Price ID validation
     
@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
     let planType: ProPlan = 'monthly'
     let savePasses = 3
 
-    if (priceId === process.env.STRIPE_PRICE_ID_YEARLY!) {
+    if (priceId === (process.env.STRIPE_PRICE_ID_YEARLY || 'price_1RkyyKD3Fz9WQTDWuz33REin')) {
       planType = 'yearly'
       savePasses = 12
     }
