@@ -129,8 +129,8 @@ export async function POST(request: NextRequest) {
         planType,
         savePasses: savePasses.toString(),
       },
-      success_url: `${process.env.NEXTAUTH_URL}/?success=true&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXTAUTH_URL}/?canceled=true`,
+      success_url: `https://pomonest.com/?success=true&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `https://pomonest.com/?canceled=true`,
       allow_promotion_codes: true,
     })
 
