@@ -78,12 +78,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate the price ID using live production price IDs
-    const validPriceIds = [
-      'price_1RkyxHD3Fz9WQTDWZyh9KfHB', // Live monthly price
-      'price_1RkyyKD3Fz9WQTDWuz33REin'  // Live yearly price
-    ]
-    // Price ID validation
+    // Validate the price ID using imported constants
+    const validPriceIds = Object.values(STRIPE_PRICES)
     
     if (!validPriceIds.includes(priceId)) {
       console.log('❌ Invalid price ID')
@@ -140,8 +136,8 @@ export async function POST(request: NextRequest) {
         planType,
         savePasses: savePasses.toString(),
       },
-      success_url: `https://pomonest.com/?success=true&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `https://pomonest.com/?canceled=true`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://pomonest.com'}/?success=true&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://pomonest.com'}/?canceled=true`,
       allow_promotion_codes: true,
     })
     
