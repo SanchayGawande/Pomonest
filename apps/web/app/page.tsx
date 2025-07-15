@@ -753,86 +753,86 @@ function HomeContent() {
       {/* Auto Ads for page-level optimization */}
       <AppAutoAds />
 
-      {/* Header Ad */}
+      {/* Header Ad - Hidden on mobile */}
       <AdManager 
         placement="header" 
         onUpgradeClick={() => setShowProModal(true)}
-        className="container mx-auto px-4 pt-4"
+        className="container mx-auto px-4 pt-4 hidden md:block"
       />
 
-      {/* Header */}
+      {/* Mobile-Optimized Header */}
       <header className="relative z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-4">
-            <h1 className={`text-2xl font-bold ${getColorSchemeClass()}`}>
-              WorkStreak
+        <div className="container flex h-14 sm:h-16 items-center justify-between px-4">
+          {/* Mobile: Compact title */}
+          <div className="flex items-center gap-2 sm:gap-4">
+            <h1 className={`text-lg sm:text-2xl font-bold ${getColorSchemeClass()}`}>
+              PomoNest
             </h1>
-            <Badge variant="secondary" className="text-xs">
+            <Badge variant="secondary" className="text-xs hidden sm:inline-flex">
               Free • No signup required
             </Badge>
           </div>
           
-          <div className="flex items-center gap-2">
-            <div>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowTasks(!showTasks)}
-                className="hidden sm:flex"
-              >
-                <Target className="h-4 w-4 mr-2" />
-                Tasks
-              </Button>
-            </div>
-            <div>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowStats(!showStats)}
-                className="hidden sm:flex"
-              >
-                <BarChart3 className="h-4 w-4 mr-2" />
-                Stats
-              </Button>
-            </div>
-            <div>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowSettings(!showSettings)}
-              >
-                <Settings className="h-4 w-4 mr-2" />
-                Settings
-              </Button>
-            </div>
-            <div>
-              {isAuthenticated ? (
-                <div className="flex items-center gap-2">
-                  <div className="text-sm text-muted-foreground">
-                    ✅ {user?.email?.split('@')[0]}
-                  </div>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => router.push('/settings')}
-                    className={getButtonClass()}
-                  >
-                    <User className="h-4 w-4 mr-2" />
-                    Account
-                  </Button>
+          {/* Mobile: Simplified navigation */}
+          <div className="flex items-center gap-1 sm:gap-2">
+            {/* Mobile: Only essential buttons */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowTasks(!showTasks)}
+              className="hidden sm:flex"
+            >
+              <Target className="h-4 w-4 mr-2" />
+              Tasks
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowStats(!showStats)}
+              className="hidden sm:flex"
+            >
+              <BarChart3 className="h-4 w-4 mr-2" />
+              Stats
+            </Button>
+            
+            {/* Settings - Always visible but compact on mobile */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowSettings(!showSettings)}
+              className="px-2 sm:px-3"
+            >
+              <Settings className="h-4 w-4" />
+              <span className="hidden sm:inline ml-2">Settings</span>
+            </Button>
+            
+            {/* User account - Compact on mobile */}
+            {isAuthenticated ? (
+              <div className="flex items-center gap-1 sm:gap-2">
+                <div className="text-xs sm:text-sm text-muted-foreground hidden sm:block">
+                  ✅ {user?.email?.split('@')[0]}
                 </div>
-              ) : (
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => router.push('/auth/login')}
-                  className={getButtonClass()}
+                  onClick={() => router.push('/settings')}
+                  className={`px-2 sm:px-3 ${getButtonClass()}`}
                 >
-                  <User className="h-4 w-4 mr-2" />
-                  Sign Up
+                  <User className="h-4 w-4" />
+                  <span className="hidden sm:inline ml-2">Account</span>
                 </Button>
-              )}
-            </div>
+              </div>
+            ) : (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => router.push('/auth/login')}
+                className={`px-2 sm:px-3 ${getButtonClass()}`}
+              >
+                <User className="h-4 w-4" />
+                <span className="hidden sm:inline ml-2">Sign Up</span>
+              </Button>
+            )}
           </div>
         </div>
       </header>
@@ -860,11 +860,12 @@ function HomeContent() {
         }}
       />
 
-      {/* Secondary Content - Moved to Bottom */}
+      {/* Secondary Content - Mobile Optimized */}
       <main className="bg-white dark:bg-gray-900 border-t">
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-4 sm:py-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {/* Mobile: Single column, Desktop: Multi-column */}
+          <div className="flex flex-col gap-4 sm:gap-8 lg:grid lg:grid-cols-3 lg:gap-8">
 
               {/* Sign up prompt - only for non-authenticated users */}
               {!isAuthenticated && (
@@ -917,188 +918,146 @@ function HomeContent() {
               )}
             </div>
 
-            {/* Stats Sidebar */}
-            <div className="space-y-6">
-              {/* Today's Progress */}
-              <AnimatePresence>
-                {settings.showSessionCount && (
-                  <div>
-                    <Card className="bg-gradient-to-br from-streak-fire/10 via-card to-streak-ember/10 border-streak-fire/20">
-                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Today's Progress</CardTitle>
-                    <Flame className="h-4 w-4 text-streak-fire" />
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold text-streak-fire">
-                      {guestStats.todaySessionCount} session{guestStats.todaySessionCount !== 1 ? 's' : ''}
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      {guestStats.todaySessionCount > 0 
-                        ? 'Great job! Keep the momentum going!' 
-                        : 'Start your first session today'
-                      }
-                    </p>
-                    </CardContent>
-                    </Card>
-                  </div>
-                )}
-              </AnimatePresence>
-
-              {/* Current Streak */}
-              <div>
-                <Card className="bg-gradient-to-br from-focus-calm/10 via-card to-focus-deep/10 border-focus-calm/20">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Current Streak</CardTitle>
-                  <Target className="h-4 w-4 text-focus-calm" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-focus-calm">
-                    {guestStats.streak} day{guestStats.streak !== 1 ? 's' : ''}
-                  </div>
-                  <p className="text-xs text-muted-foreground">
-                    {guestStats.streak > 0 
-                      ? 'Your current focus streak' 
-                      : 'Complete a session to start your streak'
-                    }
-                  </p>
-                </CardContent>
-              </Card>
-              </div>
-
-              {/* Total Sessions */}
-              <div>
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Sessions</CardTitle>
-                  <Timer className="h-4 w-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">
-                    {guestStats.totalSessionCount}
-                  </div>
-                  <p className="text-xs text-muted-foreground">
-                    {guestStats.totalSessionCount * 25} minutes of focused work
-                  </p>
-                </CardContent>
-              </Card>
-              </div>
-
-              {/* Sidebar Ad */}
-              <AdManager 
-                placement="sidebar" 
-                onUpgradeClick={() => setShowProModal(true)}
-              />
-
-              {/* Settings Preview */}
-              <div>
-              <Card className="bg-muted/50">
-                <CardHeader>
-                  <CardTitle className="text-sm font-medium flex items-center gap-2">
-                    <Settings className="h-4 w-4" />
-                    Quick Settings
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs">Work Duration</span>
-                    <Badge variant="secondary">{settings.workDuration}min</Badge>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs">Break Duration</span>
-                    <Badge variant="secondary">{settings.shortBreakDuration}min</Badge>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs">Sound</span>
-                    <Badge variant={settings.soundEnabled ? "default" : "secondary"}>
-                      {settings.soundEnabled ? 'On' : 'Off'}
-                    </Badge>
-                  </div>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="w-full mt-2"
-                    onClick={() => setShowSettings(true)}
-                  >
-                    Customize Settings
-                  </Button>
-                </CardContent>
-              </Card>
-              </div>
-
-              {/* Pro Features / Pro Status */}
-              <div>
-              {isProUser ? (
-                <Card className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20">
-                  <CardHeader>
-                    <CardTitle className="text-sm font-medium flex items-center gap-2 text-green-600 dark:text-green-400">
-                      <Crown className="h-4 w-4" />
-                      WorkStreak Pro
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
-                    <div className="text-xs text-green-600 dark:text-green-400 font-medium">
-                      ✅ You're a Pro member!
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      • 🚫 Ad-free experience
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      • 📊 Advanced analytics
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      • ☁️ Cloud sync across devices
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      • 🛡️ Streak protection
-                    </div>
-                    <Button 
-                      size="sm" 
-                      variant="outline"
-                      className="w-full mt-3 border-green-500/20 text-green-600 dark:text-green-400 hover:bg-green-500/10"
-                      onClick={() => router.push('/settings')}
-                    >
-                      Manage Subscription
-                    </Button>
-                  </CardContent>
-                </Card>
-              ) : (
-                <Card className="bg-gradient-to-br from-warning/10 to-orange-500/10 border-warning/20">
-                  <CardHeader>
-                    <CardTitle className="text-sm font-medium flex items-center gap-2 text-warning">
-                      <Crown className="h-4 w-4" />
-                      Pro Features
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
-                    <div className="text-xs text-muted-foreground">
-                      • 🚫 Ad-free experience
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      • 📊 Advanced analytics
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      • ☁️ Cloud sync across devices
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      • 🛡️ Streak protection
-                    </div>
-                    <Button 
-                      size="sm" 
-                      className="w-full mt-3 bg-gradient-to-r from-warning to-orange-500 text-white border-0 hover:opacity-90"
-                      onClick={() => {
-                        if (isAuthenticated) {
-                          setShowProModal(true)
-                        } else {
-                          router.push('/auth/login')
+            {/* Stats Section - Mobile: Horizontal scroll, Desktop: Sidebar */}
+            <div className="lg:col-span-2">
+              {/* Mobile: Horizontal scrolling cards */}
+              <div className="flex gap-4 overflow-x-auto pb-4 lg:hidden">
+                {/* Today's Progress - Mobile Card */}
+                <div className="flex-none w-64">
+                  <Card className="bg-gradient-to-br from-streak-fire/10 via-card to-streak-ember/10 border-streak-fire/20">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                      <CardTitle className="text-sm font-medium">Today's Progress</CardTitle>
+                      <Flame className="h-4 w-4 text-streak-fire" />
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-2xl font-bold text-streak-fire">
+                        {guestStats.todaySessionCount} session{guestStats.todaySessionCount !== 1 ? 's' : ''}
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        {guestStats.todaySessionCount > 0 
+                          ? 'Great job! Keep going!' 
+                          : 'Start your first session'
                         }
-                      }}
-                    >
-                      Upgrade to Pro
-                    </Button>
-                  </CardContent>
-                </Card>
-              )}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Current Streak - Mobile Card */}
+                <div className="flex-none w-64">
+                  <Card className="bg-gradient-to-br from-focus-calm/10 via-card to-focus-deep/10 border-focus-calm/20">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                      <CardTitle className="text-sm font-medium">Current Streak</CardTitle>
+                      <Target className="h-4 w-4 text-focus-calm" />
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-2xl font-bold text-focus-calm">
+                        {guestStats.streak} day{guestStats.streak !== 1 ? 's' : ''}
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        {guestStats.streak > 0 
+                          ? 'Your current focus streak' 
+                          : 'Complete a session to start'
+                        }
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Total Sessions - Mobile Card */}
+                <div className="flex-none w-64">
+                  <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                      <CardTitle className="text-sm font-medium">Total Sessions</CardTitle>
+                      <Timer className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-2xl font-bold">
+                        {guestStats.totalSessionCount}
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        {guestStats.totalSessionCount * 25} minutes focused
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Pro Status - Mobile Card */}
+                <div className="flex-none w-64">
+                  {isProUser ? (
+                    <Card className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20">
+                      <CardHeader>
+                        <CardTitle className="text-sm font-medium flex items-center gap-2 text-green-600 dark:text-green-400">
+                          <Crown className="h-4 w-4" />
+                          Pro Active
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="text-xs text-green-600 dark:text-green-400 font-medium mb-2">
+                          ✅ Pro member!
+                        </div>
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          className="w-full border-green-500/20 text-green-600 dark:text-green-400"
+                          onClick={() => router.push('/settings')}
+                        >
+                          Manage
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ) : (
+                    <Card className="bg-gradient-to-br from-warning/10 to-orange-500/10 border-warning/20">
+                      <CardHeader>
+                        <CardTitle className="text-sm font-medium flex items-center gap-2 text-warning">
+                          <Crown className="h-4 w-4" />
+                          Go Pro
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="text-xs text-muted-foreground mb-2">
+                          • 🚫 Ad-free
+                          <br />• 📊 Analytics
+                          <br />• ☁️ Cloud sync
+                        </div>
+                        <Button 
+                          size="sm" 
+                          className="w-full bg-gradient-to-r from-warning to-orange-500 text-white"
+                          onClick={() => {
+                            if (isAuthenticated) {
+                              setShowProModal(true)
+                            } else {
+                              router.push('/auth/login')
+                            }
+                          }}
+                        >
+                          Upgrade
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
               </div>
+            </div>
+
+            {/* Desktop: Quick access button for Tasks/Stats */}
+            <div className="hidden lg:flex lg:gap-4 lg:mt-6">
+              <Button
+                variant="outline"
+                onClick={() => setShowTasks(true)}
+                className="flex-1"
+              >
+                <Target className="h-4 w-4 mr-2" />
+                View Tasks
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setShowStats(true)}
+                className="flex-1"
+              >
+                <BarChart3 className="h-4 w-4 mr-2" />
+                View Analytics
+              </Button>
             </div>
           </div>
         </div>
@@ -1111,11 +1070,31 @@ function HomeContent() {
         />
       </main>
 
+      {/* Mobile: Floating Action Buttons */}
+      <div className="fixed bottom-4 right-4 flex flex-col gap-2 lg:hidden z-50">
+        <Button
+          size="sm"
+          variant="default"
+          onClick={() => setShowTasks(true)}
+          className="rounded-full w-12 h-12 shadow-lg"
+        >
+          <Target className="h-5 w-5" />
+        </Button>
+        <Button
+          size="sm"
+          variant="default"
+          onClick={() => setShowStats(true)}
+          className="rounded-full w-12 h-12 shadow-lg"
+        >
+          <BarChart3 className="h-5 w-5" />
+        </Button>
+      </div>
+
       <Toaster />
 
-      {/* Advanced Settings Modal */}
+      {/* Advanced Settings Modal - Mobile Optimized */}
       <Dialog open={showSettings} onOpenChange={setShowSettings}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto w-[95vw] sm:w-full">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 text-2xl">
               <Settings className="h-6 w-6" />
@@ -1127,22 +1106,22 @@ function HomeContent() {
           </DialogHeader>
 
           <Tabs defaultValue="timer" className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="timer" className="flex items-center gap-2">
+            <TabsList className="grid w-full grid-cols-4 h-auto">
+              <TabsTrigger value="timer" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3">
                 <Clock className="h-4 w-4" />
-                Timer
+                <span className="text-xs sm:text-sm">Timer</span>
               </TabsTrigger>
-              <TabsTrigger value="audio" className="flex items-center gap-2">
+              <TabsTrigger value="audio" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3">
                 <Music className="h-4 w-4" />
-                Audio
+                <span className="text-xs sm:text-sm">Audio</span>
               </TabsTrigger>
-              <TabsTrigger value="appearance" className="flex items-center gap-2">
+              <TabsTrigger value="appearance" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3">
                 <Palette className="h-4 w-4" />
-                Appearance
+                <span className="text-xs sm:text-sm">Theme</span>
               </TabsTrigger>
-              <TabsTrigger value="focus" className="flex items-center gap-2">
+              <TabsTrigger value="focus" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3">
                 <Zap className="h-4 w-4" />
-                Focus
+                <span className="text-xs sm:text-sm">Focus</span>
               </TabsTrigger>
             </TabsList>
 
