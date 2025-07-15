@@ -26,7 +26,7 @@ export const stripePromise = hasValidPublishableKey
 // Server-side Stripe instance (only if we have valid keys)
 export const stripe = hasValidStripeKeys 
   ? new Stripe(secretKey!, {
-      apiVersion: '2025-06-30.basil',
+      apiVersion: '2024-12-18.acacia',
     })
   : null
 
