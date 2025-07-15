@@ -237,9 +237,9 @@ function HomeContent() {
       }
 
       try {
-        // Get session token
-        const { data: { session } } = await supabase.auth.getSession()
-        if (!session?.access_token) {
+        // Get auth token from localStorage (CleanAuthProvider stores it there)
+        const authToken = localStorage.getItem('auth_token')
+        if (!authToken) {
           console.error('No access token for Pro status check')
           return
         }
@@ -248,7 +248,7 @@ function HomeContent() {
         const response = await fetch('/api/check-pro-status', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${session.access_token}`,
+            'Authorization': `Bearer ${authToken}`,
           },
         })
 
@@ -301,13 +301,13 @@ function HomeContent() {
             
             // PERMANENT FIX: Force Pro status update if retries failed
             try {
-              const { data: { session } } = await supabase.auth.getSession()
-              if (session?.access_token) {
+              const authToken = localStorage.getItem('auth_token')
+              if (authToken) {
                 console.log('🔧 Auto-fixing Pro status...')
                 const response = await fetch('/api/debug-pro-status', {
                   method: 'POST',
                   headers: {
-                    'Authorization': `Bearer ${session.access_token}`,
+                    'Authorization': `Bearer ${authToken}`,
                   },
                 })
                 
@@ -351,9 +351,10 @@ function HomeContent() {
     }
     
     try {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session?.access_token) {
-        console.log('❌ No session token')
+      // Get auth token from localStorage (CleanAuthProvider stores it there)
+      const authToken = localStorage.getItem('auth_token')
+      if (!authToken) {
+        console.log('❌ No auth token')
         return
       }
 
@@ -366,7 +367,7 @@ function HomeContent() {
       const response = await fetch('/api/debug-pro-status', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${session.access_token}`,
+          'Authorization': `Bearer ${authToken}`,
         },
       })
       
@@ -411,9 +412,10 @@ function HomeContent() {
     }
     
     try {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session?.access_token) {
-        console.log('❌ No session token')
+      // Get auth token from localStorage (CleanAuthProvider stores it there)
+      const authToken = localStorage.getItem('auth_token')
+      if (!authToken) {
+        console.log('❌ No auth token')
         return
       }
 
@@ -426,7 +428,7 @@ function HomeContent() {
       const response = await fetch('/api/manual-pro-upgrade', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${session.access_token}`,
+          'Authorization': `Bearer ${authToken}`,
         },
       })
       
