@@ -87,48 +87,9 @@ export function BannerAd({
     )
   }
 
-  // Demo ad (replace with real AdSense when approved)
+  // Don't show any placeholder ads - only real AdSense when available
   if (!process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID) {
-    return (
-      <Card className={`relative bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 ${className}`}>
-        <div className="flex items-center justify-between p-4">
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center">
-                <span className="text-white text-xs font-bold">AD</span>
-              </div>
-              <div>
-                <p className="text-sm font-medium text-blue-800">
-                  Focus App - Boost Your Productivity
-                </p>
-                <p className="text-xs text-blue-600">
-                  Try our recommended productivity tools
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Button 
-              onClick={onUpgradeClick}
-              size="sm"
-              variant="outline"
-              className="text-xs"
-            >
-              <Crown className="h-3 w-3 mr-1" />
-              Remove Ads
-            </Button>
-            <Button
-              onClick={() => setIsVisible(false)}
-              variant="ghost"
-              size="sm"
-              className="h-6 w-6 p-0"
-            >
-              <X className="h-3 w-3" />
-            </Button>
-          </div>
-        </div>
-      </Card>
-    )
+    return null
   }
 
   // Real AdSense implementation

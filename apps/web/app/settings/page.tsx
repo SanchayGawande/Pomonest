@@ -53,8 +53,8 @@ export default function SettingsPage() {
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Timer
             </Button>
-            <h1 className="text-4xl font-bold text-red-600 dark:text-red-400 bg-yellow-200 dark:bg-yellow-900 p-4 rounded-lg shadow-xl border-4 border-red-500">
-              🎨 SETTINGS - UPDATED STYLING 🎨
+            <h1 className="text-2xl font-semibold">
+              Settings
             </h1>
           </div>
           <Button onClick={signOut} variant="outline" size="sm">
@@ -66,27 +66,27 @@ export default function SettingsPage() {
       <main className="container py-8 max-w-2xl">
         <div className="space-y-6">
           {/* Profile Section */}
-          <Card className="border-4 border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 shadow-xl hover:shadow-2xl bg-gradient-to-br from-blue-50/80 to-cyan-50/80 dark:from-blue-950/50 dark:to-cyan-950/50">
-            <CardHeader className="bg-gradient-to-r from-blue-100/50 to-cyan-100/50 dark:from-blue-900/30 dark:to-cyan-900/30 rounded-t-lg">
-              <CardTitle className="flex items-center gap-4 text-lg">
-                <div className="p-3 bg-gradient-to-br from-blue-500 to-cyan-500 text-white rounded-xl shadow-lg">
-                  <User className="h-6 w-6" />
+          <Card className="border border-gray-200 dark:border-gray-700">
+            <CardHeader className="border-b border-gray-100 dark:border-gray-700">
+              <CardTitle className="flex items-center gap-3 text-lg">
+                <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                  <User className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                 </div>
-                <span className="text-blue-900 dark:text-blue-100 font-bold">Profile</span>
+                Profile
               </CardTitle>
-              <CardDescription className="text-blue-700 dark:text-blue-300 font-medium">
+              <CardDescription>
                 Manage your account information
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4 p-6">
-              <div className="p-5 border-3 border-blue-300 dark:border-blue-700 rounded-xl bg-gradient-to-r from-white via-blue-50 to-cyan-50 dark:from-gray-900 dark:via-blue-950 dark:to-cyan-950 shadow-md">
-                <label className="text-base font-bold text-blue-900 dark:text-blue-100">Email</label>
-                <p className="text-base text-blue-700 dark:text-blue-300 mt-2 font-semibold">{user.email}</p>
+              <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                <label className="text-sm font-medium">Email</label>
+                <p className="text-sm text-muted-foreground mt-1">{user.email}</p>
               </div>
-              <div className="p-5 border-3 border-blue-300 dark:border-blue-700 rounded-xl bg-gradient-to-r from-white via-blue-50 to-cyan-50 dark:from-gray-900 dark:via-blue-950 dark:to-cyan-950 shadow-md">
-                <label className="text-base font-bold text-blue-900 dark:text-blue-100">Member since</label>
-                <p className="text-base text-blue-700 dark:text-blue-300 mt-2 font-semibold">
-                  {new Date(user.created_at || '').toLocaleDateString()}
+              <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                <label className="text-sm font-medium">Member since</label>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {user.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}
                 </p>
               </div>
             </CardContent>
@@ -146,49 +146,48 @@ export default function SettingsPage() {
           <NotificationSettings />
 
           {/* Appearance Section */}
-          <Card className="border-4 border-purple-200 dark:border-purple-800 hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300 shadow-xl hover:shadow-2xl bg-gradient-to-br from-purple-50/80 to-pink-50/80 dark:from-purple-950/50 dark:to-pink-950/50">
-            <CardHeader className="bg-gradient-to-r from-purple-100/50 to-pink-100/50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-t-lg">
-              <CardTitle className="flex items-center gap-4 text-lg">
-                <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-xl shadow-lg">
-                  <Palette className="h-6 w-6" />
+          <Card className="border border-gray-200 dark:border-gray-700">
+            <CardHeader className="border-b border-gray-100 dark:border-gray-700">
+              <CardTitle className="flex items-center gap-3 text-lg">
+                <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                  <Palette className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                 </div>
-                <span className="text-purple-900 dark:text-purple-100 font-bold">Appearance</span>
+                Appearance
               </CardTitle>
-              <CardDescription className="text-purple-700 dark:text-purple-300 font-medium">
+              <CardDescription>
                 Customize your app appearance
               </CardDescription>
             </CardHeader>
             <CardContent className="p-6">
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-6 border-4 border-purple-300 dark:border-purple-700 rounded-xl bg-gradient-to-r from-white via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-950 dark:to-pink-950 hover:border-purple-400 dark:hover:border-purple-600 transition-all duration-300 shadow-lg">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-xl shadow-md">
+                <div className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
                       {isProUser ? (
-                        <Moon className="h-5 w-5" />
+                        <Moon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
                       ) : (
-                        <Crown className="h-5 w-5" />
+                        <Crown className="h-4 w-4 text-gray-600 dark:text-gray-400" />
                       )}
                     </div>
                     <div>
-                      <div className="text-base font-bold text-purple-900 dark:text-purple-100">Dark Mode</div>
-                      <div className="text-sm text-purple-700 dark:text-purple-300 font-medium">
+                      <div className="text-sm font-medium">Dark Mode</div>
+                      <div className="text-xs text-muted-foreground">
                         Switch between light and dark themes
                       </div>
                     </div>
                   </div>
                   {isProUser ? (
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-green-600 dark:text-green-400 font-bold bg-green-100 dark:bg-green-900 px-3 py-1 rounded-full">Pro</span>
-                      <ThemeToggle variant="outline" size="sm" className="border-3 border-purple-300 dark:border-purple-700 hover:border-purple-400 dark:hover:border-purple-600" />
+                      <span className="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-1 rounded">Pro</span>
+                      <ThemeToggle variant="outline" size="sm" />
                     </div>
                   ) : (
                     <Button 
                       variant="outline" 
-                      size="lg"
+                      size="sm"
                       onClick={() => setShowProModal(true)}
-                      className="border-3 border-yellow-300 bg-gradient-to-r from-yellow-100 to-orange-100 text-yellow-900 hover:from-yellow-200 hover:to-orange-200 hover:border-yellow-400 dark:border-yellow-700 dark:from-yellow-950 dark:to-orange-950 dark:text-yellow-100 dark:hover:from-yellow-900 dark:hover:to-orange-900 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                     >
-                      <Crown className="h-5 w-5 mr-2" />
+                      <Crown className="h-4 w-4 mr-2" />
                       Upgrade to Pro
                     </Button>
                   )}

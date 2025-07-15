@@ -1146,27 +1146,27 @@ function HomeContent() {
 
             {/* Timer Settings Tab */}
             <TabsContent value="timer" className="space-y-6">
-              <Card className="border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-br from-blue-50/50 to-cyan-50/50 dark:from-blue-950/30 dark:to-cyan-950/30">
-                <CardHeader className="bg-gradient-to-r from-blue-100/50 to-cyan-100/50 dark:from-blue-900/20 dark:to-cyan-900/20">
-                  <CardTitle className="text-xl flex items-center gap-3 text-blue-900 dark:text-blue-100">
-                    <div className="p-2 bg-blue-500 text-white rounded-lg">
-                      <Clock className="h-5 w-5" />
+              <Card className="border border-gray-200 dark:border-gray-700">
+                <CardHeader className="border-b border-gray-100 dark:border-gray-700">
+                  <CardTitle className="text-xl flex items-center gap-3">
+                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                      <Clock className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                     </div>
                     Session Duration
                   </CardTitle>
-                  <CardDescription className="text-blue-700 dark:text-blue-300 font-medium">
+                  <CardDescription>
                     Customize your work and break intervals
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-8 p-6">
+                <CardContent className="space-y-6 p-6">
                   {/* Work Duration */}
-                  <div className="p-4 border-2 border-red-200 dark:border-red-700 rounded-xl bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30 space-y-4">
+                  <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg space-y-4">
                     <div className="flex items-center justify-between">
-                      <label className="text-base font-bold text-red-900 dark:text-red-100 flex items-center gap-2">
-                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <label className="text-base font-medium flex items-center gap-2">
+                        <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
                         Work Duration
                       </label>
-                      <span className="text-lg font-bold text-red-700 dark:text-red-300 bg-red-100 dark:bg-red-900 px-3 py-1 rounded-full">{settings.workDuration} min</span>
+                      <span className="text-base font-semibold bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded">{settings.workDuration} min</span>
                     </div>
                     <Slider
                       value={[settings.workDuration]}
@@ -1174,22 +1174,22 @@ function HomeContent() {
                       max={90}
                       min={5}
                       step={5}
-                      className="w-full [&_[role=slider]]:bg-red-500 [&_[role=slider]]:border-red-600"
+                      className="w-full"
                     />
-                    <div className="flex justify-between text-sm font-medium text-red-700 dark:text-red-300">
+                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
                       <span>5 min</span>
                       <span>90 min</span>
                     </div>
                   </div>
 
                   {/* Short Break Duration */}
-                  <div className="p-4 border-2 border-green-200 dark:border-green-700 rounded-xl bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 space-y-4">
+                  <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg space-y-4">
                     <div className="flex items-center justify-between">
-                      <label className="text-base font-bold text-green-900 dark:text-green-100 flex items-center gap-2">
-                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      <label className="text-base font-medium flex items-center gap-2">
+                        <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
                         Short Break
                       </label>
-                      <span className="text-lg font-bold text-green-700 dark:text-green-300 bg-green-100 dark:bg-green-900 px-3 py-1 rounded-full">{settings.shortBreakDuration} min</span>
+                      <span className="text-base font-semibold bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded">{settings.shortBreakDuration} min</span>
                     </div>
                     <Slider
                       value={[settings.shortBreakDuration]}
@@ -1197,22 +1197,22 @@ function HomeContent() {
                       max={30}
                       min={1}
                       step={1}
-                      className="w-full [&_[role=slider]]:bg-green-500 [&_[role=slider]]:border-green-600"
+                      className="w-full"
                     />
-                    <div className="flex justify-between text-sm font-medium text-green-700 dark:text-green-300">
+                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
                       <span>1 min</span>
                       <span>30 min</span>
                     </div>
                   </div>
 
                   {/* Long Break Duration */}
-                  <div className="p-4 border-2 border-blue-200 dark:border-blue-700 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 space-y-4">
+                  <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg space-y-4">
                     <div className="flex items-center justify-between">
-                      <label className="text-base font-bold text-blue-900 dark:text-blue-100 flex items-center gap-2">
-                        <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                      <label className="text-base font-medium flex items-center gap-2">
+                        <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
                         Long Break
                       </label>
-                      <span className="text-lg font-bold text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900 px-3 py-1 rounded-full">{settings.longBreakDuration} min</span>
+                      <span className="text-base font-semibold bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded">{settings.longBreakDuration} min</span>
                     </div>
                     <Slider
                       value={[settings.longBreakDuration]}
@@ -1220,9 +1220,9 @@ function HomeContent() {
                       max={60}
                       min={5}
                       step={5}
-                      className="w-full [&_[role=slider]]:bg-blue-500 [&_[role=slider]]:border-blue-600"
+                      className="w-full"
                     />
-                    <div className="flex justify-between text-sm font-medium text-blue-700 dark:text-blue-300">
+                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
                       <span>5 min</span>
                       <span>60 min</span>
                     </div>
