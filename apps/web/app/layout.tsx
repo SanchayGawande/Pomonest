@@ -10,13 +10,13 @@ import Script from 'next/script'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://workstreak.com'),
-  title: 'WorkStreak - Free Pomodoro Timer & Productivity App | Build Focus Habits',
+  metadataBase: new URL('https://pomonest.com'),
+  title: 'PomoNest - Free Pomodoro Timer & Productivity App | Build Focus Habits',
   description: 'Free online Pomodoro timer with habit tracking, task management, and analytics. Build focus streaks and boost productivity with the proven 25/5 technique. No signup required.',
   keywords: 'pomodoro timer, productivity app, focus timer, habit tracker, time management, 25/5 technique, focus streaks, task management, free timer',
-  authors: [{ name: 'WorkStreak Team' }],
-  creator: 'WorkStreak',
-  publisher: 'WorkStreak',
+  authors: [{ name: 'PomoNest Team' }],
+  creator: 'PomoNest',
+  publisher: 'PomoNest',
   formatDetection: {
     email: false,
     address: false,
@@ -31,25 +31,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://workstreak.com',
-    title: 'WorkStreak - Free Pomodoro Timer & Productivity App',
+    url: 'https://pomonest.com',
+    title: 'PomoNest - Free Pomodoro Timer & Productivity App',
     description: 'Free online Pomodoro timer with habit tracking, task management, and analytics. Build focus streaks and boost productivity.',
-    siteName: 'WorkStreak',
+    siteName: 'PomoNest',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'WorkStreak - Pomodoro Timer App',
+        alt: 'PomoNest - Pomodoro Timer App',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WorkStreak - Free Pomodoro Timer & Productivity App',
+    title: 'PomoNest - Free Pomodoro Timer & Productivity App',
     description: 'Free online Pomodoro timer with habit tracking and analytics. Build focus streaks with the proven 25/5 technique.',
     images: ['/og-image.png'],
-    creator: '@workstreak',
+    creator: '@pomonest',
   },
   robots: {
     index: true,
@@ -72,6 +72,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google AdSense Verification */}
+        <meta name="google-adsense-account" content="ca-pub-4205049019803904" />
+        
         {/* Google AdSense */}
         {process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID && (
           <Script

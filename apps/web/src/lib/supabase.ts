@@ -1,5 +1,4 @@
 import { createBrowserClient, createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
 
 export type Database = {
   public: {
@@ -175,6 +174,7 @@ export const supabase = createBrowserClient<Database>(supabaseUrl, supabaseAnonK
 
 // Server-side Supabase client for App Router
 export function createServerComponentClient() {
+  const { cookies } = require('next/headers')
   const cookieStore = cookies()
   
   return createServerClient<Database>(supabaseUrl, supabaseAnonKey, {
@@ -188,6 +188,7 @@ export function createServerComponentClient() {
 
 // Server-side client for Route Handlers
 export function createRouteHandlerClient() {
+  const { cookies } = require('next/headers')
   const cookieStore = cookies()
   
   return createServerClient<Database>(supabaseUrl, supabaseAnonKey, {

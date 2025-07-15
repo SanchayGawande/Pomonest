@@ -2,6 +2,8 @@
 
 import { useAuth } from '@/hooks/useAuth'
 import { useUser } from '@/lib/queries'
+import { useState, useEffect } from 'react'
+import { supabase } from '@/lib/supabase'
 import { BannerAd } from './BannerAd'
 import { SidebarAd } from './SidebarAd'
 import { GoogleAd, GoogleAutoAds, ResponsiveAd } from './GoogleAd'
@@ -24,9 +26,49 @@ export function AdManager({
 }: AdManagerProps) {
   const { user } = useAuth()
   const { data: userData } = useUser(user?.id)
-  
-  // Don't show ads to Pro users
-  const isProUser = userData?.is_pro || false
+  const [isProUser, setIsProUser] = useState(false)
+
+  // Check Pro status using the same method as page.tsx
+  useEffect(() => {
+    const checkProStatus = async () => {
+      if (!user) {
+        setIsProUser(false)
+        return
+      }
+
+      try {
+        // Get session token
+        const { data: { session } } = await supabase.auth.getSession()
+        if (!session?.access_token) {
+          // Fallback to userData if no session
+          setIsProUser(userData?.is_pro || false)
+          return
+        }
+
+        // Check Pro status via API
+        const response = await fetch('/api/check-pro-status', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${session.access_token}`,
+          },
+        })
+
+        if (response.ok) {
+          const data = await response.json()
+          setIsProUser(data.isProUser || false)
+        } else {
+          // Fallback to userData
+          setIsProUser(userData?.is_pro || false)
+        }
+      } catch (error) {
+        console.error('AdManager Pro status check failed:', error)
+        // Fallback to userData
+        setIsProUser(userData?.is_pro || false)
+      }
+    }
+
+    checkProStatus()
+  }, [user, userData?.is_pro])
   
   if (isProUser) return null
 
@@ -175,8 +217,49 @@ export function AppAutoAds() {
 export function useAdPlacement() {
   const { user } = useAuth()
   const { data: userData } = useUser(user?.id)
-  
-  const isProUser = userData?.is_pro || false
+  const [isProUser, setIsProUser] = useState(false)
+
+  // Check Pro status using the same method as page.tsx
+  useEffect(() => {
+    const checkProStatus = async () => {
+      if (!user) {
+        setIsProUser(false)
+        return
+      }
+
+      try {
+        // Get session token
+        const { data: { session } } = await supabase.auth.getSession()
+        if (!session?.access_token) {
+          // Fallback to userData if no session
+          setIsProUser(userData?.is_pro || false)
+          return
+        }
+
+        // Check Pro status via API
+        const response = await fetch('/api/check-pro-status', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${session.access_token}`,
+          },
+        })
+
+        if (response.ok) {
+          const data = await response.json()
+          setIsProUser(data.isProUser || false)
+        } else {
+          // Fallback to userData
+          setIsProUser(userData?.is_pro || false)
+        }
+      } catch (error) {
+        console.error('useAdPlacement Pro status check failed:', error)
+        // Fallback to userData
+        setIsProUser(userData?.is_pro || false)
+      }
+    }
+
+    checkProStatus()
+  }, [user, userData?.is_pro])
   
   return {
     shouldShowAds: !isProUser && process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID,

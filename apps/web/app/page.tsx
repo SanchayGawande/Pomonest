@@ -403,10 +403,70 @@ function HomeContent() {
     }
   }
 
+  // Manual Pro upgrade function for testing
+  const manualProUpgrade = async () => {
+    if (!user) {
+      console.log('❌ No user logged in')
+      return
+    }
+    
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session?.access_token) {
+        console.log('❌ No session token')
+        return
+      }
+
+      console.log('🔧 Running manual Pro upgrade...')
+      toast({
+        title: "⚡ Upgrading to Pro",
+        description: "Manually upgrading your account... please wait.",
+      })
+
+      const response = await fetch('/api/manual-pro-upgrade', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${session.access_token}`,
+        },
+      })
+      
+      if (response.ok) {
+        const data = await response.json()
+        console.log('✅ Manual upgrade result:', data)
+        
+        if (data.isProUser) {
+          setIsProUser(true)
+          toast({
+            title: "🎉 Pro Upgrade Complete!",
+            description: "Your Pro status has been activated. Welcome to WorkStreak Pro!",
+          })
+          // Force a Pro status check to ensure everything is synced
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
+        }
+      } else {
+        const errorText = await response.text()
+        console.error('❌ Manual upgrade failed:', response.status, errorText)
+        toast({
+          title: "🚨 Upgrade Failed",
+          description: "Unable to upgrade to Pro. See console for details.",
+        })
+      }
+    } catch (error) {
+      console.error('🚨 Manual upgrade error:', error)
+      toast({
+        title: "🚨 Upgrade Error",
+        description: "An error occurred during upgrade. Check console.",
+      })
+    }
+  }
+
   // Make debug function available globally (client-side only)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       ;(window as any).debugProStatus = debugProStatus
+      ;(window as any).manualProUpgrade = manualProUpgrade
     }
   }, [debugProStatus])
 
