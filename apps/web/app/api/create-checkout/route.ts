@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(request: NextRequest) {
   try {
-    console.log('🔍 Starting checkout API')
+    console.log('🔍 Starting checkout API with updated Stripe keys')
     
     // Dynamic imports to ensure they work
     const { createClient } = await import('@supabase/supabase-js')
