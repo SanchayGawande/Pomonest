@@ -37,10 +37,10 @@ export function AdManager({
       }
 
       try {
-        // Get session token
-        const { data: { session } } = await supabase.auth.getSession()
-        if (!session?.access_token) {
-          // Fallback to userData if no session
+        // Get auth token from localStorage (CleanAuthProvider stores it there)
+        const authToken = localStorage.getItem('auth_token')
+        if (!authToken) {
+          // Fallback to userData if no auth token
           setIsProUser(userData?.is_pro || false)
           return
         }
@@ -49,7 +49,7 @@ export function AdManager({
         const response = await fetch('/api/check-pro-status', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${session.access_token}`,
+            'Authorization': `Bearer ${authToken}`,
           },
         })
 
@@ -228,10 +228,10 @@ export function useAdPlacement() {
       }
 
       try {
-        // Get session token
-        const { data: { session } } = await supabase.auth.getSession()
-        if (!session?.access_token) {
-          // Fallback to userData if no session
+        // Get auth token from localStorage (CleanAuthProvider stores it there)
+        const authToken = localStorage.getItem('auth_token')
+        if (!authToken) {
+          // Fallback to userData if no auth token
           setIsProUser(userData?.is_pro || false)
           return
         }
@@ -240,7 +240,7 @@ export function useAdPlacement() {
         const response = await fetch('/api/check-pro-status', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${session.access_token}`,
+            'Authorization': `Bearer ${authToken}`,
           },
         })
 

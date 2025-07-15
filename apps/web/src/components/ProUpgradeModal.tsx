@@ -30,9 +30,9 @@ export function ProUpgradeModal({ isOpen, onClose, defaultPlan = 'monthly' }: Pr
       const plan = PRO_PLANS[selectedPlan]
       console.log('🛒 Selected plan:', selectedPlan, plan)
       
-      // Get the current session to get the access token
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session?.access_token) {
+      // Get auth token from localStorage (CleanAuthProvider stores it there)
+      const authToken = localStorage.getItem('auth_token')
+      if (!authToken) {
         throw new Error('No access token found')
       }
       
@@ -47,7 +47,7 @@ export function ProUpgradeModal({ isOpen, onClose, defaultPlan = 'monthly' }: Pr
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session.access_token}`,
+          'Authorization': `Bearer ${authToken}`,
         },
         body: JSON.stringify(requestData),
       })
