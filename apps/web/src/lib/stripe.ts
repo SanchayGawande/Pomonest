@@ -34,6 +34,11 @@ export const stripe = hasValidStripeKeys
 export const isStripeConfigured = () => hasValidPublishableKey
 
 // Pricing configuration
+console.log('🔍 Environment variables check:', {
+  NEXT_PUBLIC_STRIPE_PRICE_ID_MONTHLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_MONTHLY,
+  NEXT_PUBLIC_STRIPE_PRICE_ID_YEARLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_YEARLY
+})
+
 export const STRIPE_PRICES = {
   PRO_MONTHLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_MONTHLY!,
   PRO_YEARLY: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_YEARLY!,
