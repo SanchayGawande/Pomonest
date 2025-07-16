@@ -168,11 +168,7 @@ export default function SettingsPage() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg gap-3 sm:gap-0">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg flex-shrink-0">
-                      {isProUser ? (
-                        <Moon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
-                      ) : (
-                        <Crown className="h-4 w-4 text-gray-600 dark:text-gray-400" />
-                      )}
+                      <Moon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="text-sm font-medium">Dark Mode</div>
@@ -181,22 +177,10 @@ export default function SettingsPage() {
                       </div>
                     </div>
                   </div>
-                  {isProUser ? (
-                    <div className="flex items-center gap-3 flex-shrink-0">
-                      <span className="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-1 rounded">Pro</span>
-                      <ThemeToggle variant="outline" size="sm" />
-                    </div>
-                  ) : (
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={() => setShowProModal(true)}
-                      className="min-h-[44px] touch-manipulation self-start sm:self-center"
-                    >
-                      <Crown className="h-4 w-4 mr-2" />
-                      <span className="text-sm">Upgrade to Pro</span>
-                    </Button>
-                  )}
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <span className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-2 py-1 rounded">Free</span>
+                    <ThemeToggle variant="outline" size="sm" />
+                  </div>
                 </div>
               </div>
             </CardContent>

@@ -3,6 +3,8 @@
 import { Moon, Sun } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useTheme } from '@/components/ThemeProvider'
+import { useAuth } from '@/hooks/useAuth'
+import { useRouter } from 'next/navigation'
 
 interface ThemeToggleProps {
   variant?: 'default' | 'ghost' | 'outline'
@@ -16,8 +18,15 @@ export function ThemeToggle({
   className = '' 
 }: ThemeToggleProps) {
   const { theme, setTheme } = useTheme()
+  const { user } = useAuth()
+  const router = useRouter()
 
   const toggleTheme = () => {
+    if (!user && theme === 'light') {
+      // If user is not authenticated and trying to switch to dark mode, redirect to login
+      router.push('/auth/login')
+      return
+    }
     setTheme(theme === 'light' ? 'dark' : 'light')
   }
 
@@ -27,7 +36,11 @@ export function ThemeToggle({
       size={size}
       onClick={toggleTheme}
       className={className}
-      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      title={
+        !user && theme === 'light' 
+          ? 'Sign in to get free Dark Mode' 
+          : `Switch to ${theme === 'light' ? 'dark' : 'light'} mode`
+      }
     >
       {theme === 'light' ? (
         <Moon className="h-4 w-4" />

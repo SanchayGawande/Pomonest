@@ -26,14 +26,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const initializeTheme = () => {
       let initialTheme: Theme = 'light'
 
-      if (userData?.theme) {
+      if (user && userData?.theme) {
         // Use theme from database if user is logged in
         initialTheme = userData.theme as Theme
-      } else {
-        // Fallback to localStorage or system preference
+      } else if (user) {
+        // For authenticated users, allow theme choice from localStorage
         const savedTheme = localStorage.getItem('workstreak-theme') as Theme
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        initialTheme = savedTheme || systemTheme
+        initialTheme = savedTheme || 'light'
+      } else {
+        // For non-authenticated users, force light mode only
+        initialTheme = 'light'
+        localStorage.removeItem('workstreak-theme') // Clear any saved dark mode
       }
 
       setThemeState(initialTheme)
@@ -44,7 +47,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (!userLoading) {
       initializeTheme()
     }
-  }, [userData, userLoading])
+  }, [userData, userLoading, user])
 
   // Apply theme to document
   const applyTheme = (newTheme: Theme) => {
@@ -55,11 +58,19 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Set theme function
   const setTheme = async (newTheme: Theme) => {
+    // Restrict dark mode to authenticated users only
+    if (newTheme === 'dark' && !user) {
+      console.log('Dark mode is only available for signed-in users')
+      return
+    }
+
     setThemeState(newTheme)
     applyTheme(newTheme)
     
-    // Save to localStorage for immediate persistence
-    localStorage.setItem('workstreak-theme', newTheme)
+    // Save to localStorage for immediate persistence (only for authenticated users)
+    if (user) {
+      localStorage.setItem('workstreak-theme', newTheme)
+    }
 
     // Save to database if user is logged in
     if (user?.id) {
