@@ -3,8 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Shield, Eye, Cookie, Database, Mail } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - WorkStreak',
-  description: 'Learn how WorkStreak protects your privacy and handles your data while helping you build productive habits.',
+  title: 'Privacy Policy - PomoNest',
+  description: 'Learn how PomoNest protects your privacy and handles your data while helping you build productive habits.',
 }
 
 export default function PrivacyPolicy() {
@@ -67,7 +67,7 @@ export default function PrivacyPolicy() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• Provide and maintain the WorkStreak service</li>
+                  <li>• Provide and maintain the PomoNest service</li>
                   <li>• Track your productivity progress and streaks</li>
                   <li>• Send you notifications about your goals (if enabled)</li>
                   <li>• Process payments for Pro subscriptions</li>
@@ -95,7 +95,7 @@ export default function PrivacyPolicy() {
                 <div>
                   <h3 className="font-semibold mb-2">Guest Users</h3>
                   <p className="text-muted-foreground">
-                    If you use WorkStreak without an account, your data is stored locally in your browser and is not transmitted to our servers.
+                    If you use PomoNest without an account, your data is stored locally in your browser and is not transmitted to our servers.
                   </p>
                 </div>
                 <div>
@@ -183,7 +183,7 @@ export default function PrivacyPolicy() {
                   If you have any questions about this Privacy Policy or our data practices, please contact us:
                 </p>
                 <div className="space-y-2 text-muted-foreground">
-                  <p>Email: privacy@workstreak.com</p>
+                  <p>Email: privacy@pomonest.com</p>
                   <p>Response time: We aim to respond within 48 hours</p>
                 </div>
               </CardContent>

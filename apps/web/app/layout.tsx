@@ -5,6 +5,7 @@ import { CleanAuthProvider } from '@/components/auth/CleanAuthProvider'
 import { QueryProvider } from '@/components/QueryProvider'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { AdProvider } from '@/components/ads/AdProvider'
+import { Footer } from '@/components/Footer'
 import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -118,6 +119,7 @@ export default function RootLayout({
             <ThemeProvider>
               <AdProvider>
                 {children}
+                <Footer />
               </AdProvider>
             </ThemeProvider>
           </CleanAuthProvider>

@@ -34,9 +34,9 @@ export default function ContactPage() {
                 </p>
                 <Button 
                   className="w-full bg-blue-600 hover:bg-blue-700"
-                  onClick={() => window.location.href = 'mailto:support@workstreak.com'}
+                  onClick={() => window.location.href = 'mailto:support@pomonest.com'}
                 >
-                  support@workstreak.com
+                  support@pomonest.com
                 </Button>
               </CardContent>
             </Card>
@@ -50,13 +50,13 @@ export default function ContactPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
-                  Have an idea to make WorkStreak even better? We would love to hear it!
+                  Have an idea to make PomoNest even better? We would love to hear it!
                 </p>
                 <Button 
                   className="w-full bg-purple-600 hover:bg-purple-700"
-                  onClick={() => window.location.href = 'mailto:features@workstreak.com'}
+                  onClick={() => window.location.href = 'mailto:features@pomonest.com'}
                 >
-                  features@workstreak.com
+                  features@pomonest.com
                 </Button>
               </CardContent>
             </Card>
@@ -74,9 +74,9 @@ export default function ContactPage() {
                 </p>
                 <Button 
                   className="w-full bg-red-600 hover:bg-red-700"
-                  onClick={() => window.location.href = 'mailto:bugs@workstreak.com'}
+                  onClick={() => window.location.href = 'mailto:bugs@pomonest.com'}
                 >
-                  bugs@workstreak.com
+                  bugs@pomonest.com
                 </Button>
               </CardContent>
             </Card>
@@ -87,16 +87,16 @@ export default function ContactPage() {
               <Heart className="h-12 w-12 text-streak-fire mx-auto mb-4" />
               <h2 className="text-2xl font-bold mb-4">We Love Feedback!</h2>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                WorkStreak is built for users like you. Your feedback helps us create the best possible 
+                PomoNest is built for users like you. Your feedback helps us create the best possible 
                 productivity experience.
               </p>
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-streak-fire to-streak-ember"
-                onClick={() => window.location.href = 'mailto:hello@workstreak.com'}
+                onClick={() => window.location.href = 'mailto:hello@pomonest.com'}
               >
                 <Mail className="h-5 w-5 mr-2" />
-                Say Hello - hello@workstreak.com
+                Say Hello - hello@pomonest.com
               </Button>
             </CardContent>
           </Card>

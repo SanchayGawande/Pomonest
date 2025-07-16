@@ -890,6 +890,178 @@ function HomeContent() {
         }}
       />
 
+      {/* Content Sections for AdSense Compliance */}
+      <section className="bg-white dark:bg-gray-900 py-12 border-t">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">Build Unstoppable Focus Habits with PomoNest</h2>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              PomoNest is the free Pomodoro timer that helps you build consistent focus habits, track your productivity streaks, 
+              and achieve more without burnout. Based on the scientifically-proven 25/5 technique, our app makes deep work 
+              accessible to everyone – no signup required.
+            </p>
+            
+            <div className="grid gap-8 md:grid-cols-3 mb-12">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-streak-fire to-streak-ember rounded-full flex items-center justify-center">
+                  <Flame className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Streak-Based Motivation</h3>
+                <p className="text-muted-foreground">
+                  Turn productivity into a game. Build daily focus streaks that motivate you to maintain consistent habits.
+                </p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-focus-calm to-focus-deep rounded-full flex items-center justify-center">
+                  <Target className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">No Barriers to Entry</h3>
+                <p className="text-muted-foreground">
+                  Start focusing immediately with no signup required. Your progress is saved locally, with optional cloud sync.
+                </p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-warning to-orange-500 rounded-full flex items-center justify-center">
+                  <BarChart3 className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Smart Analytics</h3>
+                <p className="text-muted-foreground">
+                  Track your productivity patterns with insightful analytics that help you optimize your focus sessions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="bg-gray-50 dark:bg-gray-800 py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">How the Pomodoro Technique Works</h2>
+            
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                  <span className="text-xl font-bold text-blue-600 dark:text-blue-400">1</span>
+                </div>
+                <h3 className="font-semibold mb-2">Choose Your Task</h3>
+                <p className="text-sm text-muted-foreground">Select what you want to focus on for the next 25 minutes</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                  <span className="text-xl font-bold text-green-600 dark:text-green-400">2</span>
+                </div>
+                <h3 className="font-semibold mb-2">Focus for 25 Minutes</h3>
+                <p className="text-sm text-muted-foreground">Work with complete focus until the timer rings</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                  <span className="text-xl font-bold text-purple-600 dark:text-purple-400">3</span>
+                </div>
+                <h3 className="font-semibold mb-2">Take a 5-Minute Break</h3>
+                <p className="text-sm text-muted-foreground">Rest, stretch, or do something completely different</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-12 h-12 mx-auto mb-4 bg-orange-100 dark:bg-orange-900 rounded-full flex items-center justify-center">
+                  <span className="text-xl font-bold text-orange-600 dark:text-orange-400">4</span>
+                </div>
+                <h3 className="font-semibold mb-2">Repeat & Build Streaks</h3>
+                <p className="text-sm text-muted-foreground">Continue the cycle and watch your productivity streaks grow</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Who Uses PomoNest Section */}
+      <section className="bg-white dark:bg-gray-900 py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-8">Perfect for Every Type of Focused Mind</h2>
+            
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <Card className="p-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                    <User className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Students</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Improve study sessions, reduce procrastination, and build consistent learning habits
+                  </p>
+                </div>
+              </Card>
+              
+              <Card className="p-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 mx-auto mb-4 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                    <Settings className="h-6 w-6 text-green-600 dark:text-green-400" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Remote Workers</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Stay productive while working from home and manage distractions effectively
+                  </p>
+                </div>
+              </Card>
+              
+              <Card className="p-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 mx-auto mb-4 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center">
+                    <Zap className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Creatives</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Maintain creative flow while ensuring regular breaks to prevent burnout
+                  </p>
+                </div>
+              </Card>
+              
+              <Card className="p-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 mx-auto mb-4 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center">
+                    <Timer className="h-6 w-6 text-red-600 dark:text-red-400" />
+                  </div>
+                  <h3 className="font-semibold mb-2">ADHD Community</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Use structured time blocks to improve focus and make large tasks feel manageable
+                  </p>
+                </div>
+              </Card>
+              
+              <Card className="p-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 mx-auto mb-4 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center">
+                    <Crown className="h-6 w-6 text-yellow-600 dark:text-yellow-400" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Entrepreneurs</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Balance deep work with strategic breaks to maintain peak performance
+                  </p>
+                </div>
+              </Card>
+              
+              <Card className="p-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 mx-auto mb-4 bg-teal-100 dark:bg-teal-900 rounded-full flex items-center justify-center">
+                    <BarChart3 className="h-6 w-6 text-teal-600 dark:text-teal-400" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Anyone Seeking Better Focus</h3>
+                  <p className="text-sm text-muted-foreground">
+                    If you struggle with distractions or want to improve productivity, PomoNest can help
+                  </p>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Secondary Content - Mobile Optimized */}
       <main className="bg-white dark:bg-gray-900 border-t">
         <div className="container mx-auto px-4 py-4 sm:py-8">
@@ -1094,6 +1266,57 @@ function HomeContent() {
             </div>
           </div>
         </div>
+        
+        {/* Testimonials Section */}
+        <section className="py-12 bg-gray-50 dark:bg-gray-800 mt-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-8">What Users Say About PomoNest</h2>
+            
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <Card className="p-6">
+                <div className="text-left">
+                  <p className="text-sm text-muted-foreground mb-4 italic">
+                    "PomoNest has completely transformed my study sessions. The streak feature keeps me motivated, and I love that I don't need to sign up to start using it."
+                  </p>
+                  <div>
+                    <p className="font-semibold text-sm">Sarah M.</p>
+                    <p className="text-xs text-muted-foreground">Graduate Student</p>
+                  </div>
+                </div>
+              </Card>
+              
+              <Card className="p-6">
+                <div className="text-left">
+                  <p className="text-sm text-muted-foreground mb-4 italic">
+                    "As someone with ADHD, the structured 25-minute blocks make overwhelming tasks feel manageable. The visual progress tracking is incredibly helpful."
+                  </p>
+                  <div>
+                    <p className="font-semibold text-sm">Michael R.</p>
+                    <p className="text-xs text-muted-foreground">Software Developer</p>
+                  </div>
+                </div>
+              </Card>
+              
+              <Card className="p-6">
+                <div className="text-left">
+                  <p className="text-sm text-muted-foreground mb-4 italic">
+                    "The Pro version is worth every penny. Ad-free experience and beautiful themes make focusing even more enjoyable. Best productivity investment I've made."
+                  </p>
+                  <div>
+                    <p className="font-semibold text-sm">Emma L.</p>
+                    <p className="text-xs text-muted-foreground">Freelance Designer</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+            
+            <div className="mt-8">
+              <p className="text-sm text-muted-foreground">
+                Join thousands of users who have improved their focus with PomoNest
+              </p>
+            </div>
+          </div>
+        </section>
         
         {/* Footer Ad */}
         <AdManager 

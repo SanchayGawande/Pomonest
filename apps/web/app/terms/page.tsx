@@ -3,8 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { FileText, Users, CreditCard, Shield, AlertTriangle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service - WorkStreak',
-  description: 'Terms of Service for WorkStreak - Pomodoro timer and productivity application.',
+  title: 'Terms of Service - PomoNest',
+  description: 'Terms of Service for PomoNest - Pomodoro timer and productivity application.',
 }
 
 export default function TermsOfService() {
@@ -19,7 +19,7 @@ export default function TermsOfService() {
               <h1 className="text-4xl font-bold">Terms of Service</h1>
             </div>
             <p className="text-lg text-muted-foreground">
-              Terms and conditions for using WorkStreak
+              Terms and conditions for using PomoNest
             </p>
             <p className="text-sm text-muted-foreground mt-2">
               Last updated: {new Date().toLocaleDateString()}
@@ -37,7 +37,7 @@ export default function TermsOfService() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  By accessing and using WorkStreak, you accept and agree to be bound by the terms and provision of this agreement. 
+                  By accessing and using PomoNest, you accept and agree to be bound by the terms and provision of this agreement. 
                   If you do not agree to abide by the above, please do not use this service.
                 </p>
               </CardContent>
@@ -53,7 +53,7 @@ export default function TermsOfService() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  WorkStreak is a productivity application that provides:
+                  PomoNest is a productivity application that provides:
                 </p>
                 <ul className="space-y-2 text-muted-foreground ml-4">
                   <li>• Pomodoro timer functionality (25/5 minute intervals)</li>
@@ -83,13 +83,13 @@ export default function TermsOfService() {
                 <div>
                   <h3 className="font-semibold mb-2">Guest Usage</h3>
                   <p className="text-muted-foreground">
-                    You may use WorkStreak without creating an account. Guest data is stored locally in your browser and is not backed up.
+                    You may use PomoNest without creating an account. Guest data is stored locally in your browser and is not backed up.
                   </p>
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Acceptable Use</h3>
                   <p className="text-muted-foreground">
-                    You agree to use WorkStreak only for lawful purposes and in a way that does not infringe the rights of others or restrict their use of the service.
+                    You agree to use PomoNest only for lawful purposes and in a way that does not infringe the rights of others or restrict their use of the service.
                   </p>
                 </div>
               </CardContent>
@@ -107,7 +107,7 @@ export default function TermsOfService() {
                 <div>
                   <h3 className="font-semibold mb-2">Subscription Plans</h3>
                   <p className="text-muted-foreground">
-                    WorkStreak Pro is available as monthly ($2.49) or yearly ($14.99) subscription plans, processed through Stripe.
+                    PomoNest Pro is available as monthly ($2.49) or yearly ($14.99) subscription plans, processed through Stripe.
                   </p>
                 </div>
                 <div>
@@ -141,7 +141,7 @@ export default function TermsOfService() {
               <CardContent>
                 <p className="text-muted-foreground">
                   Your privacy is important to us. Please review our Privacy Policy to understand how we collect, 
-                  use, and protect your information. By using WorkStreak, you consent to the collection and use of 
+                  use, and protect your information. By using PomoNest, you consent to the collection and use of 
                   information as outlined in our Privacy Policy.
                 </p>
               </CardContent>
@@ -154,12 +154,12 @@ export default function TermsOfService() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  The WorkStreak service and its original content, features, and functionality are and will remain 
-                  the exclusive property of WorkStreak and its licensors. The service is protected by copyright, 
+                  The PomoNest service and its original content, features, and functionality are and will remain 
+                  the exclusive property of PomoNest and its licensors. The service is protected by copyright, 
                   trademark, and other laws.
                 </p>
                 <p className="text-muted-foreground">
-                  You retain ownership of any content you create using WorkStreak (such as task lists and productivity data).
+                  You retain ownership of any content you create using PomoNest (such as task lists and productivity data).
                 </p>
               </CardContent>
             </Card>
@@ -190,7 +190,7 @@ export default function TermsOfService() {
                 <div>
                   <h3 className="font-semibold mb-2">Third-Party Services</h3>
                   <p className="text-muted-foreground">
-                    WorkStreak integrates with third-party services (Google, Apple, Stripe). 
+                    PomoNest integrates with third-party services (Google, Apple, Stripe). 
                     We are not responsible for the availability or functionality of these external services.
                   </p>
                 </div>
@@ -219,7 +219,7 @@ export default function TermsOfService() {
               <CardContent>
                 <p className="text-muted-foreground">
                   We reserve the right to modify these terms at any time. We will notify users of significant changes 
-                  via email or through the application. Your continued use of WorkStreak after changes constitutes 
+                  via email or through the application. Your continued use of PomoNest after changes constitutes 
                   acceptance of the new terms.
                 </p>
               </CardContent>
@@ -248,7 +248,7 @@ export default function TermsOfService() {
                   If you have any questions about these Terms of Service, please contact us:
                 </p>
                 <div className="space-y-2 text-muted-foreground">
-                  <p>Email: legal@workstreak.com</p>
+                  <p>Email: legal@pomonest.com</p>
                   <p>Response time: We aim to respond within 48 hours</p>
                 </div>
               </CardContent>

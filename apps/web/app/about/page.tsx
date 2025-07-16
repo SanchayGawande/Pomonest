@@ -5,8 +5,8 @@ import { Timer, Target, Zap, Users, Heart, Award, Clock, TrendingUp } from 'luci
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About WorkStreak - Pomodoro Timer & Productivity App',
-  description: 'Learn about WorkStreak, the free Pomodoro timer app that helps you build focus habits, track productivity, and achieve your goals with the proven 25/5 technique.',
+  title: 'About PomoNest - Pomodoro Timer & Productivity App',
+  description: 'Learn about PomoNest, the free Pomodoro timer app that helps you build focus habits, track productivity, and achieve your goals with the proven 25/5 technique.',
 }
 
 export default function AboutPage() {
@@ -21,7 +21,7 @@ export default function AboutPage() {
                 <Timer className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-5xl font-bold bg-gradient-to-r from-streak-fire to-streak-ember bg-clip-text text-transparent">
-                WorkStreak
+                PomoNest
               </h1>
             </div>
             <p className="text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
@@ -55,7 +55,7 @@ export default function AboutPage() {
             <CardContent>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 We believe that everyone deserves to experience the satisfaction of deep, focused work. 
-                WorkStreak makes the proven Pomodoro Technique accessible to everyone, helping you build 
+                PomoNest makes the proven Pomodoro Technique accessible to everyone, helping you build 
                 sustainable productivity habits without burning out.
               </p>
             </CardContent>
@@ -63,7 +63,7 @@ export default function AboutPage() {
 
           {/* What Makes Us Different */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-center mb-8">What Makes WorkStreak Special</h2>
+            <h2 className="text-3xl font-bold text-center mb-8">What Makes PomoNest Special</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
                 <CardHeader>
@@ -227,7 +227,7 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                WorkStreak is crafted by a team passionate about productivity, focus, and helping people 
+                PomoNest is crafted by a team passionate about productivity, focus, and helping people 
                 achieve their goals without burnout. We use the Pomodoro Technique ourselves every day 
                 and believe in building tools that genuinely improve people's work and life.
               </p>
@@ -293,7 +293,7 @@ export default function AboutPage() {
             <CardContent className="py-8">
               <h2 className="text-2xl font-bold mb-4">Ready to Build Your Focus Streak?</h2>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Join thousands of focused minds who use WorkStreak to build productive habits, 
+                Join thousands of focused minds who use PomoNest to build productive habits, 
                 achieve their goals, and maintain sustainable focus without burnout.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
