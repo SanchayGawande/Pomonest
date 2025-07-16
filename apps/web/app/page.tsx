@@ -28,6 +28,7 @@ import { SmartInsights } from '@/components/SmartInsights'
 import { TimerFirstLayout } from '@/components/TimerFirstLayout'
 import { AdManager, AppAutoAds } from '@/components/ads/AdManager'
 import { supabase } from '@/lib/supabase'
+import { analytics } from '@/lib/analytics'
 
 // Local storage keys for guest users
 const GUEST_SETTINGS_KEY = 'workstreak_guest_settings'
@@ -568,6 +569,9 @@ function HomeContent() {
     }
 
     const handleWorkSessionComplete = (sessionCount: number) => {
+      // Track timer completion
+      analytics.trackTimerEvent('complete', 'work', user?.id)
+      
       // Update guest stats
       const today = new Date().toISOString().split('T')[0]
       const newStats = {
@@ -592,6 +596,9 @@ function HomeContent() {
     }
 
     const handleBreakComplete = () => {
+      // Track break completion
+      analytics.trackTimerEvent('complete', isLongBreak ? 'longBreak' : 'shortBreak', user?.id)
+      
       toast({
         title: "Break Complete! 🧠",
         description: "Ready for another focus session?",
@@ -688,15 +695,21 @@ function HomeContent() {
     if (timerState.isActive) {
       timer.pause()
       playButtonSound('stop')
+      // Track pause event
+      analytics.trackTimerEvent('pause', timerState.isBreak ? (isLongBreak ? 'longBreak' : 'shortBreak') : 'work', user?.id)
     } else {
       timer.start()
       playButtonSound('start')
+      // Track start event
+      analytics.trackTimerEvent('start', timerState.isBreak ? (isLongBreak ? 'longBreak' : 'shortBreak') : 'work', user?.id)
     }
   }
 
   const resetTimer = () => {
     timer.reset()
     playButtonSound('reset')
+    // Track reset event
+    analytics.trackTimerEvent('reset', timerState.isBreak ? (isLongBreak ? 'longBreak' : 'shortBreak') : 'work', user?.id)
   }
 
   // Mode switching functions
@@ -1106,20 +1119,20 @@ function HomeContent() {
           </DialogHeader>
 
           <Tabs defaultValue="timer" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 h-auto">
-              <TabsTrigger value="timer" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3">
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto gap-1">
+              <TabsTrigger value="timer" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3 text-xs sm:text-sm min-h-[44px] touch-manipulation">
                 <Clock className="h-4 w-4" />
                 <span className="text-xs sm:text-sm">Timer</span>
               </TabsTrigger>
-              <TabsTrigger value="audio" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3">
+              <TabsTrigger value="audio" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3 text-xs sm:text-sm min-h-[44px] touch-manipulation">
                 <Music className="h-4 w-4" />
                 <span className="text-xs sm:text-sm">Audio</span>
               </TabsTrigger>
-              <TabsTrigger value="appearance" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3">
+              <TabsTrigger value="appearance" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3 text-xs sm:text-sm min-h-[44px] touch-manipulation">
                 <Palette className="h-4 w-4" />
                 <span className="text-xs sm:text-sm">Theme</span>
               </TabsTrigger>
-              <TabsTrigger value="focus" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3">
+              <TabsTrigger value="focus" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3 text-xs sm:text-sm min-h-[44px] touch-manipulation">
                 <Zap className="h-4 w-4" />
                 <span className="text-xs sm:text-sm">Focus</span>
               </TabsTrigger>

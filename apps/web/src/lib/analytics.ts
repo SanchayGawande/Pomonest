@@ -24,19 +24,44 @@ class AnalyticsService {
     interstitial: { impressions: 0, clicks: 0, revenue: 0, ctr: 0, rpm: 0 }
   }
 
-  // Track events to Google Analytics (if available)
+  // Track events to Google Analytics 4 (if available)
   trackEvent(event: AnalyticsEvent) {
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', event.action, {
         event_category: event.category,
         event_label: event.label,
         value: event.value,
-        user_id: event.userId
+        user_id: event.userId,
+        custom_parameters: {
+          app_name: 'PomoNest',
+          app_version: '1.0.0'
+        }
       })
     }
 
     // Also log to console for development
-    console.log('📊 Analytics Event:', event)
+    console.log('📊 GA4 Analytics Event:', event)
+  }
+
+  // Track Pomodoro-specific events
+  trackTimerEvent(action: 'start' | 'pause' | 'complete' | 'reset', sessionType: 'work' | 'shortBreak' | 'longBreak', userId?: string) {
+    this.trackEvent({
+      event: 'timer_interaction',
+      category: 'user',
+      action: `timer_${action}`,
+      label: sessionType,
+      userId
+    })
+  }
+
+  // Track page views (for SPA navigation)
+  trackPageView(pagePath: string, pageTitle?: string) {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('config', 'G-TXL346B71K', {
+        page_path: pagePath,
+        page_title: pageTitle
+      })
+    }
   }
 
   // Track ad impression
@@ -154,32 +179,24 @@ class AnalyticsService {
 // Singleton instance
 export const analytics = new AnalyticsService()
 
-// Type declarations for Google Analytics
+// Type declarations for Google Analytics 4
 declare global {
   interface Window {
     gtag?: (command: string, targetId: string, config?: any) => void
+    dataLayer?: any[]
   }
 }
 
-// Initialize Google Analytics if environment variable is set
+// Initialize Google Analytics 4 - this is now handled in layout.tsx
 export function initializeAnalytics() {
-  if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
-    const script = document.createElement('script')
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`
-    script.async = true
-    document.head.appendChild(script)
-
-    script.onload = () => {
-      window.gtag = function() {
-        // @ts-ignore
-        (window.dataLayer = window.dataLayer || []).push(arguments)
-      }
-      
-      // @ts-ignore - gtag accepts Date object for 'js' command
-      window.gtag('js', new Date())
-      window.gtag('config', process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!)
-      
-      console.log('📊 Google Analytics initialized')
-    }
+  // GA4 is now initialized directly in layout.tsx for better performance
+  // This function is kept for backward compatibility
+  if (typeof window !== 'undefined') {
+    console.log('📊 Google Analytics 4 (G-TXL346B71K) should be initialized via layout.tsx')
   }
+}
+
+// Helper function to check if GA4 is available
+export function isGA4Available(): boolean {
+  return typeof window !== 'undefined' && !!window.gtag
 }

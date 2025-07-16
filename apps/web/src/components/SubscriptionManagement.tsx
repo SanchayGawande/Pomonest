@@ -219,7 +219,7 @@ export function SubscriptionManagement({ onClose }: SubscriptionManagementProps)
           {plans.map((plan) => (
             <Card
               key={plan.id}
-              className={`relative cursor-pointer transition-all duration-200 hover:shadow-lg ${
+              className={`relative cursor-pointer transition-all duration-200 hover:shadow-lg touch-manipulation ${
                 selectedPlan === plan.id
                   ? 'ring-2 ring-primary border-primary'
                   : 'hover:border-primary/50'
@@ -227,6 +227,7 @@ export function SubscriptionManagement({ onClose }: SubscriptionManagementProps)
                 plan.isCurrent ? 'border-green-500 bg-green-50 dark:bg-green-950' : ''
               }`}
               onClick={() => setSelectedPlan(plan.id)}
+              style={{ minHeight: '44px' }}
             >
               {plan.isCurrent && (
                 <Badge className="absolute -top-2 left-4 bg-green-500 text-white">
@@ -285,10 +286,14 @@ export function SubscriptionManagement({ onClose }: SubscriptionManagementProps)
         </div>
       </div>
 
-      {/* Action Buttons */}
-      <div className="flex gap-3 pt-6">
+      {/* Action Buttons - Mobile Optimized */}
+      <div className="flex flex-col sm:flex-row gap-3 pt-6">
         {onClose && (
-          <Button variant="outline" onClick={onClose} className="flex-1">
+          <Button 
+            variant="outline" 
+            onClick={onClose} 
+            className="flex-1 min-h-[48px] touch-manipulation"
+          >
             Close
           </Button>
         )}
@@ -297,7 +302,7 @@ export function SubscriptionManagement({ onClose }: SubscriptionManagementProps)
           <Button 
             onClick={handleInitialUpgrade} 
             disabled={isLoading || !isStripeConfigured()}
-            className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+            className="flex-1 min-h-[48px] bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 touch-manipulation"
           >
             {isLoading ? (
               <>
@@ -316,7 +321,7 @@ export function SubscriptionManagement({ onClose }: SubscriptionManagementProps)
             <Button 
               onClick={() => handleSubscriptionChange(selectedPlan)}
               disabled={isLoading || !isStripeConfigured()}
-              className="flex-1"
+              className="flex-1 min-h-[48px] touch-manipulation"
             >
               {isLoading ? (
                 <>

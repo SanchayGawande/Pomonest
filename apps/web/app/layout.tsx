@@ -91,23 +91,26 @@ export default function RootLayout({
           />
         )}
         
-        {/* Google Analytics */}
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
-              `}
-            </Script>
-          </>
-        )}
+        {/* Google Analytics 4 (GA4) - Your specific tracking ID */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-TXL346B71K"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics-4" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TXL346B71K', {
+              page_path: window.location.pathname,
+              anonymize_ip: true,
+              allow_google_signals: false,
+              allow_ad_personalization_signals: false
+            });
+            console.log('📊 Google Analytics 4 initialized with ID: G-TXL346B71K');
+          `}
+        </Script>
       </head>
       <body className={inter.className}>
         <QueryProvider>

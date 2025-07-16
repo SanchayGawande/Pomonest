@@ -67,8 +67,8 @@ export function EnhancedTimer({
 
   return (
     <div className="flex flex-col items-center space-y-8 w-full max-w-lg mx-auto px-4">
-      {/* Session Type Switcher - Like PomofocusIO */}
-      <div className="flex justify-center gap-1 bg-white/20 dark:bg-gray-800/20 p-1 rounded-lg backdrop-blur-sm">
+      {/* Session Type Switcher - Mobile Optimized */}
+      <div className="flex justify-center gap-1 bg-white/20 dark:bg-gray-800/20 p-1 rounded-lg backdrop-blur-sm w-full max-w-sm">
         {[
           { key: 'work' as const, label: 'Pomodoro' },
           { key: 'shortBreak' as const, label: 'Short Break' },
@@ -78,12 +78,13 @@ export function EnhancedTimer({
             key={key}
             color={sessionStyles[key].ripple}
             onClick={() => onSessionSwitch(key)}
-            className="rounded-md"
+            className="rounded-md flex-1"
           >
             <motion.button
               className={`
-                px-4 sm:px-6 py-2 sm:py-3 rounded-md font-medium transition-all duration-300
-                text-sm sm:text-base
+                w-full px-2 sm:px-4 py-2 sm:py-3 rounded-md font-medium transition-all duration-300
+                text-xs sm:text-sm touch-manipulation
+                min-h-[44px] flex items-center justify-center
                 ${timerState.currentSession === key 
                   ? `bg-white/30 text-gray-900 dark:text-white font-bold shadow-lg border-2 border-white/40 backdrop-blur-sm` 
                   : 'text-white/80 hover:text-white hover:bg-white/10'
@@ -91,8 +92,16 @@ export function EnhancedTimer({
               `}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              style={{
+                minHeight: '44px',
+                minWidth: '80px'
+              }}
             >
-              {key === 'work' ? 'Pomodoro' : key === 'shortBreak' ? 'Short Break' : 'Long Break'}
+              <span className="block text-center leading-tight">
+                {key === 'work' ? 'Pomodoro' : key === 'shortBreak' ? 'Short' : 'Long'}
+                <br className="sm:hidden" />
+                <span className="hidden sm:inline">{key === 'work' ? '' : key === 'shortBreak' ? ' Break' : ' Break'}</span>
+              </span>
             </motion.button>
           </RippleEffect>
         ))}
@@ -122,9 +131,9 @@ export function EnhancedTimer({
             ease: "easeInOut" 
           }}
         >
-          {/* Giant Time Display - The Star of the Show */}
+          {/* Giant Time Display - Mobile Optimized */}
           <motion.div 
-            className="text-7xl sm:text-8xl md:text-9xl lg:text-[8rem] xl:text-[10rem] font-bold text-white mb-4 sm:mb-6 font-mono tracking-tight"
+            className="text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[10rem] font-bold text-white mb-3 sm:mb-6 font-mono tracking-tight"
             key={formatTime(timerState.timeLeft)}
             initial={{ scale: 0.98, opacity: 0.9 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -137,26 +146,28 @@ export function EnhancedTimer({
             {formatTime(timerState.timeLeft)}
           </motion.div>
 
-          {/* Session Label - Clean and Subtle */}
-          <div className="text-lg sm:text-xl font-medium text-white/90 mb-8 sm:mb-12">
-            {timerState.currentSession === 'work' ? 'Time to focus!' : 
-             timerState.currentSession === 'shortBreak' ? 'Time for a break!' : 'Time for a long break!'}
+          {/* Session Label - Mobile Optimized */}
+          <div className="text-base sm:text-lg md:text-xl font-medium text-white/90 mb-6 sm:mb-12 px-4 text-center">
+            {timerState.currentSession === 'work' ? 'Stay focused!' : 
+             timerState.currentSession === 'shortBreak' ? 'Take a break!' : 'Long break time!'}
           </div>
 
-          {/* Control Buttons - Prominent but Not Competing */}
-          <div className="flex items-center gap-6">
-            {/* Main Play/Pause Button - Hero Action */}
+          {/* Control Buttons - Mobile Touch Optimized */}
+          <div className="flex items-center gap-4 sm:gap-6">
+            {/* Main Play/Pause Button - Touch-Friendly */}
             <RippleEffect 
               color="rgba(255, 255, 255, 0.3)"
               onClick={timerState.isActive ? onPause : onStart}
               className="rounded-full"
             >
               <motion.button
-                className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white text-gray-800 shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center backdrop-blur-sm"
+                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-white text-gray-800 shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center backdrop-blur-sm touch-manipulation"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 style={{
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2)'
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2)',
+                  minHeight: '64px', // Ensures minimum touch target size
+                  minWidth: '64px'
                 }}
               >
                 <AnimatePresence mode="wait">
@@ -168,7 +179,7 @@ export function EnhancedTimer({
                       exit={{ scale: 0, rotate: 90 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Pause className="w-8 h-8 sm:w-10 sm:h-10" />
+                      <Pause className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -178,25 +189,29 @@ export function EnhancedTimer({
                       exit={{ scale: 0, rotate: 90 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Play className="w-8 h-8 sm:w-10 sm:h-10 ml-1" />
+                      <Play className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 ml-1" />
                     </motion.div>
                   )}
                 </AnimatePresence>
               </motion.button>
             </RippleEffect>
 
-            {/* Reset Button - Secondary Action */}
+            {/* Reset Button - Mobile Touch Optimized */}
             <RippleEffect 
               color="rgba(255, 255, 255, 0.2)"
               onClick={onReset}
               className="rounded-full"
             >
               <motion.button
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/20 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center backdrop-blur-sm border border-white/20"
+                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/20 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center backdrop-blur-sm border border-white/20 touch-manipulation"
                 whileHover={{ scale: 1.05, y: -1 }}
                 whileTap={{ scale: 0.95 }}
+                style={{
+                  minHeight: '48px', // Minimum touch target
+                  minWidth: '48px'
+                }}
               >
-                <RotateCcw className="w-5 h-5 sm:w-6 sm:h-6" />
+                <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </motion.button>
             </RippleEffect>
           </div>

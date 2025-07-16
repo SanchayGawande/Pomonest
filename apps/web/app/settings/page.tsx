@@ -42,27 +42,33 @@ export default function SettingsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/50">
       <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-4">
+        <div className="container mx-auto px-4 flex h-16 items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-4">
             <Button 
               variant="ghost" 
               size="sm"
               onClick={() => router.push('/')}
+              className="min-h-[44px] touch-manipulation"
             >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Timer
+              <ArrowLeft className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:inline">Back to Timer</span>
             </Button>
-            <h1 className="text-2xl font-semibold">
+            <h1 className="text-lg sm:text-2xl font-semibold">
               Settings
             </h1>
           </div>
-          <Button onClick={signOut} variant="outline" size="sm">
-            Sign Out
+          <Button 
+            onClick={signOut} 
+            variant="outline" 
+            size="sm"
+            className="min-h-[44px] touch-manipulation"
+          >
+            <span className="text-sm">Sign Out</span>
           </Button>
         </div>
       </header>
 
-      <main className="container py-8 max-w-2xl">
+      <main className="container mx-auto px-4 py-4 sm:py-8 max-w-2xl">
         <div className="space-y-6">
           {/* Profile Section */}
           <Card className="border border-gray-200 dark:border-gray-700">
@@ -77,12 +83,12 @@ export default function SettingsPage() {
                 Manage your account information
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4 p-6">
-              <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+            <CardContent className="space-y-4 p-4 sm:p-6">
+              <div className="p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
                 <label className="text-sm font-medium">Email</label>
-                <p className="text-sm text-muted-foreground mt-1">{user.email}</p>
+                <p className="text-sm text-muted-foreground mt-1 break-all">{user.email}</p>
               </div>
-              <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <div className="p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
                 <label className="text-sm font-medium">Member since</label>
                 <p className="text-sm text-muted-foreground mt-1">
                   {user.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}
@@ -105,33 +111,33 @@ export default function SettingsPage() {
                 Remove all ads and unlock premium features for distraction-free focus
               </CardDescription>
             </CardHeader>
-            <CardContent className="relative z-10">
-              <div className="space-y-6">
-                <div className="grid gap-3 text-sm">
-                  <div className="flex items-center gap-3 p-2 rounded-lg bg-white/50 dark:bg-black/20">
-                    <div className="w-2 h-2 bg-yellow-600 dark:bg-yellow-400 rounded-full animate-pulse" />
+            <CardContent className="relative z-10 p-4 sm:p-6">
+              <div className="space-y-4 sm:space-y-6">
+                <div className="grid gap-2 sm:gap-3 text-sm">
+                  <div className="flex items-center gap-3 p-2 sm:p-3 rounded-lg bg-white/50 dark:bg-black/20">
+                    <div className="w-2 h-2 bg-yellow-600 dark:bg-yellow-400 rounded-full animate-pulse flex-shrink-0" />
                     <span className="font-semibold text-yellow-900 dark:text-yellow-100">🚫 Ad-free experience</span>
                   </div>
-                  <div className="flex items-center gap-3 p-2 rounded-lg bg-white/30 dark:bg-black/10">
-                    <div className="w-2 h-2 bg-yellow-600 dark:bg-yellow-400 rounded-full" />
+                  <div className="flex items-center gap-3 p-2 sm:p-3 rounded-lg bg-white/30 dark:bg-black/10">
+                    <div className="w-2 h-2 bg-yellow-600 dark:bg-yellow-400 rounded-full flex-shrink-0" />
                     <span className="font-medium text-yellow-800 dark:text-yellow-200">Save Passes to protect your streaks</span>
                   </div>
-                  <div className="flex items-center gap-3 p-2 rounded-lg bg-white/30 dark:bg-black/10">
-                    <div className="w-2 h-2 bg-yellow-600 dark:bg-yellow-400 rounded-full" />
+                  <div className="flex items-center gap-3 p-2 sm:p-3 rounded-lg bg-white/30 dark:bg-black/10">
+                    <div className="w-2 h-2 bg-yellow-600 dark:bg-yellow-400 rounded-full flex-shrink-0" />
                     <span className="font-medium text-yellow-800 dark:text-yellow-200">Dark mode theme</span>
                   </div>
-                  <div className="flex items-center gap-3 p-2 rounded-lg bg-white/30 dark:bg-black/10">
-                    <div className="w-2 h-2 bg-yellow-600 dark:bg-yellow-400 rounded-full" />
+                  <div className="flex items-center gap-3 p-2 sm:p-3 rounded-lg bg-white/30 dark:bg-black/10">
+                    <div className="w-2 h-2 bg-yellow-600 dark:bg-yellow-400 rounded-full flex-shrink-0" />
                     <span className="font-medium text-yellow-800 dark:text-yellow-200">Advanced statistics and insights</span>
                   </div>
-                  <div className="flex items-center gap-3 p-2 rounded-lg bg-white/30 dark:bg-black/10">
-                    <div className="w-2 h-2 bg-yellow-600 dark:bg-yellow-400 rounded-full" />
+                  <div className="flex items-center gap-3 p-2 sm:p-3 rounded-lg bg-white/30 dark:bg-black/10">
+                    <div className="w-2 h-2 bg-yellow-600 dark:bg-yellow-400 rounded-full flex-shrink-0" />
                     <span className="font-medium text-yellow-800 dark:text-yellow-200">Priority customer support</span>
                   </div>
                 </div>
                 <Button 
                   onClick={() => setShowProModal(true)}
-                  className="w-full bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-white font-semibold"
+                  className="w-full bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-white font-semibold min-h-[48px] touch-manipulation"
                   size="lg"
                 >
                   <Crown className="h-5 w-5 mr-2" />
@@ -157,18 +163,18 @@ export default function SettingsPage() {
                 Customize your app appearance
               </CardDescription>
             </CardHeader>
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg gap-3 sm:gap-0">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg flex-shrink-0">
                       {isProUser ? (
                         <Moon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
                       ) : (
                         <Crown className="h-4 w-4 text-gray-600 dark:text-gray-400" />
                       )}
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <div className="text-sm font-medium">Dark Mode</div>
                       <div className="text-xs text-muted-foreground">
                         Switch between light and dark themes
@@ -176,7 +182,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
                   {isProUser ? (
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 flex-shrink-0">
                       <span className="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-1 rounded">Pro</span>
                       <ThemeToggle variant="outline" size="sm" />
                     </div>
@@ -185,9 +191,10 @@ export default function SettingsPage() {
                       variant="outline" 
                       size="sm"
                       onClick={() => setShowProModal(true)}
+                      className="min-h-[44px] touch-manipulation self-start sm:self-center"
                     >
                       <Crown className="h-4 w-4 mr-2" />
-                      Upgrade to Pro
+                      <span className="text-sm">Upgrade to Pro</span>
                     </Button>
                   )}
                 </div>

@@ -9,6 +9,8 @@ interface ProVisualThemesProps {
 }
 
 export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: ProVisualThemesProps) {
+  // Debug logging for Pro themes
+  console.log('🎨 ProVisualThemes loaded:', { colorScheme, backgroundStyle, sessionType })
   
   // Advanced color schemes with animated gradients
   const getThemeColors = () => {
@@ -233,6 +235,34 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
                 }}
               />
             ))}
+          </div>
+        )
+      
+      case 'gradient':
+        return (
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Enhanced Gradient with subtle animation */}
+            <motion.div 
+              className="absolute inset-0 opacity-20"
+              animate={{
+                background: [
+                  'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.2) 0%, transparent 50%)',
+                  'radial-gradient(circle at 80% 50%, rgba(255,255,255,0.2) 0%, transparent 50%)',
+                  'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.2) 0%, transparent 50%)'
+                ]
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute inset-0" style={{
+                backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.5) 1px, transparent 0)`,
+                backgroundSize: '20px 20px'
+              }} />
+            </div>
           </div>
         )
       
