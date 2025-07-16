@@ -88,7 +88,7 @@ export function AdBlockerDetector({ onUpgradeClick, className = '' }: AdBlockerD
             Ad Blocker Detected
           </p>
           <p className="text-xs text-orange-600">
-            We rely on ads to keep WorkStreak free. Consider upgrading to Pro for an ad-free experience 
+            We rely on ads to keep PomoNest free. Consider upgrading to Pro for an ad-free experience 
             or whitelist our site to support development.
           </p>
         </div>

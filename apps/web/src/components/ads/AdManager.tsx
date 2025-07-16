@@ -107,29 +107,8 @@ export function AdManager({
     case 'footer':
       return (
         <div className={`w-full ${className}`}>
-          {adSlot ? (
+          {adSlot && (
             <ResponsiveAd slot={adSlot} />
-          ) : (
-            <Card className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
-              <div className="flex items-center justify-between">
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-blue-800">
-                    Enjoying WorkStreak? Support us by upgrading to Pro!
-                  </p>
-                  <p className="text-xs text-blue-600">
-                    Remove ads and unlock premium features
-                  </p>
-                </div>
-                <Button 
-                  onClick={onUpgradeClick}
-                  size="sm"
-                  className="bg-blue-600 hover:bg-blue-700"
-                >
-                  <Crown className="h-3 w-3 mr-1" />
-                  Upgrade
-                </Button>
-              </div>
-            </Card>
           )}
         </div>
       )

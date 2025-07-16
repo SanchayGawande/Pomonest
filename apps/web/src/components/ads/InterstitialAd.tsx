@@ -75,7 +75,7 @@ export function InterstitialAd({
             Break Time Sponsor
           </DialogTitle>
           <DialogDescription>
-            Support WorkStreak by viewing this brief sponsored message.
+            Support PomoNest by viewing this brief sponsored message.
           </DialogDescription>
         </DialogHeader>
 
@@ -148,7 +148,7 @@ export function InterstitialAd({
           {/* Pro Upgrade Hint */}
           <div className="text-center bg-yellow-50 rounded-lg p-3 border border-yellow-200">
             <p className="text-xs text-yellow-800">
-              💡 <strong>WorkStreak Pro</strong> removes all ads for uninterrupted focus sessions
+              💡 <strong>PomoNest Pro</strong> removes all ads for uninterrupted focus sessions
             </p>
           </div>
         </div>
