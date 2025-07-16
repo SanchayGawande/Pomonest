@@ -73,7 +73,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
             {[...Array(30)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1 h-1 bg-white/20 rounded-full"
+                className="absolute w-1 h-1 bg-white/60 rounded-full"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
@@ -81,7 +81,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
                 animate={{
                   y: [-20, -100],
                   x: [0, Math.random() * 40 - 20],
-                  opacity: [0, 1, 0],
+                  opacity: [0.3, 0.8, 0.3],
                   scale: [0.5, 1, 0.5]
                 }}
                 transition={{
@@ -102,13 +102,13 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
             {[...Array(3)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute inset-0 opacity-20"
+                className="absolute inset-0 opacity-40"
                 style={{
-                  background: `radial-gradient(ellipse at ${50 + i * 20}% ${50 + i * 15}%, rgba(255,255,255,0.3) 0%, transparent 50%)`,
+                  background: `radial-gradient(ellipse at ${50 + i * 20}% ${50 + i * 15}%, rgba(255,255,255,0.6) 0%, transparent 50%)`,
                 }}
                 animate={{
                   scale: [1, 1.2, 1],
-                  opacity: [0.1, 0.3, 0.1],
+                  opacity: [0.2, 0.6, 0.2],
                 }}
                 transition={{
                   duration: 8 + i * 2,
@@ -128,7 +128,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
             {[...Array(6)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute border border-white/10"
+                className="absolute border border-white/40"
                 style={{
                   width: `${60 + i * 20}px`,
                   height: `${60 + i * 20}px`,
@@ -139,7 +139,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
                 animate={{
                   rotate: [0, 360],
                   scale: [0.8, 1.2, 0.8],
-                  opacity: [0.1, 0.3, 0.1]
+                  opacity: [0.2, 0.5, 0.2]
                 }}
                 transition={{
                   duration: 15 + i * 3,
@@ -159,16 +159,16 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
             {[...Array(4)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute inset-0 opacity-30"
+                className="absolute inset-0 opacity-50"
                 style={{
                   background: `linear-gradient(${45 + i * 30}deg, 
                     rgba(255,255,255,0) 0%, 
-                    rgba(255,255,255,0.2) 50%, 
+                    rgba(255,255,255,0.4) 50%, 
                     rgba(255,255,255,0) 100%)`
                 }}
                 animate={{
                   rotate: [0, 10, -10, 0],
-                  opacity: [0.1, 0.4, 0.1],
+                  opacity: [0.2, 0.6, 0.2],
                   scale: [1, 1.1, 1]
                 }}
                 transition={{
@@ -189,7 +189,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
             {[...Array(20)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-px bg-white/20"
+                className="absolute w-px bg-white/50"
                 style={{
                   left: `${i * 5}%`,
                   height: '100%'
@@ -216,7 +216,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
             {[...Array(5)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute rounded-full border border-white/10"
+                className="absolute rounded-full border border-white/40"
                 style={{
                   width: `${100 + i * 50}px`,
                   height: `${100 + i * 50}px`,
@@ -226,7 +226,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
                 }}
                 animate={{
                   scale: [0.8, 1.2, 0.8],
-                  opacity: [0.1, 0.3, 0.1]
+                  opacity: [0.2, 0.5, 0.2]
                 }}
                 transition={{
                   duration: 4,
@@ -244,12 +244,12 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
           <div className="absolute inset-0 overflow-hidden">
             {/* Enhanced Gradient with subtle animation */}
             <motion.div 
-              className="absolute inset-0 opacity-20"
+              className="absolute inset-0 opacity-40"
               animate={{
                 background: [
-                  'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.2) 0%, transparent 50%)',
-                  'radial-gradient(circle at 80% 50%, rgba(255,255,255,0.2) 0%, transparent 50%)',
-                  'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.2) 0%, transparent 50%)'
+                  'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.4) 0%, transparent 50%)',
+                  'radial-gradient(circle at 80% 50%, rgba(255,255,255,0.4) 0%, transparent 50%)',
+                  'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.4) 0%, transparent 50%)'
                 ]
               }}
               transition={{
@@ -258,7 +258,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
                 ease: "easeInOut"
               }}
             />
-            <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 opacity-20">
               <div className="absolute inset-0" style={{
                 backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.5) 1px, transparent 0)`,
                 backgroundSize: '20px 20px'
@@ -269,7 +269,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
       
       default:
         return (
-          <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 opacity-20">
             <div className="absolute inset-0" style={{
               backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.5) 1px, transparent 0)`,
               backgroundSize: '20px 20px'
@@ -288,7 +288,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
       {renderBackgroundStyle()}
       
       {/* Subtle Overlay for Better Text Contrast */}
-      <div className="absolute inset-0 bg-black/10" />
+      <div className="absolute inset-0 bg-black/5" />
     </>
   )
 }
