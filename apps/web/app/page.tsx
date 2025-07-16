@@ -208,7 +208,12 @@ function HomeContent() {
     const savedStats = localStorage.getItem(GUEST_STATS_KEY)
     
     if (savedSettings) {
-      setSettings(JSON.parse(savedSettings))
+      const parsedSettings = JSON.parse(savedSettings)
+      // Force light theme for non-authenticated users
+      if (!isAuthenticated && parsedSettings.theme === 'dark') {
+        parsedSettings.theme = 'light'
+      }
+      setSettings(parsedSettings)
     }
     
     if (savedStats) {
@@ -228,6 +233,13 @@ function HomeContent() {
       setIsAuthenticated(!!user)
     }
   }, [user, loading])
+
+  // Force light theme for non-authenticated users
+  useEffect(() => {
+    if (!isAuthenticated && settings.theme === 'dark') {
+      setSettings(prevSettings => ({ ...prevSettings, theme: 'light' }))
+    }
+  }, [isAuthenticated, settings.theme])
 
   // Check for payment success and Pro status
   useEffect(() => {
@@ -1412,13 +1424,24 @@ function HomeContent() {
                         Dark Mode
                       </div>
                       <div className="text-xs text-muted-foreground">
-                        Switch between light and dark themes
+                        {isAuthenticated ? 'Switch between light and dark themes' : 'Sign in to unlock dark mode'}
                       </div>
                     </div>
-                    <Switch
-                      checked={settings.theme === 'dark'}
-                      onCheckedChange={(checked) => saveSettings({ ...settings, theme: checked ? 'dark' : 'light' })}
-                    />
+                    {isAuthenticated ? (
+                      <Switch
+                        checked={settings.theme === 'dark'}
+                        onCheckedChange={(checked) => saveSettings({ ...settings, theme: checked ? 'dark' : 'light' })}
+                      />
+                    ) : (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => router.push('/auth/login')}
+                        className="text-xs px-3 py-1"
+                      >
+                        Sign In
+                      </Button>
+                    )}
                   </div>
                   
                   {/* Basic Color Scheme - Limited for Free Users */}
