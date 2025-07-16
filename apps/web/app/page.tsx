@@ -836,15 +836,20 @@ function HomeContent() {
                 </Button>
               </div>
             ) : (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => router.push('/auth/login')}
-                className={`px-2 sm:px-3 ${getButtonClass()}`}
-              >
-                <User className="h-4 w-4" />
-                <span className="hidden sm:inline ml-2">Sign Up</span>
-              </Button>
+              <div className="flex flex-col items-end">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => router.push('/auth/login')}
+                  className={`px-2 sm:px-3 ${getButtonClass()}`}
+                >
+                  <User className="h-4 w-4" />
+                  <span className="hidden sm:inline ml-2">Sign Up</span>
+                </Button>
+                <span className="text-xs text-blue-600 dark:text-blue-400 mt-1 hidden sm:block">
+                  Free Dark Mode ✨
+                </span>
+              </div>
             )}
           </div>
         </div>
@@ -889,6 +894,9 @@ function HomeContent() {
                       <h3 className="font-semibold text-lg">Track Your Progress</h3>
                       <p className="text-sm text-muted-foreground">
                         Sign up to save your streaks, unlock Pro features, and sync across devices
+                      </p>
+                      <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">
+                        ✨ Sign in to get free Dark Mode
                       </p>
                     </div>
                     <div className="flex justify-center">
