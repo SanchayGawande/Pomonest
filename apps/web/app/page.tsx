@@ -29,6 +29,7 @@ import { TimerFirstLayout } from '@/components/TimerFirstLayout'
 import { AdManager, AppAutoAds } from '@/components/ads/AdManager'
 import { supabase } from '@/lib/supabase'
 import { analytics } from '@/lib/analytics'
+import { useUpgradePrompts } from '@/components/UpgradePrompts'
 
 // Local storage keys for guest users
 const GUEST_SETTINGS_KEY = 'workstreak_guest_settings'
@@ -201,6 +202,9 @@ function HomeContent() {
   
   // Task state
   const [currentTask, setCurrentTask] = useState<any>(null)
+  
+  // Upgrade prompts
+  const { checkForPromptTriggers, UpgradePromptComponent } = useUpgradePrompts()
 
   // Load settings and stats from localStorage on mount
   useEffect(() => {
@@ -595,6 +599,14 @@ function HomeContent() {
       }
       setGuestStats(newStats)
       localStorage.setItem(GUEST_STATS_KEY, JSON.stringify(newStats))
+
+      // Check for upgrade prompt triggers
+      checkForPromptTriggers({
+        streak: newStats.streak,
+        sessionsCompleted: newStats.totalSessionCount,
+        lastSessionDate: today,
+        isFirstSession: newStats.totalSessionCount === 1
+      })
 
       toast({
         title: "Session Complete! 🔥",
@@ -2050,6 +2062,9 @@ function HomeContent() {
           <SubscriptionManagement onClose={() => setShowProModal(false)} />
         </DialogContent>
       </Dialog>
+
+      {/* Upgrade Prompts */}
+      {UpgradePromptComponent}
     </div>
   )
 }

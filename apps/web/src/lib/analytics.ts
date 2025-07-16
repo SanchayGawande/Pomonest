@@ -43,6 +43,22 @@ class AnalyticsService {
     console.log('📊 GA4 Analytics Event:', event)
   }
 
+  // Enhanced tracking with string signature for convenience
+  track(eventName: string, properties?: Record<string, any>) {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', eventName, {
+        custom_parameters: {
+          app_name: 'PomoNest',
+          app_version: '1.0.0',
+          ...properties
+        }
+      })
+    }
+
+    // Also log to console for development
+    console.log('📊 GA4 Track Event:', eventName, properties)
+  }
+
   // Track Pomodoro-specific events
   trackTimerEvent(action: 'start' | 'pause' | 'complete' | 'reset', sessionType: 'work' | 'shortBreak' | 'longBreak', userId?: string) {
     this.trackEvent({
@@ -104,6 +120,64 @@ class AnalyticsService {
       label: plan,
       value: revenue,
       userId
+    })
+
+    // Track conversion for GA4
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'purchase', {
+        transaction_id: `pro_${Date.now()}`,
+        value: revenue,
+        currency: 'USD',
+        items: [{
+          item_id: `pro_${plan}`,
+          item_name: `PomoNest Pro ${plan}`,
+          category: 'subscription',
+          quantity: 1,
+          price: revenue
+        }]
+      })
+    }
+  }
+
+  // Track user sign up
+  trackSignUp(method: 'email' | 'google' | 'github', userId?: string) {
+    this.track('sign_up', {
+      method,
+      user_id: userId
+    })
+
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'sign_up', {
+        method,
+        user_id: userId
+      })
+    }
+  }
+
+  // Track marketing conversion events
+  trackConversion(conversionType: 'landing_signup' | 'trial_start' | 'demo_request' | 'newsletter_signup', source?: string) {
+    this.track('conversion', {
+      conversion_type: conversionType,
+      source,
+      timestamp: new Date().toISOString()
+    })
+
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-CONVERSION_ID', // Replace with actual conversion ID when setting up Google Ads
+        event_callback: () => {
+          console.log('Conversion tracked for', conversionType)
+        }
+      })
+    }
+  }
+
+  // Track feature usage for product analytics
+  trackFeatureUsage(feature: string, action: string, properties?: Record<string, any>) {
+    this.track('feature_usage', {
+      feature,
+      action,
+      ...properties
     })
   }
 
