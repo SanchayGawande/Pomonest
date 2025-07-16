@@ -1348,64 +1348,66 @@ function HomeContent() {
 
       <Toaster />
 
-      {/* Advanced Settings Modal - Modern Design */}
+      {/* Advanced Settings Modal - Professional Design */}
       <Dialog open={showSettings} onOpenChange={setShowSettings}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto w-[95vw] sm:w-full bg-gradient-to-br from-orange-50/95 via-white/95 to-yellow-50/95 dark:from-orange-950/95 dark:via-gray-900/95 dark:to-yellow-950/95 backdrop-blur-xl border-2 border-orange-200/50 dark:border-orange-800/50 shadow-2xl rounded-2xl">
-          <DialogHeader className="bg-gradient-to-r from-orange-100/80 to-yellow-100/80 dark:from-orange-900/40 dark:to-yellow-900/40 -m-6 mb-6 p-6 rounded-t-2xl border-b border-orange-200/30 dark:border-orange-800/30">
-            <DialogTitle className="flex items-center gap-3 text-2xl bg-gradient-to-r from-orange-600 to-yellow-600 dark:from-orange-400 dark:to-yellow-400 bg-clip-text text-transparent font-bold">
-              <div className="p-2 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-xl shadow-lg">
-                <Settings className="h-6 w-6" />
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto w-[95vw] sm:w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-xl rounded-lg">
+          <DialogHeader className="border-b border-gray-200 dark:border-gray-800 pb-4 mb-6">
+            <DialogTitle className="flex items-center gap-3 text-xl font-semibold text-gray-900 dark:text-white">
+              <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                <Settings className="h-5 w-5 text-gray-600 dark:text-gray-400" />
               </div>
-              Timer Settings
+              Settings
             </DialogTitle>
-            <DialogDescription className="text-orange-700 dark:text-orange-300 font-medium">
+            <DialogDescription className="text-gray-600 dark:text-gray-400">
               Customize your Pomodoro timer settings, audio preferences, and appearance options.
             </DialogDescription>
           </DialogHeader>
 
           <Tabs defaultValue="timer" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto gap-2 bg-gradient-to-r from-orange-100/50 to-yellow-100/50 dark:from-orange-900/30 dark:to-yellow-900/30 p-2 rounded-xl border border-orange-200/30 dark:border-orange-800/30">
-              <TabsTrigger value="timer" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 px-2 sm:px-4 text-xs sm:text-sm min-h-[50px] touch-manipulation bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/30 dark:to-orange-900/30 border border-red-200/50 dark:border-red-800/50 hover:from-red-100 hover:to-orange-100 dark:hover:from-red-800/40 dark:hover:to-orange-800/40 data-[state=active]:from-red-500 data-[state=active]:to-orange-500 data-[state=active]:text-white dark:data-[state=active]:from-red-600 dark:data-[state=active]:to-orange-600 transition-all duration-200 rounded-lg shadow-sm">
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto bg-gray-100 dark:bg-gray-800 p-1 rounded-lg border border-gray-200 dark:border-gray-700">
+              <TabsTrigger value="timer" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-3 text-xs sm:text-sm min-h-[40px] text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 data-[state=active]:bg-red-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 rounded-md">
                 <Clock className="h-4 w-4" />
                 <span className="text-xs sm:text-sm font-medium">Timer</span>
               </TabsTrigger>
-              <TabsTrigger value="audio" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 px-2 sm:px-4 text-xs sm:text-sm min-h-[50px] touch-manipulation bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 border border-blue-200/50 dark:border-blue-800/50 hover:from-blue-100 hover:to-cyan-100 dark:hover:from-blue-800/40 dark:hover:to-cyan-800/40 data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white dark:data-[state=active]:from-blue-600 dark:data-[state=active]:to-cyan-600 transition-all duration-200 rounded-lg shadow-sm">
+              <TabsTrigger value="audio" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-3 text-xs sm:text-sm min-h-[40px] text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 rounded-md">
                 <Music className="h-4 w-4" />
                 <span className="text-xs sm:text-sm font-medium">Audio</span>
               </TabsTrigger>
-              <TabsTrigger value="appearance" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 px-2 sm:px-4 text-xs sm:text-sm min-h-[50px] touch-manipulation bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 border border-purple-200/50 dark:border-purple-800/50 hover:from-purple-100 hover:to-pink-100 dark:hover:from-purple-800/40 dark:hover:to-pink-800/40 data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white dark:data-[state=active]:from-purple-600 dark:data-[state=active]:to-pink-600 transition-all duration-200 rounded-lg shadow-sm">
+              <TabsTrigger value="appearance" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-3 text-xs sm:text-sm min-h-[40px] text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 data-[state=active]:bg-purple-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 rounded-md">
                 <Palette className="h-4 w-4" />
                 <span className="text-xs sm:text-sm font-medium">Theme</span>
               </TabsTrigger>
-              <TabsTrigger value="focus" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 px-2 sm:px-4 text-xs sm:text-sm min-h-[50px] touch-manipulation bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/30 dark:to-amber-900/30 border border-yellow-200/50 dark:border-yellow-800/50 hover:from-yellow-100 hover:to-amber-100 dark:hover:from-yellow-800/40 dark:hover:to-amber-800/40 data-[state=active]:from-yellow-500 data-[state=active]:to-amber-500 data-[state=active]:text-white dark:data-[state=active]:from-yellow-600 dark:data-[state=active]:to-amber-600 transition-all duration-200 rounded-lg shadow-sm">
+              <TabsTrigger value="focus" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-3 text-xs sm:text-sm min-h-[40px] text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 data-[state=active]:bg-green-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 rounded-md">
                 <Zap className="h-4 w-4" />
                 <span className="text-xs sm:text-sm font-medium">Focus</span>
               </TabsTrigger>
             </TabsList>
 
             {/* Timer Settings Tab */}
-            <TabsContent value="timer" className="space-y-6 mt-6">
-              <Card className="border-2 border-red-200/50 dark:border-red-800/50 bg-gradient-to-br from-red-50/50 via-white/70 to-orange-50/50 dark:from-red-950/30 dark:via-gray-900/70 dark:to-orange-950/30 shadow-lg backdrop-blur-sm">
-                <CardHeader className="border-b border-red-200/30 dark:border-red-800/30 bg-gradient-to-r from-red-100/40 to-orange-100/40 dark:from-red-900/20 dark:to-orange-900/20">
-                  <CardTitle className="text-xl flex items-center gap-3">
-                    <div className="p-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-xl shadow-lg">
-                      <Clock className="h-5 w-5" />
+            <TabsContent value="timer" className="space-y-6 mt-6 p-4 bg-red-50/50 dark:bg-red-950/20 rounded-xl border-2 border-red-200/50 dark:border-red-800/50">
+              <Card className="border-2 border-red-200 dark:border-red-800 bg-white dark:bg-gray-900 shadow-lg">
+                <CardHeader className="border-b border-red-200 dark:border-red-800 pb-4 bg-red-50/30 dark:bg-red-900/20">
+                  <CardTitle className="text-lg flex items-center gap-3 font-semibold text-red-800 dark:text-red-200">
+                    <div className="p-2 bg-red-500 text-white rounded-lg shadow-sm">
+                      <Clock className="h-4 w-4" />
                     </div>
-                    <span className="bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-400 dark:to-orange-400 bg-clip-text text-transparent font-bold">Session Duration</span>
+                    Session Duration
                   </CardTitle>
-                  <CardDescription className="text-red-700 dark:text-red-300 font-medium">
+                  <CardDescription className="text-red-600 dark:text-red-400">
                     Customize your work and break intervals
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6 p-6">
+                <CardContent className="space-y-8 p-6">
                   {/* Work Duration */}
-                  <div className="p-5 border-2 border-red-200/40 dark:border-red-800/40 rounded-xl space-y-4 bg-gradient-to-r from-red-50/30 to-orange-50/30 dark:from-red-950/20 dark:to-orange-950/20 shadow-sm">
+                  <div className="p-6 border-2 border-red-300 dark:border-red-700 rounded-xl space-y-4 bg-red-100/60 dark:bg-red-900/30 shadow-md">
                     <div className="flex items-center justify-between">
-                      <label className="text-base font-semibold flex items-center gap-3">
-                        <div className="w-4 h-4 bg-gradient-to-r from-red-500 to-orange-500 rounded-full shadow-sm"></div>
-                        <span className="text-red-700 dark:text-red-300">Work Duration</span>
-                      </label>
-                      <span className="text-base font-bold bg-gradient-to-r from-red-500 to-orange-500 text-white px-4 py-2 rounded-lg shadow-sm">{settings.workDuration} min</span>
+                      <div className="space-y-1">
+                        <label className="text-sm font-bold text-red-800 dark:text-red-200">
+                          Work Duration
+                        </label>
+                        <p className="text-xs text-red-600 dark:text-red-400">Focus session length</p>
+                      </div>
+                      <span className="text-sm font-bold text-white bg-red-500 px-4 py-2 rounded-lg shadow-md">{settings.workDuration} min</span>
                     </div>
                     <Slider
                       value={[settings.workDuration]}
@@ -1415,20 +1417,22 @@ function HomeContent() {
                       step={5}
                       className="w-full"
                     />
-                    <div className="flex justify-between text-sm text-red-600 dark:text-red-400 font-medium">
+                    <div className="flex justify-between text-xs text-red-600 dark:text-red-400 font-semibold">
                       <span>5 min</span>
                       <span>90 min</span>
                     </div>
                   </div>
 
                   {/* Short Break Duration */}
-                  <div className="p-5 border-2 border-green-200/40 dark:border-green-800/40 rounded-xl space-y-4 bg-gradient-to-r from-green-50/30 to-emerald-50/30 dark:from-green-950/20 dark:to-emerald-950/20 shadow-sm">
+                  <div className="p-6 border-2 border-orange-300 dark:border-orange-700 rounded-xl space-y-4 bg-orange-100/60 dark:bg-orange-900/30 shadow-md">
                     <div className="flex items-center justify-between">
-                      <label className="text-base font-semibold flex items-center gap-3">
-                        <div className="w-4 h-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-sm"></div>
-                        <span className="text-green-700 dark:text-green-300">Short Break</span>
-                      </label>
-                      <span className="text-base font-bold bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-lg shadow-sm">{settings.shortBreakDuration} min</span>
+                      <div className="space-y-1">
+                        <label className="text-sm font-bold text-orange-800 dark:text-orange-200">
+                          Short Break
+                        </label>
+                        <p className="text-xs text-orange-600 dark:text-orange-400">Brief rest between sessions</p>
+                      </div>
+                      <span className="text-sm font-bold text-white bg-orange-500 px-4 py-2 rounded-lg shadow-md">{settings.shortBreakDuration} min</span>
                     </div>
                     <Slider
                       value={[settings.shortBreakDuration]}
@@ -1438,20 +1442,22 @@ function HomeContent() {
                       step={1}
                       className="w-full"
                     />
-                    <div className="flex justify-between text-sm text-green-600 dark:text-green-400 font-medium">
+                    <div className="flex justify-between text-xs text-orange-600 dark:text-orange-400 font-semibold">
                       <span>1 min</span>
                       <span>30 min</span>
                     </div>
                   </div>
 
                   {/* Long Break Duration */}
-                  <div className="p-5 border-2 border-blue-200/40 dark:border-blue-800/40 rounded-xl space-y-4 bg-gradient-to-r from-blue-50/30 to-cyan-50/30 dark:from-blue-950/20 dark:to-cyan-950/20 shadow-sm">
+                  <div className="p-6 border-2 border-yellow-300 dark:border-yellow-700 rounded-xl space-y-4 bg-yellow-100/60 dark:bg-yellow-900/30 shadow-md">
                     <div className="flex items-center justify-between">
-                      <label className="text-base font-semibold flex items-center gap-3">
-                        <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-sm"></div>
-                        <span className="text-blue-700 dark:text-blue-300">Long Break</span>
-                      </label>
-                      <span className="text-base font-bold bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-lg shadow-sm">{settings.longBreakDuration} min</span>
+                      <div className="space-y-1">
+                        <label className="text-sm font-bold text-yellow-800 dark:text-yellow-200">
+                          Long Break
+                        </label>
+                        <p className="text-xs text-yellow-600 dark:text-yellow-400">Extended rest after multiple sessions</p>
+                      </div>
+                      <span className="text-sm font-bold text-white bg-yellow-500 px-4 py-2 rounded-lg shadow-md">{settings.longBreakDuration} min</span>
                     </div>
                     <Slider
                       value={[settings.longBreakDuration]}
@@ -1461,17 +1467,23 @@ function HomeContent() {
                       step={5}
                       className="w-full"
                     />
-                    <div className="flex justify-between text-sm text-blue-600 dark:text-blue-400 font-medium">
+                    <div className="flex justify-between text-xs text-yellow-600 dark:text-yellow-400 font-semibold">
                       <span>5 min</span>
                       <span>60 min</span>
                     </div>
                   </div>
 
+                  {/* Divider */}
+                  <div className="border-t-2 border-red-300 dark:border-red-700 my-6"></div>
+
                   {/* Long Break Interval */}
-                  <div className="space-y-4 p-4 bg-gradient-to-r from-purple-50/30 to-indigo-50/30 dark:from-purple-950/20 dark:to-indigo-950/20 rounded-xl border border-purple-200/30 dark:border-purple-800/30">
+                  <div className="space-y-4 p-6 bg-pink-100/60 dark:bg-pink-900/30 rounded-xl border-2 border-pink-300 dark:border-pink-700 shadow-md">
                     <div className="flex items-center justify-between">
-                      <label className="text-sm font-semibold text-purple-700 dark:text-purple-300">Long Break Interval</label>
-                      <span className="text-sm font-medium bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-3 py-1 rounded-lg">Every {settings.longBreakInterval} sessions</span>
+                      <div className="space-y-1">
+                        <label className="text-sm font-bold text-pink-800 dark:text-pink-200">Long Break Interval</label>
+                        <p className="text-xs text-pink-600 dark:text-pink-400">How often to take extended breaks</p>
+                      </div>
+                      <span className="text-sm font-bold text-white bg-pink-500 px-4 py-2 rounded-lg shadow-md">Every {settings.longBreakInterval} sessions</span>
                     </div>
                     <Slider
                       value={[settings.longBreakInterval]}
@@ -1481,7 +1493,7 @@ function HomeContent() {
                       step={1}
                       className="w-full"
                     />
-                    <div className="flex justify-between text-xs text-purple-600 dark:text-purple-400 font-medium">
+                    <div className="flex justify-between text-xs text-pink-600 dark:text-pink-400 font-semibold">
                       <span>2 sessions</span>
                       <span>10 sessions</span>
                     </div>
@@ -1489,23 +1501,23 @@ function HomeContent() {
                 </CardContent>
               </Card>
 
-              <Card className="border-2 border-orange-200/50 dark:border-orange-800/50 bg-gradient-to-br from-orange-50/40 via-white/60 to-yellow-50/40 dark:from-orange-950/20 dark:via-gray-900/60 dark:to-yellow-950/20 shadow-lg">
-                <CardHeader className="bg-gradient-to-r from-orange-100/30 to-yellow-100/30 dark:from-orange-900/20 dark:to-yellow-900/20 border-b border-orange-200/30 dark:border-orange-800/30">
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <div className="p-2 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-lg shadow-sm">
+              <Card className="border-2 border-red-200 dark:border-red-800 bg-white dark:bg-gray-900 shadow-lg">
+                <CardHeader className="border-b border-red-200 dark:border-red-800 pb-4 bg-red-50/30 dark:bg-red-900/20">
+                  <CardTitle className="text-lg flex items-center gap-2 font-semibold text-red-800 dark:text-red-200">
+                    <div className="p-2 bg-red-500 text-white rounded-lg shadow-sm">
                       <Clock className="h-4 w-4" />
                     </div>
-                    <span className="bg-gradient-to-r from-orange-600 to-yellow-600 dark:from-orange-400 dark:to-yellow-400 bg-clip-text text-transparent font-bold">Auto-Start Settings</span>
+                    Auto-Start Settings
                   </CardTitle>
-                  <CardDescription className="text-orange-700 dark:text-orange-300 font-medium">
+                  <CardDescription className="text-red-600 dark:text-red-400">
                     Control when timers start automatically
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
+                <CardContent className="space-y-6 p-6">
+                  <div className="flex items-center justify-between p-5 bg-red-100/60 dark:bg-red-900/30 rounded-xl border-2 border-red-300 dark:border-red-700 shadow-md">
                     <div className="space-y-1">
-                      <div className="text-sm font-medium">Auto-start breaks</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-sm font-bold text-red-800 dark:text-red-200">Auto-start breaks</div>
+                      <div className="text-xs text-red-600 dark:text-red-400">
                         Automatically start break timers after work sessions
                       </div>
                     </div>
@@ -1515,10 +1527,10 @@ function HomeContent() {
                     />
                   </div>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between p-5 bg-orange-100/60 dark:bg-orange-900/30 rounded-xl border-2 border-orange-300 dark:border-orange-700 shadow-md">
                     <div className="space-y-1">
-                      <div className="text-sm font-medium">Auto-start work sessions</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-sm font-bold text-orange-800 dark:text-orange-200">Auto-start work sessions</div>
+                      <div className="text-xs text-orange-600 dark:text-orange-400">
                         Automatically start work timers after breaks
                       </div>
                     </div>
@@ -1532,25 +1544,25 @@ function HomeContent() {
             </TabsContent>
 
             {/* Audio Settings Tab */}
-            <TabsContent value="audio" className="space-y-6 mt-6">
-              <Card className="border-2 border-blue-200/50 dark:border-blue-800/50 bg-gradient-to-br from-blue-50/50 via-white/70 to-cyan-50/50 dark:from-blue-950/30 dark:via-gray-900/70 dark:to-cyan-950/30 shadow-lg backdrop-blur-sm">
-                <CardHeader className="border-b border-blue-200/30 dark:border-blue-800/30 bg-gradient-to-r from-blue-100/40 to-cyan-100/40 dark:from-blue-900/20 dark:to-cyan-900/20">
-                  <CardTitle className="text-lg flex items-center gap-3">
-                    <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl shadow-lg">
-                      <Music className="h-5 w-5" />
+            <TabsContent value="audio" className="space-y-6 mt-6 p-4 bg-blue-50/50 dark:bg-blue-950/20 rounded-xl border-2 border-blue-200/50 dark:border-blue-800/50">
+              <Card className="border-2 border-blue-200 dark:border-blue-800 bg-white dark:bg-gray-900 shadow-lg">
+                <CardHeader className="border-b border-blue-200 dark:border-blue-800 pb-4 bg-blue-50/30 dark:bg-blue-900/20">
+                  <CardTitle className="text-lg flex items-center gap-3 font-semibold text-blue-800 dark:text-blue-200">
+                    <div className="p-2 bg-blue-500 text-white rounded-lg shadow-sm">
+                      <Music className="h-4 w-4" />
                     </div>
-                    <span className="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent font-bold">Notification Sounds</span>
+                    Notification Sounds
                   </CardTitle>
-                  <CardDescription className="text-blue-700 dark:text-blue-300 font-medium">
+                  <CardDescription className="text-blue-600 dark:text-blue-400">
                     Customize audio feedback for session completion
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-6 p-6">
                   {/* Sound Enabled */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between p-5 bg-blue-100/60 dark:bg-blue-900/30 rounded-xl border-2 border-blue-300 dark:border-blue-700 shadow-md">
                     <div className="space-y-1">
-                      <div className="text-sm font-medium">Enable Sounds</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-sm font-bold text-blue-800 dark:text-blue-200">Enable Sounds</div>
+                      <div className="text-xs text-blue-600 dark:text-blue-400">
                         Play notification sounds when sessions complete
                       </div>
                     </div>
@@ -1561,8 +1573,8 @@ function HomeContent() {
                   </div>
 
                   {/* Sound Selection */}
-                  <div className="space-y-3">
-                    <label className="text-sm font-medium">Notification Sound</label>
+                  <div className="space-y-4 p-5 bg-cyan-100/60 dark:bg-cyan-900/30 rounded-xl border-2 border-cyan-300 dark:border-cyan-700 shadow-md">
+                    <label className="text-sm font-bold text-cyan-800 dark:text-cyan-200">Notification Sound</label>
                     <Select 
                       value={settings.selectedSound} 
                       onValueChange={(value) => saveSettings({ ...settings, selectedSound: value })}
@@ -1589,10 +1601,10 @@ function HomeContent() {
                   </div>
 
                   {/* Volume Control */}
-                  <div className="space-y-3">
+                  <div className="space-y-4 p-5 bg-indigo-100/60 dark:bg-indigo-900/30 rounded-xl border-2 border-indigo-300 dark:border-indigo-700 shadow-md">
                     <div className="flex items-center justify-between">
-                      <label className="text-sm font-medium">Volume</label>
-                      <span className="text-sm text-muted-foreground">{Math.round(settings.volume * 100)}%</span>
+                      <label className="text-sm font-bold text-indigo-800 dark:text-indigo-200">Volume</label>
+                      <span className="text-sm font-bold text-white bg-indigo-500 px-4 py-2 rounded-lg shadow-md">{Math.round(settings.volume * 100)}%</span>
                     </div>
                     <Slider
                       value={[settings.volume]}
@@ -1606,10 +1618,10 @@ function HomeContent() {
                   </div>
 
                   {/* Ticking Sound */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between p-5 bg-sky-100/60 dark:bg-sky-900/30 rounded-xl border-2 border-sky-300 dark:border-sky-700 shadow-md">
                     <div className="space-y-1">
-                      <div className="text-sm font-medium">Ticking Sound</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-sm font-bold text-sky-800 dark:text-sky-200">Ticking Sound</div>
+                      <div className="text-xs text-sky-600 dark:text-sky-400">
                         Play a subtle ticking sound during focus sessions
                       </div>
                     </div>
@@ -1621,10 +1633,10 @@ function HomeContent() {
 
                   {/* Ticking Volume */}
                   {settings.tickingSoundEnabled && (
-                    <div className="space-y-3">
+                    <div className="space-y-4 p-5 bg-teal-100/60 dark:bg-teal-900/30 rounded-xl border-2 border-teal-300 dark:border-teal-700 shadow-md">
                       <div className="flex items-center justify-between">
-                        <label className="text-sm font-medium">Ticking Volume</label>
-                        <span className="text-sm text-muted-foreground">{Math.round(settings.tickingVolume * 100)}%</span>
+                        <label className="text-sm font-bold text-teal-800 dark:text-teal-200">Ticking Volume</label>
+                        <span className="text-sm font-bold text-white bg-teal-500 px-4 py-2 rounded-lg shadow-md">{Math.round(settings.tickingVolume * 100)}%</span>
                       </div>
                       <Slider
                         value={[settings.tickingVolume]}
@@ -1641,29 +1653,29 @@ function HomeContent() {
             </TabsContent>
 
             {/* Appearance Settings Tab */}
-            <TabsContent value="appearance" className="space-y-6 mt-6">
+            <TabsContent value="appearance" className="space-y-6 mt-6 p-4 bg-purple-50/50 dark:bg-purple-950/20 rounded-xl border-2 border-purple-200/50 dark:border-purple-800/50">
               {/* Basic Theme Settings for All Users */}
-              <Card className="border-2 border-purple-200/50 dark:border-purple-800/50 bg-gradient-to-br from-purple-50/50 via-white/70 to-pink-50/50 dark:from-purple-950/30 dark:via-gray-900/70 dark:to-pink-950/30 shadow-lg backdrop-blur-sm">
-                <CardHeader className="border-b border-purple-200/30 dark:border-purple-800/30 bg-gradient-to-r from-purple-100/40 to-pink-100/40 dark:from-purple-900/20 dark:to-pink-900/20">
-                  <CardTitle className="text-lg flex items-center gap-3">
-                    <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl shadow-lg">
-                      <Palette className="h-5 w-5" />
+              <Card className="border-2 border-purple-200 dark:border-purple-800 bg-white dark:bg-gray-900 shadow-lg">
+                <CardHeader className="border-b border-purple-200 dark:border-purple-800 pb-4 bg-purple-50/30 dark:bg-purple-900/20">
+                  <CardTitle className="text-lg flex items-center gap-3 font-semibold text-purple-800 dark:text-purple-200">
+                    <div className="p-2 bg-purple-500 text-white rounded-lg shadow-sm">
+                      <Palette className="h-4 w-4" />
                     </div>
-                    <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent font-bold">Basic Theme</span>
+                    Basic Theme
                   </CardTitle>
-                  <CardDescription className="text-purple-700 dark:text-purple-300 font-medium">
+                  <CardDescription className="text-purple-600 dark:text-purple-400">
                     Essential theme options available to all users
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-6 p-6">
                   {/* Theme Toggle - Available to All */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between p-5 bg-purple-100/60 dark:bg-purple-900/30 rounded-xl border-2 border-purple-300 dark:border-purple-700 shadow-md">
                     <div className="space-y-1">
-                      <div className="text-sm font-medium flex items-center gap-2">
+                      <div className="text-sm font-bold flex items-center gap-2 text-purple-800 dark:text-purple-200">
                         {settings.theme === 'dark' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
                         Dark Mode
                       </div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-xs text-purple-600 dark:text-purple-400">
                         {isAuthenticated ? 'Switch between light and dark themes' : 'Sign in to unlock dark mode'}
                       </div>
                     </div>
@@ -1685,8 +1697,8 @@ function HomeContent() {
                   </div>
                   
                   {/* Basic Color Scheme - Limited for Free Users */}
-                  <div className="space-y-3">
-                    <label className="text-sm font-medium">Color Scheme</label>
+                  <div className="space-y-4 p-5 bg-pink-100/60 dark:bg-pink-900/30 rounded-xl border-2 border-pink-300 dark:border-pink-700 shadow-md">
+                    <label className="text-sm font-bold text-pink-800 dark:text-pink-200">Color Scheme</label>
                     <Select 
                       value={settings.colorScheme} 
                       onValueChange={(value) => saveSettings({ ...settings, colorScheme: value })}
@@ -1814,23 +1826,23 @@ function HomeContent() {
                 </Card>
               )}
 
-              <Card className="border-2 border-indigo-200/50 dark:border-indigo-800/50 bg-gradient-to-br from-indigo-50/40 via-white/60 to-purple-50/40 dark:from-indigo-950/20 dark:via-gray-900/60 dark:to-purple-950/20 shadow-lg">
-                <CardHeader className="bg-gradient-to-r from-indigo-100/30 to-purple-100/30 dark:from-indigo-900/20 dark:to-purple-900/20 border-b border-indigo-200/30 dark:border-indigo-800/30">
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <div className="p-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg shadow-sm">
+              <Card className="border-2 border-indigo-200 dark:border-indigo-800 bg-white dark:bg-gray-900 shadow-lg">
+                <CardHeader className="border-b border-indigo-200 dark:border-indigo-800 pb-4 bg-indigo-50/30 dark:bg-indigo-900/20">
+                  <CardTitle className="text-lg flex items-center gap-2 font-semibold text-indigo-800 dark:text-indigo-200">
+                    <div className="p-2 bg-indigo-500 text-white rounded-lg shadow-sm">
                       <Settings className="h-4 w-4" />
                     </div>
-                    <span className="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent font-bold">Display Options</span>
+                    Display Options
                   </CardTitle>
-                  <CardDescription className="text-indigo-700 dark:text-indigo-300 font-medium">
+                  <CardDescription className="text-indigo-600 dark:text-indigo-400">
                     Control what information is shown during sessions
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
+                <CardContent className="space-y-6 p-6">
+                  <div className="flex items-center justify-between p-5 bg-indigo-100/60 dark:bg-indigo-900/30 rounded-xl border-2 border-indigo-300 dark:border-indigo-700 shadow-md">
                     <div className="space-y-1">
-                      <div className="text-sm font-medium">Show Progress Bar</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-sm font-bold text-indigo-800 dark:text-indigo-200">Show Progress Bar</div>
+                      <div className="text-xs text-indigo-600 dark:text-indigo-400">
                         Display visual progress during sessions
                       </div>
                     </div>
@@ -1840,10 +1852,10 @@ function HomeContent() {
                     />
                   </div>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between p-5 bg-violet-100/60 dark:bg-violet-900/30 rounded-xl border-2 border-violet-300 dark:border-violet-700 shadow-md">
                     <div className="space-y-1">
-                      <div className="text-sm font-medium">Show Session Count</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-sm font-bold text-violet-800 dark:text-violet-200">Show Session Count</div>
+                      <div className="text-xs text-violet-600 dark:text-violet-400">
                         Display completed sessions counter
                       </div>
                     </div>
@@ -1857,28 +1869,28 @@ function HomeContent() {
             </TabsContent>
 
             {/* Focus Settings Tab */}
-            <TabsContent value="focus" className="space-y-6 mt-6">
-              <Card className="border-2 border-yellow-200/50 dark:border-yellow-800/50 bg-gradient-to-br from-yellow-50/50 via-white/70 to-amber-50/50 dark:from-yellow-950/30 dark:via-gray-900/70 dark:to-amber-950/30 shadow-lg backdrop-blur-sm">
-                <CardHeader className="bg-gradient-to-r from-yellow-100/40 to-amber-100/40 dark:from-yellow-900/20 dark:to-amber-900/20 border-b border-yellow-200/30 dark:border-yellow-800/30">
-                  <CardTitle className="text-xl flex items-center gap-3">
-                    <div className="p-3 bg-gradient-to-r from-yellow-500 to-amber-500 text-white rounded-xl shadow-lg">
-                      <Zap className="h-5 w-5" />
+            <TabsContent value="focus" className="space-y-6 mt-6 p-4 bg-green-50/50 dark:bg-green-950/20 rounded-xl border-2 border-green-200/50 dark:border-green-800/50">
+              <Card className="border-2 border-green-200 dark:border-green-800 bg-white dark:bg-gray-900 shadow-lg">
+                <CardHeader className="border-b border-green-200 dark:border-green-800 pb-4 bg-green-50/30 dark:bg-green-900/20">
+                  <CardTitle className="text-lg flex items-center gap-3 font-semibold text-green-800 dark:text-green-200">
+                    <div className="p-2 bg-green-500 text-white rounded-lg shadow-sm">
+                      <Zap className="h-4 w-4" />
                     </div>
-                    <span className="bg-gradient-to-r from-yellow-600 to-amber-600 dark:from-yellow-400 dark:to-amber-400 bg-clip-text text-transparent font-bold">Focus Enhancement</span>
+                    Focus Enhancement
                   </CardTitle>
-                  <CardDescription className="text-yellow-700 dark:text-yellow-300 font-medium">
+                  <CardDescription className="text-green-600 dark:text-green-400">
                     Features to help you stay focused during work sessions
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6 p-6">
-                  <div className="flex items-center justify-between p-4 border-2 border-purple-200 dark:border-purple-700 rounded-xl bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-950/30 dark:to-indigo-950/30">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-purple-500 text-white rounded-lg">
+                  <div className="flex items-center justify-between p-6 border-2 border-green-300 dark:border-green-700 rounded-xl bg-green-100/60 dark:bg-green-900/30 shadow-md">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-green-500 text-white rounded-lg shadow-sm">
                         <Target className="h-4 w-4" />
                       </div>
                       <div className="space-y-1">
-                        <div className="text-base font-bold text-purple-900 dark:text-purple-100">Strict Mode</div>
-                        <div className="text-sm text-purple-700 dark:text-purple-300 font-medium">
+                        <div className="text-sm font-bold text-green-800 dark:text-green-200">Strict Mode</div>
+                        <div className="text-xs text-green-600 dark:text-green-400">
                           Prevent pausing during work sessions
                         </div>
                       </div>
@@ -1889,17 +1901,19 @@ function HomeContent() {
                     />
                   </div>
 
-                  <div className="flex items-center justify-between p-4 border-2 border-yellow-200 dark:border-yellow-700 rounded-xl bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-950/30 dark:to-amber-950/30">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-yellow-500 text-white rounded-lg">
+                  <div className="flex items-center justify-between p-6 border-2 border-emerald-300 dark:border-emerald-700 rounded-xl bg-emerald-100/60 dark:bg-emerald-900/30 shadow-md">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-emerald-500 text-white rounded-lg shadow-sm">
                         <Settings className="h-4 w-4" />
                       </div>
                       <div className="space-y-2">
-                        <div className="text-base font-bold text-yellow-900 dark:text-yellow-100">Website Blocker</div>
-                        <div className="text-sm text-yellow-700 dark:text-yellow-300 font-medium">
+                        <div className="text-sm font-bold text-emerald-800 dark:text-emerald-200 flex items-center gap-2">
+                          Website Blocker
+                          <Badge variant="outline" className="text-xs bg-yellow-200 dark:bg-yellow-800 border-yellow-400 dark:border-yellow-600 text-yellow-800 dark:text-yellow-200">Pro</Badge>
+                        </div>
+                        <div className="text-xs text-emerald-600 dark:text-emerald-400">
                           Block distracting websites during focus sessions
                         </div>
-                        <Badge variant="outline" className="text-xs bg-yellow-100 dark:bg-yellow-900 border-yellow-300 dark:border-yellow-700 text-yellow-800 dark:text-yellow-200">Pro Feature</Badge>
                       </div>
                     </div>
                     <Switch
@@ -1911,23 +1925,23 @@ function HomeContent() {
                 </CardContent>
               </Card>
 
-              <Card className="border-2 border-green-200/50 dark:border-green-800/50 bg-gradient-to-br from-green-50/40 via-white/60 to-emerald-50/40 dark:from-green-950/20 dark:via-gray-900/60 dark:to-emerald-950/20 shadow-lg">
-                <CardHeader className="bg-gradient-to-r from-green-100/30 to-emerald-100/30 dark:from-green-900/20 dark:to-emerald-900/20 border-b border-green-200/30 dark:border-green-800/30">
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <div className="p-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg shadow-sm">
+              <Card className="border-2 border-lime-200 dark:border-lime-800 bg-white dark:bg-gray-900 shadow-lg">
+                <CardHeader className="border-b border-lime-200 dark:border-lime-800 pb-4 bg-lime-50/30 dark:bg-lime-900/20">
+                  <CardTitle className="text-lg flex items-center gap-2 font-semibold text-lime-800 dark:text-lime-200">
+                    <div className="p-2 bg-lime-500 text-white rounded-lg shadow-sm">
                       <Settings className="h-4 w-4" />
                     </div>
-                    <span className="bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent font-bold">Notifications</span>
+                    Notifications
                   </CardTitle>
-                  <CardDescription className="text-green-700 dark:text-green-300 font-medium">
+                  <CardDescription className="text-lime-600 dark:text-lime-400">
                     Stay on track with helpful reminders
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
+                <CardContent className="space-y-6 p-6">
+                  <div className="flex items-center justify-between p-5 bg-lime-100/60 dark:bg-lime-900/30 rounded-xl border-2 border-lime-300 dark:border-lime-700 shadow-md">
                     <div className="space-y-1">
-                      <div className="text-sm font-medium">Browser Notifications</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-sm font-bold text-lime-800 dark:text-lime-200">Browser Notifications</div>
+                      <div className="text-xs text-lime-600 dark:text-lime-400">
                         Show desktop notifications for session changes
                       </div>
                     </div>
@@ -1937,10 +1951,10 @@ function HomeContent() {
                     />
                   </div>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between p-5 bg-teal-100/60 dark:bg-teal-900/30 rounded-xl border-2 border-teal-300 dark:border-teal-700 shadow-md">
                     <div className="space-y-1">
-                      <div className="text-sm font-medium">Auto Break Reminders</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-sm font-bold text-teal-800 dark:text-teal-200">Auto Break Reminders</div>
+                      <div className="text-xs text-teal-600 dark:text-teal-400">
                         Remind you to take breaks after work sessions
                       </div>
                     </div>
@@ -1955,16 +1969,16 @@ function HomeContent() {
           </Tabs>
 
           {/* Settings Actions */}
-          <div className="flex items-center justify-between pt-8 border-t-2 border-orange-200/30 dark:border-orange-800/30 bg-gradient-to-r from-orange-50/20 to-yellow-50/20 dark:from-orange-950/20 dark:to-yellow-950/20 -mx-6 px-6 pb-2 rounded-b-2xl">
-            <Button variant="outline" onClick={resetSettings} className="border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">
+          <div className="flex items-center justify-between pt-6 border-t border-gray-200 dark:border-gray-800 mt-6">
+            <Button variant="outline" onClick={resetSettings} className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
               <RotateCcw className="h-4 w-4 mr-2" />
               Reset to Defaults
             </Button>
             <div className="flex gap-3">
-              <Button variant="outline" onClick={() => setShowSettings(false)} className="border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">
+              <Button variant="outline" onClick={() => setShowSettings(false)} className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
                 Cancel
               </Button>
-              <Button onClick={() => setShowSettings(false)} className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-semibold px-6 py-2 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105">
+              <Button onClick={() => setShowSettings(false)} className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2">
                 Save Settings
               </Button>
             </div>
