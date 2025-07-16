@@ -1348,62 +1348,64 @@ function HomeContent() {
 
       <Toaster />
 
-      {/* Advanced Settings Modal - Mobile Optimized */}
+      {/* Advanced Settings Modal - Modern Design */}
       <Dialog open={showSettings} onOpenChange={setShowSettings}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto w-[95vw] sm:w-full">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 text-2xl">
-              <Settings className="h-6 w-6" />
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto w-[95vw] sm:w-full bg-gradient-to-br from-orange-50/95 via-white/95 to-yellow-50/95 dark:from-orange-950/95 dark:via-gray-900/95 dark:to-yellow-950/95 backdrop-blur-xl border-2 border-orange-200/50 dark:border-orange-800/50 shadow-2xl rounded-2xl">
+          <DialogHeader className="bg-gradient-to-r from-orange-100/80 to-yellow-100/80 dark:from-orange-900/40 dark:to-yellow-900/40 -m-6 mb-6 p-6 rounded-t-2xl border-b border-orange-200/30 dark:border-orange-800/30">
+            <DialogTitle className="flex items-center gap-3 text-2xl bg-gradient-to-r from-orange-600 to-yellow-600 dark:from-orange-400 dark:to-yellow-400 bg-clip-text text-transparent font-bold">
+              <div className="p-2 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-xl shadow-lg">
+                <Settings className="h-6 w-6" />
+              </div>
               Timer Settings
             </DialogTitle>
-            <DialogDescription>
+            <DialogDescription className="text-orange-700 dark:text-orange-300 font-medium">
               Customize your Pomodoro timer settings, audio preferences, and appearance options.
             </DialogDescription>
           </DialogHeader>
 
           <Tabs defaultValue="timer" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto gap-1">
-              <TabsTrigger value="timer" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3 text-xs sm:text-sm min-h-[44px] touch-manipulation">
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto gap-2 bg-gradient-to-r from-orange-100/50 to-yellow-100/50 dark:from-orange-900/30 dark:to-yellow-900/30 p-2 rounded-xl border border-orange-200/30 dark:border-orange-800/30">
+              <TabsTrigger value="timer" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 px-2 sm:px-4 text-xs sm:text-sm min-h-[50px] touch-manipulation bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/30 dark:to-orange-900/30 border border-red-200/50 dark:border-red-800/50 hover:from-red-100 hover:to-orange-100 dark:hover:from-red-800/40 dark:hover:to-orange-800/40 data-[state=active]:from-red-500 data-[state=active]:to-orange-500 data-[state=active]:text-white dark:data-[state=active]:from-red-600 dark:data-[state=active]:to-orange-600 transition-all duration-200 rounded-lg shadow-sm">
                 <Clock className="h-4 w-4" />
-                <span className="text-xs sm:text-sm">Timer</span>
+                <span className="text-xs sm:text-sm font-medium">Timer</span>
               </TabsTrigger>
-              <TabsTrigger value="audio" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3 text-xs sm:text-sm min-h-[44px] touch-manipulation">
+              <TabsTrigger value="audio" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 px-2 sm:px-4 text-xs sm:text-sm min-h-[50px] touch-manipulation bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 border border-blue-200/50 dark:border-blue-800/50 hover:from-blue-100 hover:to-cyan-100 dark:hover:from-blue-800/40 dark:hover:to-cyan-800/40 data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white dark:data-[state=active]:from-blue-600 dark:data-[state=active]:to-cyan-600 transition-all duration-200 rounded-lg shadow-sm">
                 <Music className="h-4 w-4" />
-                <span className="text-xs sm:text-sm">Audio</span>
+                <span className="text-xs sm:text-sm font-medium">Audio</span>
               </TabsTrigger>
-              <TabsTrigger value="appearance" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3 text-xs sm:text-sm min-h-[44px] touch-manipulation">
+              <TabsTrigger value="appearance" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 px-2 sm:px-4 text-xs sm:text-sm min-h-[50px] touch-manipulation bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 border border-purple-200/50 dark:border-purple-800/50 hover:from-purple-100 hover:to-pink-100 dark:hover:from-purple-800/40 dark:hover:to-pink-800/40 data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white dark:data-[state=active]:from-purple-600 dark:data-[state=active]:to-pink-600 transition-all duration-200 rounded-lg shadow-sm">
                 <Palette className="h-4 w-4" />
-                <span className="text-xs sm:text-sm">Theme</span>
+                <span className="text-xs sm:text-sm font-medium">Theme</span>
               </TabsTrigger>
-              <TabsTrigger value="focus" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 px-1 sm:px-3 text-xs sm:text-sm min-h-[44px] touch-manipulation">
+              <TabsTrigger value="focus" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 px-2 sm:px-4 text-xs sm:text-sm min-h-[50px] touch-manipulation bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/30 dark:to-amber-900/30 border border-yellow-200/50 dark:border-yellow-800/50 hover:from-yellow-100 hover:to-amber-100 dark:hover:from-yellow-800/40 dark:hover:to-amber-800/40 data-[state=active]:from-yellow-500 data-[state=active]:to-amber-500 data-[state=active]:text-white dark:data-[state=active]:from-yellow-600 dark:data-[state=active]:to-amber-600 transition-all duration-200 rounded-lg shadow-sm">
                 <Zap className="h-4 w-4" />
-                <span className="text-xs sm:text-sm">Focus</span>
+                <span className="text-xs sm:text-sm font-medium">Focus</span>
               </TabsTrigger>
             </TabsList>
 
             {/* Timer Settings Tab */}
-            <TabsContent value="timer" className="space-y-6">
-              <Card className="border border-gray-200 dark:border-gray-700">
-                <CardHeader className="border-b border-gray-100 dark:border-gray-700">
+            <TabsContent value="timer" className="space-y-6 mt-6">
+              <Card className="border-2 border-red-200/50 dark:border-red-800/50 bg-gradient-to-br from-red-50/50 via-white/70 to-orange-50/50 dark:from-red-950/30 dark:via-gray-900/70 dark:to-orange-950/30 shadow-lg backdrop-blur-sm">
+                <CardHeader className="border-b border-red-200/30 dark:border-red-800/30 bg-gradient-to-r from-red-100/40 to-orange-100/40 dark:from-red-900/20 dark:to-orange-900/20">
                   <CardTitle className="text-xl flex items-center gap-3">
-                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                      <Clock className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                    <div className="p-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-xl shadow-lg">
+                      <Clock className="h-5 w-5" />
                     </div>
-                    Session Duration
+                    <span className="bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-400 dark:to-orange-400 bg-clip-text text-transparent font-bold">Session Duration</span>
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-red-700 dark:text-red-300 font-medium">
                     Customize your work and break intervals
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6 p-6">
                   {/* Work Duration */}
-                  <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg space-y-4">
+                  <div className="p-5 border-2 border-red-200/40 dark:border-red-800/40 rounded-xl space-y-4 bg-gradient-to-r from-red-50/30 to-orange-50/30 dark:from-red-950/20 dark:to-orange-950/20 shadow-sm">
                     <div className="flex items-center justify-between">
-                      <label className="text-base font-medium flex items-center gap-2">
-                        <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
-                        Work Duration
+                      <label className="text-base font-semibold flex items-center gap-3">
+                        <div className="w-4 h-4 bg-gradient-to-r from-red-500 to-orange-500 rounded-full shadow-sm"></div>
+                        <span className="text-red-700 dark:text-red-300">Work Duration</span>
                       </label>
-                      <span className="text-base font-semibold bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded">{settings.workDuration} min</span>
+                      <span className="text-base font-bold bg-gradient-to-r from-red-500 to-orange-500 text-white px-4 py-2 rounded-lg shadow-sm">{settings.workDuration} min</span>
                     </div>
                     <Slider
                       value={[settings.workDuration]}
@@ -1413,20 +1415,20 @@ function HomeContent() {
                       step={5}
                       className="w-full"
                     />
-                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+                    <div className="flex justify-between text-sm text-red-600 dark:text-red-400 font-medium">
                       <span>5 min</span>
                       <span>90 min</span>
                     </div>
                   </div>
 
                   {/* Short Break Duration */}
-                  <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg space-y-4">
+                  <div className="p-5 border-2 border-green-200/40 dark:border-green-800/40 rounded-xl space-y-4 bg-gradient-to-r from-green-50/30 to-emerald-50/30 dark:from-green-950/20 dark:to-emerald-950/20 shadow-sm">
                     <div className="flex items-center justify-between">
-                      <label className="text-base font-medium flex items-center gap-2">
-                        <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
-                        Short Break
+                      <label className="text-base font-semibold flex items-center gap-3">
+                        <div className="w-4 h-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-sm"></div>
+                        <span className="text-green-700 dark:text-green-300">Short Break</span>
                       </label>
-                      <span className="text-base font-semibold bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded">{settings.shortBreakDuration} min</span>
+                      <span className="text-base font-bold bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-lg shadow-sm">{settings.shortBreakDuration} min</span>
                     </div>
                     <Slider
                       value={[settings.shortBreakDuration]}
@@ -1436,20 +1438,20 @@ function HomeContent() {
                       step={1}
                       className="w-full"
                     />
-                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+                    <div className="flex justify-between text-sm text-green-600 dark:text-green-400 font-medium">
                       <span>1 min</span>
                       <span>30 min</span>
                     </div>
                   </div>
 
                   {/* Long Break Duration */}
-                  <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg space-y-4">
+                  <div className="p-5 border-2 border-blue-200/40 dark:border-blue-800/40 rounded-xl space-y-4 bg-gradient-to-r from-blue-50/30 to-cyan-50/30 dark:from-blue-950/20 dark:to-cyan-950/20 shadow-sm">
                     <div className="flex items-center justify-between">
-                      <label className="text-base font-medium flex items-center gap-2">
-                        <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
-                        Long Break
+                      <label className="text-base font-semibold flex items-center gap-3">
+                        <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-sm"></div>
+                        <span className="text-blue-700 dark:text-blue-300">Long Break</span>
                       </label>
-                      <span className="text-base font-semibold bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded">{settings.longBreakDuration} min</span>
+                      <span className="text-base font-bold bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-lg shadow-sm">{settings.longBreakDuration} min</span>
                     </div>
                     <Slider
                       value={[settings.longBreakDuration]}
@@ -1459,17 +1461,17 @@ function HomeContent() {
                       step={5}
                       className="w-full"
                     />
-                    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+                    <div className="flex justify-between text-sm text-blue-600 dark:text-blue-400 font-medium">
                       <span>5 min</span>
                       <span>60 min</span>
                     </div>
                   </div>
 
                   {/* Long Break Interval */}
-                  <div className="space-y-3">
+                  <div className="space-y-4 p-4 bg-gradient-to-r from-purple-50/30 to-indigo-50/30 dark:from-purple-950/20 dark:to-indigo-950/20 rounded-xl border border-purple-200/30 dark:border-purple-800/30">
                     <div className="flex items-center justify-between">
-                      <label className="text-sm font-medium">Long Break Interval</label>
-                      <span className="text-sm text-muted-foreground">Every {settings.longBreakInterval} sessions</span>
+                      <label className="text-sm font-semibold text-purple-700 dark:text-purple-300">Long Break Interval</label>
+                      <span className="text-sm font-medium bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-3 py-1 rounded-lg">Every {settings.longBreakInterval} sessions</span>
                     </div>
                     <Slider
                       value={[settings.longBreakInterval]}
@@ -1479,7 +1481,7 @@ function HomeContent() {
                       step={1}
                       className="w-full"
                     />
-                    <div className="flex justify-between text-xs text-muted-foreground">
+                    <div className="flex justify-between text-xs text-purple-600 dark:text-purple-400 font-medium">
                       <span>2 sessions</span>
                       <span>10 sessions</span>
                     </div>
@@ -1487,10 +1489,15 @@ function HomeContent() {
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Auto-Start Settings</CardTitle>
-                  <CardDescription>
+              <Card className="border-2 border-orange-200/50 dark:border-orange-800/50 bg-gradient-to-br from-orange-50/40 via-white/60 to-yellow-50/40 dark:from-orange-950/20 dark:via-gray-900/60 dark:to-yellow-950/20 shadow-lg">
+                <CardHeader className="bg-gradient-to-r from-orange-100/30 to-yellow-100/30 dark:from-orange-900/20 dark:to-yellow-900/20 border-b border-orange-200/30 dark:border-orange-800/30">
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <div className="p-2 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-lg shadow-sm">
+                      <Clock className="h-4 w-4" />
+                    </div>
+                    <span className="bg-gradient-to-r from-orange-600 to-yellow-600 dark:from-orange-400 dark:to-yellow-400 bg-clip-text text-transparent font-bold">Auto-Start Settings</span>
+                  </CardTitle>
+                  <CardDescription className="text-orange-700 dark:text-orange-300 font-medium">
                     Control when timers start automatically
                   </CardDescription>
                 </CardHeader>
@@ -1525,11 +1532,16 @@ function HomeContent() {
             </TabsContent>
 
             {/* Audio Settings Tab */}
-            <TabsContent value="audio" className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Notification Sounds</CardTitle>
-                  <CardDescription>
+            <TabsContent value="audio" className="space-y-6 mt-6">
+              <Card className="border-2 border-blue-200/50 dark:border-blue-800/50 bg-gradient-to-br from-blue-50/50 via-white/70 to-cyan-50/50 dark:from-blue-950/30 dark:via-gray-900/70 dark:to-cyan-950/30 shadow-lg backdrop-blur-sm">
+                <CardHeader className="border-b border-blue-200/30 dark:border-blue-800/30 bg-gradient-to-r from-blue-100/40 to-cyan-100/40 dark:from-blue-900/20 dark:to-cyan-900/20">
+                  <CardTitle className="text-lg flex items-center gap-3">
+                    <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl shadow-lg">
+                      <Music className="h-5 w-5" />
+                    </div>
+                    <span className="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent font-bold">Notification Sounds</span>
+                  </CardTitle>
+                  <CardDescription className="text-blue-700 dark:text-blue-300 font-medium">
                     Customize audio feedback for session completion
                   </CardDescription>
                 </CardHeader>
@@ -1629,12 +1641,17 @@ function HomeContent() {
             </TabsContent>
 
             {/* Appearance Settings Tab */}
-            <TabsContent value="appearance" className="space-y-6">
+            <TabsContent value="appearance" className="space-y-6 mt-6">
               {/* Basic Theme Settings for All Users */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Basic Theme</CardTitle>
-                  <CardDescription>
+              <Card className="border-2 border-purple-200/50 dark:border-purple-800/50 bg-gradient-to-br from-purple-50/50 via-white/70 to-pink-50/50 dark:from-purple-950/30 dark:via-gray-900/70 dark:to-pink-950/30 shadow-lg backdrop-blur-sm">
+                <CardHeader className="border-b border-purple-200/30 dark:border-purple-800/30 bg-gradient-to-r from-purple-100/40 to-pink-100/40 dark:from-purple-900/20 dark:to-pink-900/20">
+                  <CardTitle className="text-lg flex items-center gap-3">
+                    <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl shadow-lg">
+                      <Palette className="h-5 w-5" />
+                    </div>
+                    <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent font-bold">Basic Theme</span>
+                  </CardTitle>
+                  <CardDescription className="text-purple-700 dark:text-purple-300 font-medium">
                     Essential theme options available to all users
                   </CardDescription>
                 </CardHeader>
@@ -1797,10 +1814,15 @@ function HomeContent() {
                 </Card>
               )}
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Display Options</CardTitle>
-                  <CardDescription>
+              <Card className="border-2 border-indigo-200/50 dark:border-indigo-800/50 bg-gradient-to-br from-indigo-50/40 via-white/60 to-purple-50/40 dark:from-indigo-950/20 dark:via-gray-900/60 dark:to-purple-950/20 shadow-lg">
+                <CardHeader className="bg-gradient-to-r from-indigo-100/30 to-purple-100/30 dark:from-indigo-900/20 dark:to-purple-900/20 border-b border-indigo-200/30 dark:border-indigo-800/30">
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <div className="p-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg shadow-sm">
+                      <Settings className="h-4 w-4" />
+                    </div>
+                    <span className="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent font-bold">Display Options</span>
+                  </CardTitle>
+                  <CardDescription className="text-indigo-700 dark:text-indigo-300 font-medium">
                     Control what information is shown during sessions
                   </CardDescription>
                 </CardHeader>
@@ -1835,16 +1857,16 @@ function HomeContent() {
             </TabsContent>
 
             {/* Focus Settings Tab */}
-            <TabsContent value="focus" className="space-y-6">
-              <Card className="border-2 border-orange-200 dark:border-orange-800 bg-gradient-to-br from-orange-50/50 to-yellow-50/50 dark:from-orange-950/30 dark:to-yellow-950/30">
-                <CardHeader className="bg-gradient-to-r from-orange-100/50 to-yellow-100/50 dark:from-orange-900/20 dark:to-yellow-900/20">
-                  <CardTitle className="text-xl flex items-center gap-3 text-orange-900 dark:text-orange-100">
-                    <div className="p-2 bg-orange-500 text-white rounded-lg">
+            <TabsContent value="focus" className="space-y-6 mt-6">
+              <Card className="border-2 border-yellow-200/50 dark:border-yellow-800/50 bg-gradient-to-br from-yellow-50/50 via-white/70 to-amber-50/50 dark:from-yellow-950/30 dark:via-gray-900/70 dark:to-amber-950/30 shadow-lg backdrop-blur-sm">
+                <CardHeader className="bg-gradient-to-r from-yellow-100/40 to-amber-100/40 dark:from-yellow-900/20 dark:to-amber-900/20 border-b border-yellow-200/30 dark:border-yellow-800/30">
+                  <CardTitle className="text-xl flex items-center gap-3">
+                    <div className="p-3 bg-gradient-to-r from-yellow-500 to-amber-500 text-white rounded-xl shadow-lg">
                       <Zap className="h-5 w-5" />
                     </div>
-                    Focus Enhancement
+                    <span className="bg-gradient-to-r from-yellow-600 to-amber-600 dark:from-yellow-400 dark:to-amber-400 bg-clip-text text-transparent font-bold">Focus Enhancement</span>
                   </CardTitle>
-                  <CardDescription className="text-orange-700 dark:text-orange-300 font-medium">
+                  <CardDescription className="text-yellow-700 dark:text-yellow-300 font-medium">
                     Features to help you stay focused during work sessions
                   </CardDescription>
                 </CardHeader>
@@ -1889,10 +1911,15 @@ function HomeContent() {
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Notifications</CardTitle>
-                  <CardDescription>
+              <Card className="border-2 border-green-200/50 dark:border-green-800/50 bg-gradient-to-br from-green-50/40 via-white/60 to-emerald-50/40 dark:from-green-950/20 dark:via-gray-900/60 dark:to-emerald-950/20 shadow-lg">
+                <CardHeader className="bg-gradient-to-r from-green-100/30 to-emerald-100/30 dark:from-green-900/20 dark:to-emerald-900/20 border-b border-green-200/30 dark:border-green-800/30">
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <div className="p-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg shadow-sm">
+                      <Settings className="h-4 w-4" />
+                    </div>
+                    <span className="bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent font-bold">Notifications</span>
+                  </CardTitle>
+                  <CardDescription className="text-green-700 dark:text-green-300 font-medium">
                     Stay on track with helpful reminders
                   </CardDescription>
                 </CardHeader>
@@ -1928,16 +1955,16 @@ function HomeContent() {
           </Tabs>
 
           {/* Settings Actions */}
-          <div className="flex items-center justify-between pt-6 border-t">
-            <Button variant="outline" onClick={resetSettings}>
+          <div className="flex items-center justify-between pt-8 border-t-2 border-orange-200/30 dark:border-orange-800/30 bg-gradient-to-r from-orange-50/20 to-yellow-50/20 dark:from-orange-950/20 dark:to-yellow-950/20 -mx-6 px-6 pb-2 rounded-b-2xl">
+            <Button variant="outline" onClick={resetSettings} className="border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">
               <RotateCcw className="h-4 w-4 mr-2" />
               Reset to Defaults
             </Button>
             <div className="flex gap-3">
-              <Button variant="outline" onClick={() => setShowSettings(false)}>
+              <Button variant="outline" onClick={() => setShowSettings(false)} className="border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200">
                 Cancel
               </Button>
-              <Button onClick={() => setShowSettings(false)} className={getButtonClass()}>
+              <Button onClick={() => setShowSettings(false)} className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-semibold px-6 py-2 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105">
                 Save Settings
               </Button>
             </div>
