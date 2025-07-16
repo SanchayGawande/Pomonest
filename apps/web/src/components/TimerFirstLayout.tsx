@@ -45,6 +45,10 @@ export function TimerFirstLayout({
     ? (isLongBreak ? 'longBreak' : 'shortBreak')
     : 'work'
 
+  // Debug logging for Pro status and visual themes
+  console.log('🎮 TimerFirstLayout - Pro status:', isProUser)
+  console.log('🎮 TimerFirstLayout - Settings:', settings)
+
   const getMainText = () => {
     if (timerState.isBreak) {
       return "Take a break and recharge"

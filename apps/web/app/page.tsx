@@ -1706,10 +1706,10 @@ function HomeContent() {
 
               {/* Pro Advanced Themes */}
               {(isAuthenticated && isProUser) ? (
-                <Card className="border-2 border-yellow-200 bg-gradient-to-r from-yellow-50 to-orange-50">
+                <Card className="border-2 border-yellow-200 dark:border-yellow-600 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/30 dark:to-orange-900/30">
                   <CardHeader>
                     <CardTitle className="text-lg flex items-center gap-2">
-                      <Crown className="h-5 w-5 text-yellow-600" />
+                      <Crown className="h-5 w-5 text-yellow-600 dark:text-yellow-400" />
                       Pro Visual Effects
                     </CardTitle>
                     <CardDescription>
@@ -1721,7 +1721,7 @@ function HomeContent() {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <label className="text-sm font-medium">Animation Style</label>
-                        <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">Pro Only</Badge>
+                        <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-200">Pro Only</Badge>
                       </div>
                       <Select 
                         value={settings.backgroundStyle} 

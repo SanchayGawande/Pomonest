@@ -11,6 +11,7 @@ interface ProVisualThemesProps {
 export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: ProVisualThemesProps) {
   // Debug logging for Pro themes
   console.log('🎨 ProVisualThemes loaded:', { colorScheme, backgroundStyle, sessionType })
+  console.log('🎨 ProVisualThemes rendering background style:', backgroundStyle)
   
   // Advanced color schemes with animated gradients
   const getThemeColors = () => {
