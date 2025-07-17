@@ -235,7 +235,7 @@ const fetchUserAnalytics = async (userId: string): Promise<AnalyticsData> => {
 // Get guest analytics from localStorage
 const getGuestAnalytics = (): AnalyticsData => {
   try {
-    const guestStats = localStorage.getItem('workstreak_guest_stats')
+    const guestStats = localStorage.getItem('pomonest_guest_stats')
     if (!guestStats) {
       return generateEmptyAnalytics()
     }

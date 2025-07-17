@@ -39,10 +39,34 @@ export function Footer() {
                   About
                 </Link>
                 <Link 
+                  href="/blog" 
+                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Blog
+                </Link>
+                <Link 
+                  href="/resources" 
+                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Resources
+                </Link>
+                <Link 
                   href="/contact" 
                   className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Contact
+                </Link>
+                <Link 
+                  href="/faq" 
+                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  FAQ
+                </Link>
+                <Link 
+                  href="/getting-started" 
+                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Getting Started
                 </Link>
                 <Link 
                   href="/auth/login" 
@@ -77,19 +101,19 @@ export function Footer() {
               <h4 className="text-sm font-semibold">Support</h4>
               <nav className="space-y-2">
                 <a 
-                  href="mailto:support@pomonest.com" 
+                  href="mailto:pomonesthelpdesk@gmail.com" 
                   className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Help & Support
                 </a>
                 <a 
-                  href="mailto:features@pomonest.com" 
+                  href="mailto:pomonesthelpdesk@gmail.com" 
                   className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Feature Requests
                 </a>
                 <a 
-                  href="mailto:bugs@pomonest.com" 
+                  href="mailto:pomonesthelpdesk@gmail.com" 
                   className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Report a Bug

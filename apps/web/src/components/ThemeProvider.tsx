@@ -31,12 +31,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         initialTheme = userData.theme as Theme
       } else if (user) {
         // For authenticated users, allow theme choice from localStorage
-        const savedTheme = localStorage.getItem('workstreak-theme') as Theme
+        const savedTheme = localStorage.getItem('pomonest-theme') as Theme
         initialTheme = savedTheme || 'light'
       } else {
         // For non-authenticated users, force light mode only
         initialTheme = 'light'
-        localStorage.removeItem('workstreak-theme') // Clear any saved dark mode
+        localStorage.removeItem('pomonest-theme') // Clear any saved dark mode
       }
 
       setThemeState(initialTheme)
@@ -69,7 +69,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     // Save to localStorage for immediate persistence (only for authenticated users)
     if (user) {
-      localStorage.setItem('workstreak-theme', newTheme)
+      localStorage.setItem('pomonest-theme', newTheme)
     }
 
     // Save to database if user is logged in

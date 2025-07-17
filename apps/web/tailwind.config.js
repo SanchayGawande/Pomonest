@@ -51,7 +51,7 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
         },
-        // WorkStreak Theme Colors
+        // Pomonest Theme Colors
         'streak-fire': 'hsl(var(--streak-fire))',
         'streak-ember': 'hsl(var(--streak-ember))',
         'focus-calm': 'hsl(var(--focus-calm))',

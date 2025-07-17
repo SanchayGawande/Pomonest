@@ -188,7 +188,7 @@ export function SubscriptionManagement({ onClose }: SubscriptionManagementProps)
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-green-800 dark:text-green-200">
               <Crown className="h-5 w-5" />
-              Current Plan: WorkStreak Pro {subscription.subscription_type === 'monthly' ? 'Monthly' : 'Yearly'}
+              Current Plan: Pomonest Pro {subscription.subscription_type === 'monthly' ? 'Monthly' : 'Yearly'}
             </CardTitle>
             <CardDescription className="text-green-700 dark:text-green-300">
               {subscription.subscription_status === 'active' ? (

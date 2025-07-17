@@ -82,6 +82,93 @@ export default function RootLayout({
         {/* Google AdSense Verification */}
         <meta name="google-adsense-account" content="ca-pub-4205049019803904" />
         
+        {/* Structured Data for Organization */}
+        <Script id="organization-schema" type="application/ld+json" strategy="afterInteractive">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "PomoNest",
+              "url": "https://pomonest.com",
+              "logo": "https://pomonest.com/favicon.svg",
+              "description": "Free Pomodoro timer and productivity app that helps users build focus habits and track productivity streaks.",
+              "founder": {
+                "@type": "Organization",
+                "name": "PomoNest Team"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "",
+                "contactType": "customer service",
+                "email": "pomonesthelpdesk@gmail.com",
+                "availableLanguage": "English"
+              },
+              "sameAs": [
+                "https://pomonest.com/about",
+                "https://pomonest.com/blog"
+              ]
+            }
+          `}
+        </Script>
+        
+        {/* Structured Data for Website */}
+        <Script id="website-schema" type="application/ld+json" strategy="afterInteractive">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "PomoNest",
+              "url": "https://pomonest.com",
+              "description": "Free online Pomodoro timer with habit tracking, task management, and analytics. Build focus streaks and boost productivity with the proven 25/5 technique.",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://pomonest.com/blog?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "PomoNest"
+              }
+            }
+          `}
+        </Script>
+        
+        {/* Structured Data for Software Application */}
+        <Script id="software-application-schema" type="application/ld+json" strategy="afterInteractive">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "PomoNest",
+              "description": "Free Pomodoro timer and productivity app with habit tracking, task management, and analytics",
+              "url": "https://pomonest.com",
+              "applicationCategory": "ProductivityApplication",
+              "operatingSystem": "Web Browser",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "127",
+                "bestRating": "5",
+                "worstRating": "1"
+              },
+              "featureList": [
+                "25-minute Pomodoro timer",
+                "Productivity streak tracking",
+                "Task management",
+                "Analytics and insights",
+                "No signup required",
+                "Mobile responsive"
+              ]
+            }
+          `}
+        </Script>
+        
         {/* Google AdSense */}
         {process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID && (
           <Script

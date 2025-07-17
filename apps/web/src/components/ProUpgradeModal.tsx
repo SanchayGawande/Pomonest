@@ -94,7 +94,7 @@ export function ProUpgradeModal({ isOpen, onClose, defaultPlan = 'monthly' }: Pr
         <DialogHeader className="text-center">
           <DialogTitle className="flex items-center justify-center gap-2 text-2xl">
             <Crown className="h-6 w-6 text-yellow-500" />
-            Upgrade to WorkStreak Pro
+            Upgrade to Pomonest Pro
           </DialogTitle>
           <DialogDescription className="text-base">
             <span className="text-primary font-semibold">Remove all ads</span> and unlock premium features to boost your productivity

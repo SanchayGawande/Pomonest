@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Play, Pause, RotateCcw, Coffee } from 'lucide-react'
 import { RippleEffect } from '@/components/ui/ripple-effect'
-import { formatTime, calculateProgress } from "@workstreak/shared-timer"
+import { formatTime, calculateProgress } from "@pomonest/shared-timer"
 
 interface TimerState {
   timeLeft: number

@@ -2,7 +2,7 @@
 const path = require('path');
 
 const nextConfig = {
-  transpilePackages: ['@workstreak/shared-timer'],
+  transpilePackages: ['@pomonest/shared-timer'],
   typescript: {
     // Skip TypeScript checking during build for now
     ignoreBuildErrors: true,

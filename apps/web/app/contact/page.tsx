@@ -34,9 +34,9 @@ export default function ContactPage() {
                 </p>
                 <Button 
                   className="w-full bg-blue-600 hover:bg-blue-700"
-                  onClick={() => window.location.href = 'mailto:support@pomonest.com'}
+                  onClick={() => window.location.href = 'mailto:pomonesthelpdesk@gmail.com'}
                 >
-                  support@pomonest.com
+                  pomonesthelpdesk@gmail.com
                 </Button>
               </CardContent>
             </Card>
@@ -54,9 +54,9 @@ export default function ContactPage() {
                 </p>
                 <Button 
                   className="w-full bg-purple-600 hover:bg-purple-700"
-                  onClick={() => window.location.href = 'mailto:features@pomonest.com'}
+                  onClick={() => window.location.href = 'mailto:pomonesthelpdesk@gmail.com'}
                 >
-                  features@pomonest.com
+                  pomonesthelpdesk@gmail.com
                 </Button>
               </CardContent>
             </Card>
@@ -74,9 +74,9 @@ export default function ContactPage() {
                 </p>
                 <Button 
                   className="w-full bg-red-600 hover:bg-red-700"
-                  onClick={() => window.location.href = 'mailto:bugs@pomonest.com'}
+                  onClick={() => window.location.href = 'mailto:pomonesthelpdesk@gmail.com'}
                 >
-                  bugs@pomonest.com
+                  pomonesthelpdesk@gmail.com
                 </Button>
               </CardContent>
             </Card>
@@ -93,10 +93,10 @@ export default function ContactPage() {
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-streak-fire to-streak-ember"
-                onClick={() => window.location.href = 'mailto:hello@pomonest.com'}
+                onClick={() => window.location.href = 'mailto:pomonesthelpdesk@gmail.com'}
               >
                 <Mail className="h-5 w-5 mr-2" />
-                Say Hello - hello@pomonest.com
+                Say Hello - pomonesthelpdesk@gmail.com
               </Button>
             </CardContent>
           </Card>

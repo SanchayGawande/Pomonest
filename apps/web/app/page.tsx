@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Timer, Flame, Target, Settings, User, BarChart3, Crown, Play, Pause, RotateCcw, Coffee, Bell, Volume2, VolumeX, Palette, Clock, Zap, Music, Moon, Sun, Sliders } from 'lucide-react'
-import { PomodoroTimer as TimerEngine, formatTime, calculateProgress } from "@workstreak/shared-timer"
+import { PomodoroTimer as TimerEngine, formatTime, calculateProgress } from "@pomonest/shared-timer"
 import { Progress } from "@/components/ui/progress"
 import { useToast } from "@/hooks/use-toast"
 import { Toaster } from '@/components/ui/toaster'
@@ -30,10 +30,12 @@ import { AdManager, AppAutoAds } from '@/components/ads/AdManager'
 import { supabase } from '@/lib/supabase'
 import { analytics } from '@/lib/analytics'
 import { useUpgradePrompts } from '@/components/UpgradePrompts'
+import { EducationalContent } from '@/components/EducationalContent'
+import { Testimonials } from '@/components/Testimonials'
 
 // Local storage keys for guest users
-const GUEST_SETTINGS_KEY = 'workstreak_guest_settings'
-const GUEST_STATS_KEY = 'workstreak_guest_stats'
+const GUEST_SETTINGS_KEY = 'pomonest_guest_settings'
+const GUEST_STATS_KEY = 'pomonest_guest_stats'
 
 interface GuestSettings {
   // Timer Settings
@@ -91,7 +93,7 @@ const defaultSettings: GuestSettings = {
   // Appearance Settings
   theme: 'default',
   backgroundStyle: 'gradient',
-  colorScheme: 'workstreak',
+  colorScheme: 'pomonest',
   showProgress: true,
   showSessionCount: true,
   
@@ -289,7 +291,7 @@ function HomeContent() {
     if (success === 'true' && sessionId) {
       toast({
         title: "🎉 Payment Successful!",
-        description: "Welcome to WorkStreak Pro! Your premium features are now active.",
+        description: "Welcome to Pomonest Pro! Your premium features are now active.",
       })
       
       // Remove success params from URL
@@ -335,7 +337,7 @@ function HomeContent() {
                     console.log('✅ Pro status automatically fixed!')
                     toast({
                       title: "✅ Pro Status Activated!",
-                      description: "Your Pro features are now active. Welcome to WorkStreak Pro!",
+                      description: "Your Pro features are now active. Welcome to Pomonest Pro!",
                     })
                   }
                 }
@@ -396,7 +398,7 @@ function HomeContent() {
           setIsProUser(true)
           toast({
             title: "✅ Pro Status Fixed!",
-            description: "Your Pro status has been activated. Welcome to WorkStreak Pro!",
+            description: "Your Pro status has been activated. Welcome to Pomonest Pro!",
           })
         } else {
           toast({
@@ -457,7 +459,7 @@ function HomeContent() {
           setIsProUser(true)
           toast({
             title: "🎉 Pro Upgrade Complete!",
-            description: "Your Pro status has been activated. Welcome to WorkStreak Pro!",
+            description: "Your Pro status has been activated. Welcome to Pomonest Pro!",
           })
           // Force a Pro status check to ensure everything is synced
           setTimeout(() => {
@@ -518,7 +520,7 @@ function HomeContent() {
         return 'text-gray-600 dark:text-gray-400'
       case 'retro':
         return 'text-purple-600 dark:text-purple-400'
-      default: // workstreak
+      default: // pomonest
         return 'text-primary'
     }
   }
@@ -536,7 +538,7 @@ function HomeContent() {
         return `${baseClass} bg-gray-50/50 dark:bg-gray-950/20 border-gray-200/50 dark:border-gray-800/50`
       case 'retro':
         return `${baseClass} bg-purple-50/50 dark:bg-purple-950/20 border-purple-200/50 dark:border-purple-800/50`
-      default: // workstreak
+      default: // pomonest
         return `${baseClass} bg-card/50`
     }
   }
@@ -554,7 +556,7 @@ function HomeContent() {
         return `${baseClass} bg-gradient-to-r from-gray-600 to-gray-700 text-white`
       case 'retro':
         return `${baseClass} bg-gradient-to-r from-purple-500 to-pink-500 text-white`
-      default: // workstreak
+      default: // pomonest
         return `${baseClass} bg-gradient-hero text-white`
     }
   }
@@ -777,7 +779,7 @@ function HomeContent() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/50">
         <div className="text-center">
           <div className="text-lg animate-pulse mb-2">Loading...</div>
-          <div className="text-sm text-muted-foreground">Initializing WorkStreak...</div>
+          <div className="text-sm text-muted-foreground">Initializing Pomonest...</div>
         </div>
       </div>
     )
@@ -1719,7 +1721,7 @@ function HomeContent() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="workstreak">🔥 WorkStreak (Fire & Focus)</SelectItem>
+                        <SelectItem value="pomonest">🔥 Pomonest (Fire & Focus)</SelectItem>
                         {(!isAuthenticated || !isProUser) && (
                           <SelectItem disabled value="pro-locked">
                             <div className="flex items-center gap-2 opacity-50">
@@ -2050,7 +2052,7 @@ function HomeContent() {
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Crown className="h-5 w-5 text-yellow-500" />
-              {isProUser ? 'Manage Subscription' : 'Upgrade to WorkStreak Pro'}
+              {isProUser ? 'Manage Subscription' : 'Upgrade to Pomonest Pro'}
             </DialogTitle>
             <DialogDescription>
               {isProUser 
@@ -2065,6 +2067,16 @@ function HomeContent() {
 
       {/* Upgrade Prompts */}
       {UpgradePromptComponent}
+
+      {/* Educational Content Section */}
+      <div className="mt-16">
+        <EducationalContent />
+      </div>
+
+      {/* Testimonials Section */}
+      <div className="mt-16">
+        <Testimonials />
+      </div>
     </div>
   )
 }
@@ -2073,9 +2085,9 @@ export default function Home() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "WorkStreak",
+    "name": "Pomonest",
     "description": "Free online Pomodoro timer with habit tracking, task management, and analytics. Build focus streaks and boost productivity with the proven 25/5 technique.",
-    "url": "https://workstreak.com",
+    "url": "https://pomonest.com",
     "applicationCategory": "ProductivityApplication",
     "operatingSystem": "Web Browser",
     "offers": {
@@ -2086,7 +2098,7 @@ export default function Home() {
     },
     "author": {
       "@type": "Organization",
-      "name": "WorkStreak Team"
+      "name": "Pomonest Team"
     },
     "aggregateRating": {
       "@type": "AggregateRating",

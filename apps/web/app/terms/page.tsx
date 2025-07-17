@@ -232,8 +232,8 @@ export default function TermsOfService() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  These terms are governed by and construed in accordance with the laws of [Your Jurisdiction]. 
-                  Any disputes arising from these terms will be resolved through binding arbitration or in the courts of [Your Jurisdiction].
+                  These terms are governed by and construed in accordance with the laws of the United States. 
+                  Any disputes arising from these terms will be resolved through binding arbitration or in the courts of the United States.
                 </p>
               </CardContent>
             </Card>
@@ -248,7 +248,7 @@ export default function TermsOfService() {
                   If you have any questions about these Terms of Service, please contact us:
                 </p>
                 <div className="space-y-2 text-muted-foreground">
-                  <p>Email: legal@pomonest.com</p>
+                  <p>Email: pomonest.legal@gmail.com</p>
                   <p>Response time: We aim to respond within 48 hours</p>
                 </div>
               </CardContent>

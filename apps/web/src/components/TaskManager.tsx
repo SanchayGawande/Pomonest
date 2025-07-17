@@ -30,7 +30,7 @@ interface TaskManagerProps {
   currentTask?: Task | null
 }
 
-const TASK_STORAGE_KEY = 'workstreak_tasks'
+const TASK_STORAGE_KEY = 'pomonest_tasks'
 const TASK_CATEGORIES = [
   'Work',
   'Study', 

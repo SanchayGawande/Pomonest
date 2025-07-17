@@ -183,7 +183,7 @@ export default function PrivacyPolicy() {
                   If you have any questions about this Privacy Policy or our data practices, please contact us:
                 </p>
                 <div className="space-y-2 text-muted-foreground">
-                  <p>Email: privacy@pomonest.com</p>
+                  <p>Email: pomonest.legal@gmail.com</p>
                   <p>Response time: We aim to respond within 48 hours</p>
                 </div>
               </CardContent>

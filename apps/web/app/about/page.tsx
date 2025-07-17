@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Timer, Target, Zap, Users, Heart, Award, Clock, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'About PomoNest - Pomodoro Timer & Productivity App',
@@ -14,6 +15,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/50">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
+          <Breadcrumbs />
           {/* Hero Section */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-6">

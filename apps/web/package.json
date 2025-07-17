@@ -1,5 +1,5 @@
 {
-  "name": "@workstreak/web",
+  "name": "@pomonest/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -33,7 +33,7 @@
     "@supabase/ssr": "^0.5.1",
     "@supabase/supabase-js": "^2.39.8",
     "@tanstack/react-query": "^5.83.0",
-    "@workstreak/shared-timer": "workspace:*",
+    "@pomonest/shared-timer": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^12.23.3",

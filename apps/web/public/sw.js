@@ -1,5 +1,5 @@
 // Service Worker for Push Notifications
-const CACHE_NAME = 'workstreak-v1'
+const CACHE_NAME = 'pomonest-v1'
 
 // Install event
 self.addEventListener('install', (event) => {
@@ -28,7 +28,7 @@ self.addEventListener('push', (event) => {
   console.log('Service Worker: Push received')
 
   let notificationData = {
-    title: 'WorkStreak',
+    title: 'Pomonest',
     body: 'You have a new notification',
     icon: '/favicon.ico',
     badge: '/favicon.ico',
@@ -76,7 +76,7 @@ self.addEventListener('notificationclick', (event) => {
 
   event.waitUntil(
     clients.matchAll({ type: 'window' }).then((clientList) => {
-      // Check if there's already a WorkStreak window open
+      // Check if there's already a Pomonest window open
       for (const client of clientList) {
         if (client.url.includes(self.location.origin) && 'focus' in client) {
           client.focus()

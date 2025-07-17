@@ -1,10 +1,10 @@
-# CLAUDE.md
+# DEVELOPMENT.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides development guidance when working with code in this repository.
 
 ## Project Overview
 
-WorkStreak is an advanced productivity application featuring a sophisticated Pomodoro timer with extensive customization, habit tracking, progress visualization, authentication, and Pro features. It includes comprehensive animations, multiple themes, task management, analytics, and social features.
+Pomonest is an advanced productivity application featuring a sophisticated Pomodoro timer with extensive customization, habit tracking, progress visualization, authentication, and Pro features. It includes comprehensive animations, multiple themes, task management, analytics, and social features.
 
 ## Tech Stack
 
@@ -15,7 +15,7 @@ WorkStreak is an advanced productivity application featuring a sophisticated Pom
 - **Authentication**: Supabase with custom auth provider
 - **Payments**: Stripe integration for Pro features
 - **Database**: Supabase PostgreSQL
-- **Styling**: Tailwind CSS with advanced custom WorkStreak theme system
+- **Styling**: Tailwind CSS with advanced custom Pomonest theme system
 - **Shared Logic**: Custom shared-timer package for timer engine
 - **Package Manager**: pnpm with workspace support
 
@@ -71,7 +71,7 @@ pnpm format
 - **Path Alias**: `@` maps to `./src` directory  
 - **Port**: Development server runs on port 3005
 - **TypeScript**: Configured for Next.js
-- **Theme**: Advanced WorkStreak theme system with multiple color schemes
+- **Theme**: Advanced Pomonest theme system with multiple color schemes
 - **Environment**: Comprehensive .env.local with Supabase, Stripe, etc.
 
 ## Component Architecture
@@ -102,7 +102,7 @@ Next.js App Router structure:
 2. No environment variables are currently required
 3. The project uses relaxed TypeScript settings - be cautious about type safety
 4. All UI components follow the shadcn/ui pattern with consistent styling
-5. Custom theme colors: WorkStreak brand colors, gradients (streak, focus, hero), and animations are defined in Tailwind config
+5. Custom theme colors: Pomonest brand colors, gradients (streak, focus, hero), and animations are defined in Tailwind config
 
 ## Troubleshooting
 

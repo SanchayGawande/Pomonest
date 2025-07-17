@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'WorkStreak - Pomodoro Timer & Productivity App',
-    short_name: 'WorkStreak',
+    name: 'Pomonest - Pomodoro Timer & Productivity App',
+    short_name: 'Pomonest',
     description: 'Free online Pomodoro timer with habit tracking, task management, and analytics. Build focus streaks and boost productivity.',
     start_url: '/',
     display: 'standalone',

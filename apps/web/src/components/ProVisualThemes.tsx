@@ -16,7 +16,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
   // Advanced color schemes with animated gradients
   const getThemeColors = () => {
     const baseSchemes = {
-      workstreak: {
+      pomonest: {
         work: 'from-red-400 via-red-500 to-red-600',
         shortBreak: 'from-green-400 via-green-500 to-green-600',
         longBreak: 'from-blue-400 via-blue-500 to-blue-600'
@@ -58,7 +58,7 @@ export function ProVisualThemes({ colorScheme, backgroundStyle, sessionType }: P
       }
     }
     
-    return baseSchemes[colorScheme as keyof typeof baseSchemes] || baseSchemes.workstreak
+    return baseSchemes[colorScheme as keyof typeof baseSchemes] || baseSchemes.pomonest
   }
 
   const currentGradient = getThemeColors()[sessionType]

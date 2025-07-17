@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from "react"
-import { PomodoroTimer as Timer, formatTime, calculateProgress } from "@workstreak/shared-timer"
+import { PomodoroTimer as Timer, formatTime, calculateProgress } from "@pomonest/shared-timer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CircularProgress } from "@/components/CircularProgress"
