@@ -1,18 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { ApiErrorHandler, validateBearerToken } from '@/lib/api-utils'
 
 export async function POST(request: NextRequest) {
   try {
-    // Get the authorization header
+    // Enhanced token validation
     const authHeader = request.headers.get('authorization')
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return NextResponse.json(
-        { error: 'Unauthorized - No auth header' },
-        { status: 401 }
-      )
+    const token = validateBearerToken(authHeader)
+    
+    if (!token) {
+      return ApiErrorHandler.createErrorResponse({
+        message: 'Authentication required',
+        status: 401
+      })
     }
-
-    const token = authHeader.replace('Bearer ', '')
     
     // Create Supabase client with service role key for server-side auth
     const supabase = createClient(
@@ -20,12 +21,13 @@ export async function POST(request: NextRequest) {
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     )
     
-    // Verify the JWT token
+    // Verify the JWT token with enhanced error handling
     const { data: { user }, error: authError } = await supabase.auth.getUser(token)
     
     if (authError || !user) {
+      console.error('Token validation failed:', authError?.message)
       return NextResponse.json(
-        { error: 'Unauthorized' },
+        { error: 'Invalid or expired token' },
         { status: 401 }
       )
     }

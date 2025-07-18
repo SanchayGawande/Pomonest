@@ -638,7 +638,12 @@ function HomeContent() {
     timer.callbacks = {
       onStateChange: handleStateChange,
       onWorkSessionComplete: handleWorkSessionComplete,
-      onBreakComplete: handleBreakComplete
+      onBreakComplete: handleBreakComplete,
+      onTick: (timeLeft: number) => {
+        if (settings.tickingSoundEnabled && timerState.isActive) {
+          playTickingSound()
+        }
+      }
     }
 
     return () => {
@@ -704,6 +709,27 @@ function HomeContent() {
     
     oscillator.start()
     oscillator.stop(audioContext.currentTime + sound.duration)
+  }
+
+  // Ticking sound for active timer sessions
+  const playTickingSound = () => {
+    if (!settings.tickingSoundEnabled) return
+    
+    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+    const oscillator = audioContext.createOscillator()
+    const gainNode = audioContext.createGain()
+    
+    oscillator.connect(gainNode)
+    gainNode.connect(audioContext.destination)
+    
+    // Subtle tick sound - short, soft, and non-intrusive
+    oscillator.frequency.value = 1200 // Higher frequency for crisp tick
+    oscillator.type = 'square' // Square wave for sharp tick sound
+    gainNode.gain.value = settings.tickingVolume * 0.1 // Much quieter than other sounds
+    
+    // Very short duration for tick sound
+    oscillator.start()
+    oscillator.stop(audioContext.currentTime + 0.05) // 50ms tick
   }
 
   const saveSettings = (newSettings: GuestSettings) => {
@@ -908,11 +934,10 @@ function HomeContent() {
       <section className="bg-white dark:bg-gray-900 py-12 border-t">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Build Unstoppable Focus Habits with PomoNest</h2>
+            <h1 className="text-4xl font-bold mb-6">Free Pomodoro Timer - Build Focus Streaks & Boost Productivity</h1>
+            <h2 className="text-2xl font-semibold mb-6 text-muted-foreground">Master the 25/5 Focus Technique with Smart Habit Tracking</h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              PomoNest is the free Pomodoro timer that helps you build consistent focus habits, track your productivity streaks, 
-              and achieve more without burnout. Based on the scientifically-proven 25/5 technique, our app makes deep work 
-              accessible to everyone – no signup required.
+              The Pomodoro Technique is a scientifically-proven time management method that uses 25-minute focused work sessions followed by 5-minute breaks. PomoNest is the most advanced free Pomodoro timer that enhances this technique with habit streak tracking, save passes for streak protection, and comprehensive analytics. Unlike basic timers, PomoNest helps you build consistent focus habits that compound over time, making it easier to maintain productivity streaks and achieve long-term goals.
             </p>
             
             <div className="grid gap-8 md:grid-cols-3 mb-12">
@@ -997,7 +1022,7 @@ function HomeContent() {
       <section className="bg-white dark:bg-gray-900 py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-8">Perfect for Every Type of Focused Mind</h2>
+            <h2 className="text-3xl font-bold mb-8">Advanced Features That Keep Your Productivity Streaks Alive</h2>
             
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               <Card className="p-6">
@@ -1328,6 +1353,53 @@ function HomeContent() {
               <p className="text-sm text-muted-foreground">
                 Join thousands of users who have improved their focus with PomoNest
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section for SEO */}
+        <section className="bg-white dark:bg-gray-900 py-12" itemScope itemType="https://schema.org/FAQPage">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+              
+              <div className="space-y-8">
+                <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                  <h3 className="text-xl font-semibold mb-3" itemProp="name">What is the Pomodoro Technique and how does it work?</h3>
+                  <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                    <div className="text-muted-foreground" itemProp="text">
+                      The Pomodoro Technique is a time management method created by Francesco Cirillo that breaks work into 25-minute focused intervals called "pomodoros," followed by 5-minute breaks. After completing 4 pomodoros, you take a longer 15-30 minute break. This technique leverages the brain's natural attention cycles to maximize focus and prevent burnout.
+                    </div>
+                  </div>
+                </div>
+
+                <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                  <h3 className="text-xl font-semibold mb-3" itemProp="name">How is PomoNest different from other Pomodoro timers?</h3>
+                  <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                    <div className="text-muted-foreground" itemProp="text">
+                      PomoNest goes beyond basic timing by adding habit streak tracking, save passes that protect your streaks when life happens, comprehensive analytics to track your productivity patterns, and multiple themes. It's designed to build long-term focus habits, not just time individual sessions.
+                    </div>
+                  </div>
+                </div>
+
+                <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                  <h3 className="text-xl font-semibold mb-3" itemProp="name">Do I need to create an account to use PomoNest?</h3>
+                  <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                    <div className="text-muted-foreground" itemProp="text">
+                      No account required! You can start using PomoNest immediately as a guest user. However, creating a free account unlocks streak tracking, analytics, and the ability to save your settings across devices. Pro users get additional features like save passes and ad-free experience.
+                    </div>
+                  </div>
+                </div>
+
+                <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                  <h3 className="text-xl font-semibold mb-3" itemProp="name">What are save passes and how do they work?</h3>
+                  <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                    <div className="text-muted-foreground" itemProp="text">
+                      Save passes are a Pro feature that automatically protect your productivity streaks when you miss a day. Instead of losing your streak completely, a save pass is used to maintain your progress. Pro users get 3 save passes monthly or 12 yearly, ensuring life's interruptions don't derail your long-term habits.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

@@ -5,14 +5,28 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Clock, User, ArrowLeft, ArrowRight, Share2, BookOpen, Calendar, Tag } from 'lucide-react'
 import Link from 'next/link'
+import Script from 'next/script'
 import { CompletePomodoroGuide } from '@/components/blog/CompletePomodoroGuide'
 import { HowToFocusBetter } from '@/components/blog/HowToFocusBetter'
 import { ProductivityTipsStudents } from '@/components/blog/ProductivityTipsStudents'
 import { BuildingFocusHabits } from '@/components/blog/BuildingFocusHabits'
 import { PomodoroTechniqueADHD } from '@/components/blog/PomodoroTechniqueADHD'
 import { TeamProductivityRemoteWork } from '@/components/blog/TeamProductivityRemoteWork'
+import { WhatIsPomodoroTechnique } from '@/components/blog/WhatIsPomodoroTechnique'
 
 const blogPosts = {
+  'what-is-pomodoro-technique': {
+    title: 'What is the Pomodoro Technique? The Complete Guide to 25-Minute Focus Sessions',
+    description: 'Comprehensive guide to the Pomodoro Technique: 25-minute focus sessions, benefits, step-by-step instructions, and how PomoNest enhances this proven productivity method.',
+    author: 'PomoNest Team',
+    publishDate: 'January 18, 2025',
+    readTime: '12 min read',
+    category: 'Technique',
+    tags: ['Pomodoro', 'Time Management', 'Focus', 'Productivity', 'Francesco Cirillo'],
+    keywords: 'what is pomodoro technique, pomodoro timer online, focus productivity techniques, time management method 25 minute, Francesco Cirillo',
+    component: WhatIsPomodoroTechnique,
+    featured: true
+  },
   'complete-pomodoro-technique-guide-2025': {
     title: 'The Complete Pomodoro Technique Guide (2025 Edition)',
     description: 'Master the world\'s most effective productivity method with this comprehensive guide to the Pomodoro Technique. Includes scientific research, step-by-step instructions, and advanced variations.',
@@ -138,7 +152,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null
 
   return (
-    <div className="min-h-screen">
+      <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           {/* Article Header */}

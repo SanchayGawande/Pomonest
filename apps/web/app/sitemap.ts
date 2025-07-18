@@ -23,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/blog/what-is-pomodoro-technique`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 1.0,
+    },
+    {
       url: `${baseUrl}/blog/complete-pomodoro-technique-guide-2025`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
