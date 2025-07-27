@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="og-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="50%" style="stop-color:#f7931e"/>
+      <stop offset="100%" style="stop-color:#ff6b35"/>
+    </linearGradient>
+    <filter id="text-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#og-bg)"/>
+  
+  <!-- Overlay pattern -->
+  <rect width="1200" height="630" fill="url(#overlay)" opacity="0.1"/>
+  
+  <!-- Main timer circle -->
+  <circle cx="300" cy="315" r="120" fill="#fff" opacity="0.15"/>
+  <circle cx="300" cy="315" r="100" fill="#fff" opacity="0.9"/>
+  
+  <!-- Progress ring -->
+  <circle cx="300" cy="315" r="85" fill="none" stroke="#ff6b35" stroke-width="12" 
+          stroke-dasharray="400 133" stroke-dashoffset="60" stroke-linecap="round"
+          transform="rotate(-90 300 315)" opacity="0.8"/>
+  
+  <!-- Timer center -->
+  <circle cx="300" cy="315" r="12" fill="#ff6b35"/>
+  
+  <!-- Timer hands -->
+  <line x1="300" y1="315" x2="300" y2="240" stroke="#ff6b35" stroke-width="8" stroke-linecap="round"/>
+  <line x1="300" y1="315" x2="350" y2="275" stroke="#ff6b35" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  
+  <!-- Title -->
+  <text x="550" y="200" fill="#fff" font-family="system-ui, -apple-system, sans-serif" 
+        font-size="72" font-weight="700" filter="url(#text-shadow)">PomoNest</text>
+  
+  <!-- Subtitle -->
+  <text x="550" y="260" fill="#fff" font-family="system-ui, -apple-system, sans-serif" 
+        font-size="36" font-weight="400" opacity="0.9" filter="url(#text-shadow)">
+    Free Pomodoro Timer &amp; Focus Tracker
+  </text>
+  
+  <!-- Features -->
+  <text x="550" y="320" fill="#fff" font-family="system-ui, -apple-system, sans-serif" 
+        font-size="24" font-weight="400" opacity="0.8">
+    ✓ 25/5 Minute Sessions
+  </text>
+  <text x="550" y="360" fill="#fff" font-family="system-ui, -apple-system, sans-serif" 
+        font-size="24" font-weight="400" opacity="0.8">
+    ✓ Habit Streak Tracking
+  </text>
+  <text x="550" y="400" fill="#fff" font-family="system-ui, -apple-system, sans-serif" 
+        font-size="24" font-weight="400" opacity="0.8">
+    ✓ Analytics &amp; Insights
+  </text>
+  
+  <!-- CTA -->
+  <rect x="550" y="450" width="280" height="60" rx="30" fill="#fff" opacity="0.9"/>
+  <text x="690" y="490" text-anchor="middle" fill="#ff6b35" font-family="system-ui, -apple-system, sans-serif" 
+        font-size="24" font-weight="600">Start Focusing Now</text>
+  
+  <!-- Website -->
+  <text x="1150" y="600" text-anchor="end" fill="#fff" font-family="system-ui, -apple-system, sans-serif" 
+        font-size="20" font-weight="400" opacity="0.7">pomonest.com</text>
+</svg>

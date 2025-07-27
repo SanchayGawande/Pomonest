@@ -30,9 +30,14 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.svg', sizes: '32x32', type: 'image/svg+xml' },
+    ],
     shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    apple: [
+      { url: '/apple-touch-icon.svg', sizes: '180x180', type: 'image/svg+xml' },
+    ],
   },
   manifest: '/manifest.json',
   openGraph: {
@@ -44,10 +49,11 @@ export const metadata: Metadata = {
     siteName: 'PomoNest',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image.svg',
         width: 1200,
         height: 630,
         alt: 'PomoNest - Free Pomodoro Timer with Habit Streaks',
+        type: 'image/svg+xml',
       },
     ],
   },
@@ -55,7 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Pomodoro Timer Free - Focus Tracker & Habit Streaks',
     description: 'Free Pomodoro timer with streak tracking, save passes & analytics. Boost focus with the proven 25/5 technique. No signup required!',
-    images: ['/og-image.png'],
+    images: ['/og-image.svg'],
     creator: '@pomonest',
   },
   robots: {
@@ -307,6 +313,15 @@ export default function RootLayout({
             }
           `}
         </Script>
+        
+        {/* Additional favicon formats for better browser compatibility */}
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon-32x32.svg" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#ff6b35" />
+        <meta name="msapplication-TileColor" content="#ff6b35" />
+        <meta name="msapplication-config" content="none" />
       </head>
       <body className={inter.className}>
         <QueryProvider>
