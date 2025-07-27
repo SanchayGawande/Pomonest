@@ -147,11 +147,19 @@ export type Database = {
   }
 }
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+// Check if Supabase is configured
+const isSupabaseConfigured = supabaseUrl && supabaseAnonKey
 
 // Client-side Supabase client
 export function createClient() {
+  if (!isSupabaseConfigured) {
+    console.warn('⚠️ Supabase not configured - running in guest mode only')
+    return null
+  }
+  
   return createBrowserClient<Database>(supabaseUrl, supabaseAnonKey, {
     auth: {
       flowType: 'implicit',
@@ -162,22 +170,27 @@ export function createClient() {
   })
 }
 
-// Legacy export for backward compatibility
-export const supabase = createBrowserClient<Database>(supabaseUrl, supabaseAnonKey, {
+// Legacy export for backward compatibility - null if not configured
+export const supabase = isSupabaseConfigured ? createBrowserClient<Database>(supabaseUrl, supabaseAnonKey, {
   auth: {
     flowType: 'implicit',
     autoRefreshToken: true,
     detectSessionInUrl: false, // Disable automatic URL session detection
     persistSession: true
   }
-})
+}) : null
 
 // Server-side Supabase client for App Router
 export function createServerComponentClient() {
+  if (!isSupabaseConfigured) {
+    console.warn('⚠️ Supabase not configured - server client returning null')
+    return null
+  }
+  
   const { cookies } = require('next/headers')
   const cookieStore = cookies()
   
-  return createServerClient<Database>(supabaseUrl, supabaseAnonKey, {
+  return createServerClient<Database>(supabaseUrl!, supabaseAnonKey!, {
     cookies: {
       get(name: string) {
         return cookieStore.get(name)?.value
@@ -188,10 +201,15 @@ export function createServerComponentClient() {
 
 // Server-side client for Route Handlers
 export function createRouteHandlerClient() {
+  if (!isSupabaseConfigured) {
+    console.warn('⚠️ Supabase not configured - route handler client returning null')
+    return null
+  }
+  
   const { cookies } = require('next/headers')
   const cookieStore = cookies()
   
-  return createServerClient<Database>(supabaseUrl, supabaseAnonKey, {
+  return createServerClient<Database>(supabaseUrl!, supabaseAnonKey!, {
     cookies: {
       get(name: string) {
         return cookieStore.get(name)?.value

@@ -184,7 +184,12 @@ function HomeContent() {
   const { toast } = useToast()
 
   // Timer state
-  const [timer] = useState(() => new TimerEngine())
+  const [timer] = useState(() => {
+    const newTimer = new TimerEngine()
+    // Try to restore persisted state
+    newTimer.loadPersistedState()
+    return newTimer
+  })
   const [timerState, setTimerState] = useState(timer.getState())
   const [settings, setSettings] = useState<GuestSettings>(defaultSettings)
   const [guestStats, setGuestStats] = useState<GuestStats>({
@@ -580,10 +585,39 @@ function HomeContent() {
     })
   }, [timer, settings.workDuration, settings.shortBreakDuration, settings.longBreakDuration, settings.longBreakInterval])
 
+  // Page visibility handling
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      const isVisible = !document.hidden
+      timer.setVisibility(isVisible)
+      
+      if (isVisible) {
+        console.log('👀 Page visible - timer sync check')
+      } else {
+        console.log('🔍 Page hidden - timer continues in background')
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [timer])
+
   // Timer callbacks
   useEffect(() => {
     const handleStateChange = (newState: typeof timerState) => {
       setTimerState(newState)
+    }
+
+    const handleVisibilityChange = (isVisible: boolean) => {
+      if (isVisible && timerState.isActive) {
+        toast({
+          title: "⏰ Timer Sync",
+          description: "Welcome back! Timer has been synchronized.",
+        })
+      }
     }
 
     const handleWorkSessionComplete = (sessionCount: number) => {
@@ -639,6 +673,7 @@ function HomeContent() {
       onStateChange: handleStateChange,
       onWorkSessionComplete: handleWorkSessionComplete,
       onBreakComplete: handleBreakComplete,
+      onVisibilityChange: handleVisibilityChange,
       onTick: (timeLeft: number) => {
         if (settings.tickingSoundEnabled && timerState.isActive) {
           playTickingSound()
