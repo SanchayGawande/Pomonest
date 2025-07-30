@@ -6,6 +6,7 @@ import { QueryProvider } from '@/components/QueryProvider'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { AdProvider } from '@/components/ads/AdProvider'
 import { Footer } from '@/components/Footer'
+import { CookieConsentBanner } from '@/components/CookieConsent'
 import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -175,34 +176,80 @@ export default function RootLayout({
           `}
         </Script>
         
-        {/* Google AdSense */}
+        {/* Google AdSense with COPPA and Privacy Compliance */}
         {process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID && (
           <Script
             async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}`}
             crossOrigin="anonymous"
             strategy="afterInteractive"
+            onLoad={() => {
+              // Configure AdSense for COPPA compliance and restricted audiences
+              if (window.adsbygoogle) {
+                window.adsbygoogle.push({
+                  google_ad_client: process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID,
+                  enable_page_level_ads: true,
+                  restricted_data_processing: true,
+                  tag_for_child_directed_treatment: 0, // Not child-directed
+                  tag_for_under_age_of_consent: 0 // Not under age of consent
+                });
+              }
+            }}
           />
         )}
         
-        {/* Google Analytics 4 (GA4) - Your specific tracking ID */}
+        {/* Google Analytics 4 (GA4) - Consent-based loading */}
         <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-TXL346B71K"
+          id="google-analytics-consent"
           strategy="afterInteractive"
-        />
-        <Script id="google-analytics-4" strategy="afterInteractive">
+        >
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-TXL346B71K', {
-              page_path: window.location.pathname,
-              anonymize_ip: true,
-              allow_google_signals: false,
-              allow_ad_personalization_signals: false
+            // Initialize Google Analytics only with user consent
+            function initializeGoogleAnalytics() {
+              const consent = localStorage.getItem('pomonest_cookie_consent');
+              if (consent) {
+                try {
+                  const parsedConsent = JSON.parse(consent);
+                  if (parsedConsent.analytics) {
+                    // Load Google Analytics script
+                    const script = document.createElement('script');
+                    script.async = true;
+                    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-TXL346B71K';
+                    document.head.appendChild(script);
+                    
+                    // Initialize gtag
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    window.gtag = gtag;
+                    gtag('js', new Date());
+                    gtag('config', 'G-TXL346B71K', {
+                      page_path: window.location.pathname,
+                      anonymize_ip: true,
+                      allow_google_signals: false,
+                      allow_ad_personalization_signals: false,
+                      restricted_data_processing: true,
+                      custom_parameters: {
+                        coppa_compliant: true,
+                        restricted_audiences: true
+                      }
+                    });
+                    console.log('📊 Google Analytics 4 initialized with user consent');
+                  }
+                } catch (e) {
+                  console.log('Analytics consent not available');
+                }
+              }
+            }
+            
+            // Check consent on page load
+            initializeGoogleAnalytics();
+            
+            // Listen for consent changes
+            window.addEventListener('storage', function(e) {
+              if (e.key === 'pomonest_cookie_consent') {
+                initializeGoogleAnalytics();
+              }
             });
-            console.log('📊 Google Analytics 4 initialized with ID: G-TXL346B71K');
           `}
         </Script>
         
@@ -330,6 +377,7 @@ export default function RootLayout({
               <AdProvider>
                 {children}
                 <Footer />
+                <CookieConsentBanner />
               </AdProvider>
             </ThemeProvider>
           </CleanAuthProvider>

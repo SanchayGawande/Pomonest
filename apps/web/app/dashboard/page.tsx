@@ -16,7 +16,6 @@ import { ThemeToggle } from '@/components/ThemeToggle'
 import { BannerAd } from '@/components/ads/BannerAd'
 import { SidebarAd } from '@/components/ads/SidebarAd'
 import { InterstitialAd } from '@/components/ads/InterstitialAd'
-import { AdBlockerDetector } from '@/components/ads/AdBlockerDetector'
 import { ProUpgradeModal } from '@/components/ProUpgradeModal'
 
 export default function DashboardPage() {
@@ -161,13 +160,6 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      {/* Ad Blocker Detection */}
-      <div className="container pt-4">
-        <AdBlockerDetector 
-          onUpgradeClick={() => setShowProModal(true)}
-          className="mb-4"
-        />
-      </div>
 
       {/* Banner Ad */}
       <div className="container">

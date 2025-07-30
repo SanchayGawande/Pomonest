@@ -1,0 +1,28 @@
+# robots.txt for PomoNest - Pomodoro Timer
+# This file tells search engine crawlers which pages they can access
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://pomonest.com/sitemap.xml
+
+# Disallow crawling of certain directories
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /settings/
+
+# Allow crawling of important pages
+Allow: /
+Allow: /about
+Allow: /blog/
+Allow: /privacy
+Allow: /terms
+Allow: /cookies
+Allow: /contact
+Allow: /faq
+Allow: /getting-started
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

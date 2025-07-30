@@ -95,6 +95,7 @@ export function BannerAd({
   // Real AdSense implementation
   return (
     <div className={`text-center ${className}`} ref={adRef}>
+      <div className="text-xs text-gray-500 mb-1">Advertisement</div>
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}

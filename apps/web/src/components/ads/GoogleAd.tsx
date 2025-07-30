@@ -62,6 +62,7 @@ export function GoogleAd({
 
   return (
     <div className={`text-center ${className}`} style={style}>
+      <div className="text-xs text-gray-500 mb-1">Advertisement</div>
       <ins
         ref={adRef}
         className="adsbygoogle"

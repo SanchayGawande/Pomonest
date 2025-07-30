@@ -12,6 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ProUpgradeModal } from '@/components/ProUpgradeModal'
 import { NotificationSettings } from '@/components/NotificationSettings'
 import { ThemeToggle } from '@/components/ThemeToggle'
+import { DataExportDelete } from '@/components/DataExportDelete'
 import { ArrowLeft, Crown, User, Bell, Palette, Moon } from 'lucide-react'
 
 export default function SettingsPage() {
@@ -185,6 +186,9 @@ export default function SettingsPage() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Data Privacy Section */}
+          <DataExportDelete />
         </div>
       </main>
 

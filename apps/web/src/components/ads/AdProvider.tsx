@@ -23,25 +23,9 @@ export function AdProvider({ children }: { children: React.ReactNode }) {
     // Initialize analytics
     initializeAnalytics()
 
-    // Simple ad blocker detection
-    const testAd = document.createElement('div')
-    testAd.innerHTML = '&nbsp;'
-    testAd.className = 'adsbox ads ad-container'
-    testAd.style.position = 'absolute'
-    testAd.style.left = '-10000px'
-    document.body.appendChild(testAd)
-
-    setTimeout(() => {
-      if (testAd.offsetHeight === 0) {
-        setIsAdBlockerDetected(true)
-        analytics.trackAdBlockerDetected(user?.id)
-      }
-      try {
-        document.body.removeChild(testAd)
-      } catch (e) {
-        // Element might already be removed
-      }
-    }, 100)
+    // Ad blocker detection disabled to comply with AdSense policies
+    // Always set to false
+    setIsAdBlockerDetected(false)
   }, [user?.id])
 
   const trackAdImpression = (adType: 'banner' | 'sidebar' | 'interstitial') => {

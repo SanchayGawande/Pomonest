@@ -1,0 +1,9 @@
+# ads.txt file for PomoNest
+# Google AdSense authorization file
+# This file authorizes Google AdSense to serve ads on pomonest.com
+
+# Google AdSense - Primary publisher account
+google.com, pub-4205049019803904, DIRECT, f08c47fec0942fa0
+
+# This file must be accessible at: https://pomonest.com/ads.txt
+# Last updated: 2025-07-30

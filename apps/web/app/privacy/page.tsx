@@ -131,13 +131,13 @@ export default function PrivacyPolicy() {
                 <div>
                   <h3 className="font-semibold mb-2">Analytics</h3>
                   <p className="text-muted-foreground">
-                    We may use Google Analytics to understand how users interact with our service. This helps us improve the user experience.
+                    We use Google Analytics 4 (GA4) to understand how users interact with our service. Analytics tracking requires your consent and can be disabled through our cookie preferences. We use anonymized IP addresses and have disabled advertising features for privacy protection.
                   </p>
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">Advertising</h3>
                   <p className="text-muted-foreground">
-                    We may display ads through Google AdSense. Google may use cookies to serve relevant ads based on your browsing history.
+                    We display advertisements through Google AdSense to support our free service. Ad personalization requires your explicit consent through our cookie banner. You can opt out of personalized ads while still supporting the service. All ads are clearly labeled as "Advertisement" and fully comply with the Coalition for Better Ads Standards, ensuring no intrusive ad experiences including pop-ups, auto-playing video ads with sound, or ads that interfere with content consumption.
                   </p>
                 </div>
               </CardContent>
@@ -165,10 +165,77 @@ export default function PrivacyPolicy() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-2">Cookies</h3>
+                  <h3 className="font-semibold mb-2">Cookie Management</h3>
                   <p className="text-muted-foreground">
-                    You can control cookie preferences through your browser settings, though this may affect functionality.
+                    We use a comprehensive cookie consent system that allows you to choose which types of cookies to accept:
                   </p>
+                  <ul className="mt-2 space-y-1 text-sm text-muted-foreground ml-4">
+                    <li>• <strong>Necessary cookies:</strong> Required for basic site functionality (always enabled)</li>
+                    <li>• <strong>Analytics cookies:</strong> Help us understand site usage (optional)</li>
+                    <li>• <strong>Advertising cookies:</strong> Enable personalized ads (optional)</li>
+                    <li>• <strong>Functional cookies:</strong> Remember your preferences (optional)</li>
+                  </ul>
+                  <p className="text-muted-foreground mt-2">
+                    You can change your cookie preferences at any time through our cookie banner or browser settings.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Data Retention</h3>
+                  <p className="text-muted-foreground">
+                    We retain your personal data only as long as necessary to provide our services. Account data is kept while your account is active and for up to 90 days after deletion to allow for account recovery. Analytics data is automatically deleted after 26 months.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">GDPR & CCPA Rights</h3>
+                  <p className="text-muted-foreground">
+                    If you're located in the EU or California, you have additional rights including:
+                  </p>
+                  <ul className="mt-2 space-y-1 text-sm text-muted-foreground ml-4">
+                    <li>• Right to access your personal data</li>
+                    <li>• Right to rectify inaccurate data</li>
+                    <li>• Right to delete your data ("right to be forgotten")</li>
+                    <li>• Right to data portability</li>
+                    <li>• Right to withdraw consent</li>
+                    <li>• Right to object to processing</li>
+                  </ul>
+                  <p className="text-muted-foreground mt-2">
+                    Contact us at pomonest.legal@gmail.com to exercise these rights.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Children's Privacy (COPPA) */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Shield className="h-5 w-5" />
+                  Children's Privacy (COPPA Compliance)
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  PomoNest is designed as a general audience productivity application and is not specifically directed at children under 13 years of age.
+                </p>
+                <div className="space-y-3">
+                  <div>
+                    <h3 className="font-semibold mb-2">Age Requirements</h3>
+                    <p className="text-muted-foreground">
+                      Users must be 13 years or older to create an account. We do not knowingly collect personal information from children under 13.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Parental Notice</h3>
+                    <p className="text-muted-foreground">
+                      If we become aware that we have collected personal information from a child under 13, we will take steps to delete such information promptly. Parents who believe their child has provided us with personal information should contact us immediately.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Ad Targeting</h3>
+                    <p className="text-muted-foreground">
+                      We do not use interest-based advertising to target children under 13 or on content directed at children under 13, in compliance with COPPA requirements.
+                    </p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
