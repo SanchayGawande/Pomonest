@@ -109,6 +109,8 @@ export function CleanAuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.removeItem('auth_token')
     localStorage.removeItem('refresh_token')
     console.log('✅ Signed out successfully')
+    // Redirect to home page after sign out to avoid context errors
+    window.location.href = '/'
   }
 
   return (
